@@ -39,7 +39,7 @@ public class TransportationTrip extends Entity {
 
 	public boolean isValid(LocalDate date) {
 		// TODO check explicitDate & days regarding given date
-		return true;
+		throw new RuntimeException("Not implemented.");
 	}
 
 	public void addSchedule(Schedule schedule) {
