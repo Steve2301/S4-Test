@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 27.10.2015 14:09:10 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="Transportation" table="transportation" schema="public">
+        <id name="id" type="serializable">
+            <column name="id" />
+            <generator class="assigned" />
+        </id>
+        <property name="name" type="string">
+            <column name="name" />
+        </property>
+        <property name="maxSpeed" type="java.lang.Float">
+            <column name="max_speed" precision="8" scale="8" />
+        </property>
+        <set name="transportationRoutes" table="transportation_route" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="transportation_id" not-null="true" />
+            </key>
+            <one-to-many class="TransportationRoute" />
+        </set>
+        <set name="segments" table="segment" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="transportation_analyzed_id" not-null="true" />
+            </key>
+            <one-to-many class="Segment" />
+        </set>
+        <set name="waypoints" table="waypoint" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="transportation_superv_id" />
+            </key>
+            <one-to-many class="Waypoint" />
+        </set>
+    </class>
+</hibernate-mapping>

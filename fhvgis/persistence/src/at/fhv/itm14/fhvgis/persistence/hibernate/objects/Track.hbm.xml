@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 27.10.2015 14:09:10 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="Track" table="track" schema="public">
+        <id name="id" type="serializable">
+            <column name="id" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="device" class="Device" fetch="select">
+            <column name="device_id" not-null="true" />
+        </many-to-one>
+        <property name="start" type="timestamp">
+            <column name="start" length="29" not-null="true" />
+        </property>
+        <property name="end" type="timestamp">
+            <column name="end" length="29" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

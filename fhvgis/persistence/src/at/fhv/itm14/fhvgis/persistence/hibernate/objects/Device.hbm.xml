@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 27.10.2015 14:09:10 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="Device" table="device" schema="public">
+        <id name="id" type="serializable">
+            <column name="id" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="user" class="User" fetch="select">
+            <column name="user_id" not-null="true" />
+        </many-to-one>
+        <property name="token" type="string">
+            <column name="token" not-null="true" />
+        </property>
+        <set name="tracks" table="track" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="device_id" not-null="true" />
+            </key>
+            <one-to-many class="Track" />
+        </set>
+    </class>
+</hibernate-mapping>

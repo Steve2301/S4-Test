@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 27.10.2015 14:09:10 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="Waypoint" table="waypoint" schema="public">
+        <id name="id" type="serializable">
+            <column name="id" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="gpsPosition" class="GpsPosition" fetch="select">
+            <column name="gps_position_id" not-null="true" />
+        </many-to-one>
+        <many-to-one name="transportation" class="Transportation" fetch="select">
+            <column name="transportation_superv_id" />
+        </many-to-one>
+        <many-to-one name="poi" class="Poi" fetch="select">
+            <column name="poi_id" />
+        </many-to-one>
+        <many-to-one name="transportationRoute" class="TransportationRoute" fetch="select">
+            <column name="transportation_route_superv_id" />
+        </many-to-one>
+        <property name="nrOfSatellites" type="int">
+            <column name="nr_of_satellites" not-null="true" />
+        </property>
+        <property name="recordTime" type="timestamp">
+            <column name="record_time" length="29" not-null="true" />
+        </property>
+        <property name="accuracy" type="java.lang.Double">
+            <column name="accuracy" precision="17" scale="17" />
+        </property>
+        <property name="valid" type="boolean">
+            <column name="valid" not-null="true" />
+        </property>
+        <set name="segmentsForWaypointToId" table="segment" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="waypoint_to_id" not-null="true" />
+            </key>
+            <one-to-many class="Segment" />
+        </set>
+        <set name="segmentsForWaypointFromId" table="segment" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="waypoint_from_id" not-null="true" />
+            </key>
+            <one-to-many class="Segment" />
+        </set>
+    </class>
+</hibernate-mapping>

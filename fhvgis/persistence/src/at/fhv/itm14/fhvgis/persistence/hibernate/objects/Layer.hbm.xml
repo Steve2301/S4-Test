@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 27.10.2015 14:09:10 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="Layer" table="layer" schema="topology">
+        <composite-id name="id" class="LayerId">
+            <key-property name="topologyId" type="int">
+                <column name="topology_id" />
+            </key-property>
+            <key-property name="layerId" type="int">
+                <column name="layer_id" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="topology" class="Topology" update="false" insert="false" fetch="select">
+            <column name="topology_id" not-null="true" />
+        </many-to-one>
+        <property name="schemaName" type="string">
+            <column name="schema_name" not-null="true" />
+        </property>
+        <property name="tableName" type="string">
+            <column name="table_name" not-null="true" />
+        </property>
+        <property name="featureColumn" type="string">
+            <column name="feature_column" not-null="true" />
+        </property>
+        <property name="featureType" type="int">
+            <column name="feature_type" not-null="true" />
+        </property>
+        <property name="level" type="int">
+            <column name="level" not-null="true" />
+        </property>
+        <property name="childId" type="java.lang.Integer">
+            <column name="child_id" />
+        </property>
+    </class>
+</hibernate-mapping>

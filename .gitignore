@@ -16,7 +16,6 @@ tomcat
 *.dmg
 *.gz
 *.iso
-*.jar
 *.rar
 *.tar
 *.zip
@@ -57,3 +56,5 @@ nb-configuration.xml
 release.properties
 pom.xml.releaseBackup
 pom.xml.tag
+.metadata
+.recommenders

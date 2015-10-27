@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 27.10.2015 14:09:10 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="Shedule" table="shedule" schema="public">
+        <id name="id" type="serializable">
+            <column name="id" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="transportationRoute" class="TransportationRoute" fetch="select">
+            <column name="transportation_route_id" not-null="true" />
+        </many-to-one>
+        <many-to-one name="shedule" class="Shedule" fetch="select">
+            <column name="poi_id" not-null="true" />
+        </many-to-one>
+        <many-to-one name="sheduleDay" class="SheduleDay" fetch="select">
+            <column name="shedule_day_id" not-null="true" />
+        </many-to-one>
+        <property name="tripNr" type="int">
+            <column name="trip_nr" not-null="true" />
+        </property>
+        <property name="validFrom" type="timestamp">
+            <column name="valid_from" length="29" />
+        </property>
+        <property name="validUntil" type="timestamp">
+            <column name="valid_until" length="29" />
+        </property>
+        <property name="explicitDate" type="timestamp">
+            <column name="explicit_date" length="29" />
+        </property>
+        <property name="arrivalTime" type="time">
+            <column name="arrival_time" length="15" not-null="true" />
+        </property>
+        <property name="departureTime" type="time">
+            <column name="departure_time" length="15" />
+        </property>
+        <set name="shedules" table="shedule" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="poi_id" not-null="true" />
+            </key>
+            <one-to-many class="Shedule" />
+        </set>
+    </class>
+</hibernate-mapping>
