@@ -16,4 +16,9 @@
       </plugin>
     </plugins>
   </build>
+  <parent>
+  	<groupId>at.fhv.itm14.fhvgis</groupId>
+  	<artifactId>fhvgis</artifactId>
+  	<version>0.0.1-SNAPSHOT</version>
+  </parent>
 </project>
