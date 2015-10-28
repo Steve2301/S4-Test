@@ -3,6 +3,7 @@ package at.fhv.itm14.fhvgis.persistence;
 import java.util.LinkedList;
 import java.util.List;
 
+import at.fhv.itm14.fhvgis.domain.Device;
 import at.fhv.itm14.fhvgis.domain.User;
 
 public class DatabaseMapper implements IDatabaseMapper {
@@ -46,6 +47,27 @@ public class DatabaseMapper implements IDatabaseMapper {
 				rv.add(tmp);
 			}
 		}
+		return rv;
+	}
+
+	@Override
+	public List<Device> mapDatabaseDeviceList(
+			List<at.fhv.itm14.fhvgis.persistence.hibernate.objects.Device> dbDeviceList) {
+		List<Device> rv = new LinkedList<Device>();
+		for(at.fhv.itm14.fhvgis.persistence.hibernate.objects.Device u : dbDeviceList)
+		{
+			Device tmp = mapDatabaseDevice(u);
+			if(tmp != null)
+			{
+				rv.add(tmp);
+			}
+		}
+		return rv;
+	}
+
+	@Override
+	public Device mapDatabaseDevice(at.fhv.itm14.fhvgis.persistence.hibernate.objects.Device dbDevice) {
+		Device rv = new Device(dbDevice.getToken());
 		return rv;
 	}
 }

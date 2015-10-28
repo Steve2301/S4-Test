@@ -1,4 +1,4 @@
-package at.fhv.itm14.fhvgis.persistence.hibernate;
+package at.fhv.itm14.fhvgis.persistence.hibernate.objects;
 
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -14,7 +14,7 @@ public class HibernateUtil {
 		}
 		catch(Throwable ex)
 		{
-			System.err.println("INitial SessionFactory createion failed." + ex);
+			System.err.println("Initial SessionFactory createion failed." + ex);
 			throw new ExceptionInInitializerError(ex);
 		}
 	}
