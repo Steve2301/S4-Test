@@ -1,6 +1,8 @@
 package at.fhv.itm14.fhvgis.domain;
 
-public class Segment extends Entity{
+import java.io.Serializable;
+
+public class Segment extends Entity implements Serializable{
 
 	private Waypoint begin;
 	private Waypoint end;

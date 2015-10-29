@@ -1,6 +1,6 @@
 package at.fhv.itm14.fhvgis.persistence.hibernate.objects;
 // default package
-// Generated 28.10.2015 12:44:52 by Hibernate Tools 4.0.0
+// Generated 29.10.2015 22:12:10 by Hibernate Tools 3.4.0.CR1
 
 import java.io.Serializable;
 import java.util.HashSet;
@@ -24,6 +24,9 @@ public class Poi implements java.io.Serializable {
 	private String id;
 	private PoiType poiType;
 	private String name;
+	private Float radius;
+	private String position;
+	private String extRef;
 	private Set<Waypoint> waypoints = new HashSet<Waypoint>(0);
 	private Set<Geofence> geofences = new HashSet<Geofence>(0);
 	private Set<Segment> segmentsForPoiFromId = new HashSet<Segment>(0);
@@ -32,16 +35,21 @@ public class Poi implements java.io.Serializable {
 	public Poi() {
 	}
 
-	public Poi(String id, PoiType poiType) {
+	public Poi(String id, PoiType poiType, String position) {
 		this.id = id;
 		this.poiType = poiType;
+		this.position = position;
 	}
 
-	public Poi(String id, PoiType poiType, String name, Set<Waypoint> waypoints, Set<Geofence> geofences,
-			Set<Segment> segmentsForPoiFromId, Set<Segment> segmentsForPoiToId) {
+	public Poi(String id, PoiType poiType, String name, Float radius, String position, String extRef,
+			Set<Waypoint> waypoints, Set<Geofence> geofences, Set<Segment> segmentsForPoiFromId,
+			Set<Segment> segmentsForPoiToId) {
 		this.id = id;
 		this.poiType = poiType;
 		this.name = name;
+		this.radius = radius;
+		this.position = position;
+		this.extRef = extRef;
 		this.waypoints = waypoints;
 		this.geofences = geofences;
 		this.segmentsForPoiFromId = segmentsForPoiFromId;
@@ -76,6 +84,33 @@ public class Poi implements java.io.Serializable {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	@Column(name = "radius", precision = 8, scale = 8)
+	public Float getRadius() {
+		return this.radius;
+	}
+
+	public void setRadius(Float radius) {
+		this.radius = radius;
+	}
+
+	@Column(name = "position", nullable = false)
+	public String getPosition() {
+		return this.position;
+	}
+
+	public void setPosition(String position) {
+		this.position = position;
+	}
+
+	@Column(name = "ext_ref")
+	public String getExtRef() {
+		return this.extRef;
+	}
+
+	public void setExtRef(String extRef) {
+		this.extRef = extRef;
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "poi")

@@ -1,6 +1,8 @@
 package at.fhv.itm14.fhvgis.domain;
 
-public class POI extends Entity {
+import java.io.Serializable;
+
+public class POI extends Entity implements Serializable{
 	
 	private String name;
 	private POIType poiType;

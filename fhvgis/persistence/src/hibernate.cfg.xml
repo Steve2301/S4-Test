@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
-                                         "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+                                         "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
  <session-factory>
   <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
@@ -11,50 +11,49 @@
   <property name="hibernate.search.autoregister_listeners">false</property>
   <mapping
    class="at.fhv.itm14.fhvgis.persistence.hibernate.objects.Shedule"
-   package="at.fhv.itm14.fhvgis.persistence.hibernate.objects" resource="Shedule.hbm.xml"/>
+   package="at.fhv.itm14.fhvgis.persistence.hibernate.objects" resource="at/fhv/itm14/fhvgis/persistence/hibernate/objects/Shedule.hbm.xml"/>
   <mapping
    class="at.fhv.itm14.fhvgis.persistence.hibernate.objects.User"
-   package="at.fhv.itm14.fhvgis.persistence.hibernate.objects" resource="User.hbm.xml"/>
+   package="at.fhv.itm14.fhvgis.persistence.hibernate.objects" resource="at/fhv/itm14/fhvgis/persistence/hibernate/objects/User.hbm.xml"/>
+  <mapping class="at.fhv.itm14.fhvgis.persistence.hibernate.objects.Log"
+   package="at.fhv.itm14.fhvgis.persistence.hibernate.objects" resource="at/fhv/itm14/fhvgis/persistence/hibernate/objects/Log.hbm.xml"/>
   <mapping
    class="at.fhv.itm14.fhvgis.persistence.hibernate.objects.Device"
-   package="at.fhv.itm14.fhvgis.persistence.hibernate.objects" resource="Device.hbm.xml"/>
+   package="at.fhv.itm14.fhvgis.persistence.hibernate.objects" resource="at/fhv/itm14/fhvgis/persistence/hibernate/objects/Device.hbm.xml"/>
   <mapping
    class="at.fhv.itm14.fhvgis.persistence.hibernate.objects.Transportation"
-   package="at.fhv.itm14.fhvgis.persistence.hibernate.objects" resource="Transportation.hbm.xml"/>
+   package="at.fhv.itm14.fhvgis.persistence.hibernate.objects" resource="at/fhv/itm14/fhvgis/persistence/hibernate/objects/Transportation.hbm.xml"/>
   <mapping
    class="at.fhv.itm14.fhvgis.persistence.hibernate.objects.PoiType"
-   package="at.fhv.itm14.fhvgis.persistence.hibernate.objects" resource="PoiType.hbm.xml"/>
+   package="at.fhv.itm14.fhvgis.persistence.hibernate.objects" resource="at/fhv/itm14/fhvgis/persistence/hibernate/objects/PoiType.hbm.xml"/>
   <mapping
    class="at.fhv.itm14.fhvgis.persistence.hibernate.objects.SheduleDay"
-   package="at.fhv.itm14.fhvgis.persistence.hibernate.objects" resource="SheduleDay.hbm.xml"/>
-  <mapping
-   class="at.fhv.itm14.fhvgis.persistence.hibernate.objects.GpsPosition"
-   package="at.fhv.itm14.fhvgis.persistence.hibernate.objects" resource="GpsPosition.hbm.xml"/>
+   package="at.fhv.itm14.fhvgis.persistence.hibernate.objects" resource="at/fhv/itm14/fhvgis/persistence/hibernate/objects/SheduleDay.hbm.xml"/>
   <mapping class="at.fhv.itm14.fhvgis.persistence.hibernate.objects.Poi"
-   package="at.fhv.itm14.fhvgis.persistence.hibernate.objects" resource="Poi.hbm.xml"/>
+   package="at.fhv.itm14.fhvgis.persistence.hibernate.objects" resource="at/fhv/itm14/fhvgis/persistence/hibernate/objects/Poi.hbm.xml"/>
   <mapping
    class="at.fhv.itm14.fhvgis.persistence.hibernate.objects.Topology"
-   package="at.fhv.itm14.fhvgis.persistence.hibernate.objects" resource="Topology.hbm.xml"/>
+   package="at.fhv.itm14.fhvgis.persistence.hibernate.objects" resource="at/fhv/itm14/fhvgis/persistence/hibernate/objects/Topology.hbm.xml"/>
   <mapping
    class="at.fhv.itm14.fhvgis.persistence.hibernate.objects.SpatialRefSys"
-   package="at.fhv.itm14.fhvgis.persistence.hibernate.objects" resource="SpatialRefSys.hbm.xml"/>
+   package="at.fhv.itm14.fhvgis.persistence.hibernate.objects" resource="at/fhv/itm14/fhvgis/persistence/hibernate/objects/SpatialRefSys.hbm.xml"/>
   <mapping
    class="at.fhv.itm14.fhvgis.persistence.hibernate.objects.Layer"
-   package="at.fhv.itm14.fhvgis.persistence.hibernate.objects" resource="Layer.hbm.xml"/>
+   package="at.fhv.itm14.fhvgis.persistence.hibernate.objects" resource="at/fhv/itm14/fhvgis/persistence/hibernate/objects/Layer.hbm.xml"/>
   <mapping
    class="at.fhv.itm14.fhvgis.persistence.hibernate.objects.Segment"
-   package="at.fhv.itm14.fhvgis.persistence.hibernate.objects" resource="Segment.hbm.xml"/>
+   package="at.fhv.itm14.fhvgis.persistence.hibernate.objects" resource="at/fhv/itm14/fhvgis/persistence/hibernate/objects/Segment.hbm.xml"/>
   <mapping
    class="at.fhv.itm14.fhvgis.persistence.hibernate.objects.Waypoint"
-   package="at.fhv.itm14.fhvgis.persistence.hibernate.objects" resource="Waypoint.hbm.xml"/>
+   package="at.fhv.itm14.fhvgis.persistence.hibernate.objects" resource="at/fhv/itm14/fhvgis/persistence/hibernate/objects/Waypoint.hbm.xml"/>
   <mapping
    class="at.fhv.itm14.fhvgis.persistence.hibernate.objects.TransportationRoute"
-   package="at.fhv.itm14.fhvgis.persistence.hibernate.objects" resource="TransportationRoute.hbm.xml"/>
+   package="at.fhv.itm14.fhvgis.persistence.hibernate.objects" resource="at/fhv/itm14/fhvgis/persistence/hibernate/objects/TransportationRoute.hbm.xml"/>
   <mapping
    class="at.fhv.itm14.fhvgis.persistence.hibernate.objects.Track"
-   package="at.fhv.itm14.fhvgis.persistence.hibernate.objects" resource="Track.hbm.xml"/>
+   package="at.fhv.itm14.fhvgis.persistence.hibernate.objects" resource="at/fhv/itm14/fhvgis/persistence/hibernate/objects/Track.hbm.xml"/>
   <mapping
    class="at.fhv.itm14.fhvgis.persistence.hibernate.objects.Geofence"
-   package="at.fhv.itm14.fhvgis.persistence.hibernate.objects" resource="Geofence.hbm.xml"/>
+   package="at.fhv.itm14.fhvgis.persistence.hibernate.objects" resource="at/fhv/itm14/fhvgis/persistence/hibernate/objects/Geofence.hbm.xml"/>
  </session-factory>
 </hibernate-configuration>

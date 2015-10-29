@@ -1,9 +1,10 @@
 package at.fhv.itm14.fhvgis.domain;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Device extends Entity {
+public class Device extends Entity implements Serializable{
 
 	private String token;
 	private List<Track> tracks;

@@ -1,11 +1,12 @@
 package at.fhv.itm14.fhvgis.domain;
 
+import java.io.Serializable;
 import java.time.Duration;
 import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Track extends Entity {
+public class Track extends Entity implements Serializable{
 
 	private Instant startDate;
 	private Instant endDate;

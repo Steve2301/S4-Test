@@ -1,6 +1,6 @@
 package at.fhv.itm14.fhvgis.persistence.hibernate.objects;
 // default package
-// Generated 28.10.2015 12:44:52 by Hibernate Tools 4.0.0
+// Generated 29.10.2015 22:12:10 by Hibernate Tools 3.4.0.CR1
 
 import java.io.Serializable;
 import java.util.Date;
@@ -34,6 +34,7 @@ public class Shedule implements java.io.Serializable {
 	private Date explicitDate;
 	private Date arrivalTime;
 	private Date departureTime;
+	private Integer seqNo;
 	private Set<Shedule> shedules = new HashSet<Shedule>(0);
 
 	public Shedule() {
@@ -51,7 +52,7 @@ public class Shedule implements java.io.Serializable {
 
 	public Shedule(String id, TransportationRoute transportationRoute, Shedule shedule, SheduleDay sheduleDay,
 			int tripNr, Date validFrom, Date validUntil, Date explicitDate, Date arrivalTime, Date departureTime,
-			Set<Shedule> shedules) {
+			Integer seqNo, Set<Shedule> shedules) {
 		this.id = id;
 		this.transportationRoute = transportationRoute;
 		this.shedule = shedule;
@@ -62,6 +63,7 @@ public class Shedule implements java.io.Serializable {
 		this.explicitDate = explicitDate;
 		this.arrivalTime = arrivalTime;
 		this.departureTime = departureTime;
+		this.seqNo = seqNo;
 		this.shedules = shedules;
 	}
 
@@ -163,6 +165,15 @@ public class Shedule implements java.io.Serializable {
 
 	public void setDepartureTime(Date departureTime) {
 		this.departureTime = departureTime;
+	}
+
+	@Column(name = "seq_no")
+	public Integer getSeqNo() {
+		return this.seqNo;
+	}
+
+	public void setSeqNo(Integer seqNo) {
+		this.seqNo = seqNo;
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "shedule")

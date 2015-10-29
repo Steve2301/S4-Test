@@ -1,6 +1,8 @@
 package at.fhv.itm14.fhvgis.domain;
 
-public class Geofence {
+import java.io.Serializable;
+
+public class Geofence implements Serializable{
 
 	private double radius;
 	private GPSPosition center;

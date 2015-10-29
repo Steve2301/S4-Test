@@ -1,6 +1,8 @@
 package at.fhv.itm14.fhvgis.domain;
 
-public class GPSPosition extends Entity {
+import java.io.Serializable;
+
+public class GPSPosition extends Entity implements Serializable{
 
 	// TODO PostGIS or some other API available?!
 	// http://www.java2s.com/Code/Java/2D-Graphics-GUI/Geometry.htm

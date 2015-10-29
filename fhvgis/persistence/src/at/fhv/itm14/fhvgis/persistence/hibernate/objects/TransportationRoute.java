@@ -1,6 +1,6 @@
 package at.fhv.itm14.fhvgis.persistence.hibernate.objects;
 // default package
-// Generated 28.10.2015 12:44:52 by Hibernate Tools 4.0.0
+// Generated 29.10.2015 22:12:10 by Hibernate Tools 3.4.0.CR1
 
 import java.io.Serializable;
 import java.util.Date;
@@ -29,6 +29,13 @@ public class TransportationRoute implements java.io.Serializable {
 	private String name;
 	private Date validFrom;
 	private Date validUntil;
+	private String operator;
+	private String network;
+	private String extRef;
+	private String descFrom;
+	private String descTo;
+	private String desc;
+	private String routeNo;
 	private Set<Segment> segments = new HashSet<Segment>(0);
 	private Set<Shedule> shedules = new HashSet<Shedule>(0);
 	private Set<Waypoint> waypoints = new HashSet<Waypoint>(0);
@@ -43,12 +50,20 @@ public class TransportationRoute implements java.io.Serializable {
 	}
 
 	public TransportationRoute(String id, Transportation transportation, String name, Date validFrom,
-			Date validUntil, Set<Segment> segments, Set<Shedule> shedules, Set<Waypoint> waypoints) {
+			Date validUntil, String operator, String network, String extRef, String descFrom, String descTo,
+			String desc, String routeNo, Set<Segment> segments, Set<Shedule> shedules, Set<Waypoint> waypoints) {
 		this.id = id;
 		this.transportation = transportation;
 		this.name = name;
 		this.validFrom = validFrom;
 		this.validUntil = validUntil;
+		this.operator = operator;
+		this.network = network;
+		this.extRef = extRef;
+		this.descFrom = descFrom;
+		this.descTo = descTo;
+		this.desc = desc;
+		this.routeNo = routeNo;
 		this.segments = segments;
 		this.shedules = shedules;
 		this.waypoints = waypoints;
@@ -102,6 +117,69 @@ public class TransportationRoute implements java.io.Serializable {
 
 	public void setValidUntil(Date validUntil) {
 		this.validUntil = validUntil;
+	}
+
+	@Column(name = "operator")
+	public String getOperator() {
+		return this.operator;
+	}
+
+	public void setOperator(String operator) {
+		this.operator = operator;
+	}
+
+	@Column(name = "network")
+	public String getNetwork() {
+		return this.network;
+	}
+
+	public void setNetwork(String network) {
+		this.network = network;
+	}
+
+	@Column(name = "ext_ref")
+	public String getExtRef() {
+		return this.extRef;
+	}
+
+	public void setExtRef(String extRef) {
+		this.extRef = extRef;
+	}
+
+	@Column(name = "desc_from")
+	public String getDescFrom() {
+		return this.descFrom;
+	}
+
+	public void setDescFrom(String descFrom) {
+		this.descFrom = descFrom;
+	}
+
+	@Column(name = "desc_to")
+	public String getDescTo() {
+		return this.descTo;
+	}
+
+	public void setDescTo(String descTo) {
+		this.descTo = descTo;
+	}
+
+	@Column(name = "desc")
+	public String getDesc() {
+		return this.desc;
+	}
+
+	public void setDesc(String desc) {
+		this.desc = desc;
+	}
+
+	@Column(name = "route_no")
+	public String getRouteNo() {
+		return this.routeNo;
+	}
+
+	public void setRouteNo(String routeNo) {
+		this.routeNo = routeNo;
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "transportationRoute")

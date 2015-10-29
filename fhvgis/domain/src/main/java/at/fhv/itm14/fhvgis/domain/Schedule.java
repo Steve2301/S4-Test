@@ -1,8 +1,9 @@
 package at.fhv.itm14.fhvgis.domain;
 
+import java.io.Serializable;
 import java.time.LocalTime;
 
-public class Schedule extends Entity {
+public class Schedule extends Entity implements Serializable{
 
 	private LocalTime arrivalTime;
 	private LocalTime departureTime;

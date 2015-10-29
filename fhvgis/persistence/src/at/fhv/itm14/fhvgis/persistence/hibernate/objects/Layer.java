@@ -1,6 +1,6 @@
 package at.fhv.itm14.fhvgis.persistence.hibernate.objects;
 // default package
-// Generated 28.10.2015 12:44:52 by Hibernate Tools 4.0.0
+// Generated 29.10.2015 22:12:10 by Hibernate Tools 3.4.0.CR1
 
 import javax.persistence.AttributeOverride;
 import javax.persistence.AttributeOverrides;

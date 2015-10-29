@@ -1,9 +1,10 @@
 package at.fhv.itm14.fhvgis.domain;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class User extends Entity {
+public class User extends Entity implements Serializable{
 	
 	private String name;
 	private String password;

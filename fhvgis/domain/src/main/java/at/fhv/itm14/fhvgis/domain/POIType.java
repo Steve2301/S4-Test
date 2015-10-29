@@ -1,6 +1,8 @@
 package at.fhv.itm14.fhvgis.domain;
 
-public class POIType extends Entity {
+import java.io.Serializable;
+
+public class POIType extends Entity implements Serializable{
 
 	private String name;
 	private boolean isPrivate;

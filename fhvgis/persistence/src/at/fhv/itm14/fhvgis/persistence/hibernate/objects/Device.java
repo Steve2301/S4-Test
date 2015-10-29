@@ -1,7 +1,7 @@
 package at.fhv.itm14.fhvgis.persistence.hibernate.objects;
 
 // default package
-// Generated 28.10.2015 12:44:52 by Hibernate Tools 4.0.0
+// Generated 29.10.2015 22:12:10 by Hibernate Tools 3.4.0.CR1
 
 import java.io.Serializable;
 import java.util.HashSet;
@@ -26,6 +26,7 @@ public class Device implements java.io.Serializable {
 	private User user;
 	private String token;
 	private Set<Track> tracks = new HashSet<Track>(0);
+	private Set<Log> logs = new HashSet<Log>(0);
 
 	public Device() {
 	}
@@ -36,11 +37,12 @@ public class Device implements java.io.Serializable {
 		this.token = token;
 	}
 
-	public Device(String id, User user, String token, Set<Track> tracks) {
+	public Device(String id, User user, String token, Set<Track> tracks, Set<Log> logs) {
 		this.id = id;
 		this.user = user;
 		this.token = token;
 		this.tracks = tracks;
+		this.logs = logs;
 	}
 
 	@Id
@@ -80,6 +82,15 @@ public class Device implements java.io.Serializable {
 
 	public void setTracks(Set<Track> tracks) {
 		this.tracks = tracks;
+	}
+
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "device")
+	public Set<Log> getLogs() {
+		return this.logs;
+	}
+
+	public void setLogs(Set<Log> logs) {
+		this.logs = logs;
 	}
 
 }

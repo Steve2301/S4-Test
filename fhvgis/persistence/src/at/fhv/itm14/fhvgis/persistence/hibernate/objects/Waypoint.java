@@ -1,6 +1,6 @@
 package at.fhv.itm14.fhvgis.persistence.hibernate.objects;
 // default package
-// Generated 28.10.2015 12:44:52 by Hibernate Tools 4.0.0
+// Generated 29.10.2015 22:12:10 by Hibernate Tools 3.4.0.CR1
 
 import java.io.Serializable;
 import java.util.Date;
@@ -25,7 +25,6 @@ import javax.persistence.TemporalType;
 public class Waypoint implements java.io.Serializable {
 
 	private String id;
-	private GpsPosition gpsPosition;
 	private Transportation transportation;
 	private Poi poi;
 	private TransportationRoute transportationRoute;
@@ -33,25 +32,26 @@ public class Waypoint implements java.io.Serializable {
 	private Date recordTime;
 	private Double accuracy;
 	private boolean valid;
+	private Float speed;
+	private String position;
 	private Set<Segment> segmentsForWaypointToId = new HashSet<Segment>(0);
 	private Set<Segment> segmentsForWaypointFromId = new HashSet<Segment>(0);
 
 	public Waypoint() {
 	}
 
-	public Waypoint(String id, GpsPosition gpsPosition, int nrOfSatellites, Date recordTime, boolean valid) {
+	public Waypoint(String id, int nrOfSatellites, Date recordTime, boolean valid, String position) {
 		this.id = id;
-		this.gpsPosition = gpsPosition;
 		this.nrOfSatellites = nrOfSatellites;
 		this.recordTime = recordTime;
 		this.valid = valid;
+		this.position = position;
 	}
 
-	public Waypoint(String id, GpsPosition gpsPosition, Transportation transportation, Poi poi,
-			TransportationRoute transportationRoute, int nrOfSatellites, Date recordTime, Double accuracy,
-			boolean valid, Set<Segment> segmentsForWaypointToId, Set<Segment> segmentsForWaypointFromId) {
+	public Waypoint(String id, Transportation transportation, Poi poi, TransportationRoute transportationRoute,
+			int nrOfSatellites, Date recordTime, Double accuracy, boolean valid, Float speed, String position,
+			Set<Segment> segmentsForWaypointToId, Set<Segment> segmentsForWaypointFromId) {
 		this.id = id;
-		this.gpsPosition = gpsPosition;
 		this.transportation = transportation;
 		this.poi = poi;
 		this.transportationRoute = transportationRoute;
@@ -59,6 +59,8 @@ public class Waypoint implements java.io.Serializable {
 		this.recordTime = recordTime;
 		this.accuracy = accuracy;
 		this.valid = valid;
+		this.speed = speed;
+		this.position = position;
 		this.segmentsForWaypointToId = segmentsForWaypointToId;
 		this.segmentsForWaypointFromId = segmentsForWaypointFromId;
 	}
@@ -72,16 +74,6 @@ public class Waypoint implements java.io.Serializable {
 
 	public void setId(String id) {
 		this.id = id;
-	}
-
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "gps_position_id", nullable = false)
-	public GpsPosition getGpsPosition() {
-		return this.gpsPosition;
-	}
-
-	public void setGpsPosition(GpsPosition gpsPosition) {
-		this.gpsPosition = gpsPosition;
 	}
 
 	@ManyToOne(fetch = FetchType.LAZY)
@@ -149,6 +141,24 @@ public class Waypoint implements java.io.Serializable {
 
 	public void setValid(boolean valid) {
 		this.valid = valid;
+	}
+
+	@Column(name = "speed", precision = 8, scale = 8)
+	public Float getSpeed() {
+		return this.speed;
+	}
+
+	public void setSpeed(Float speed) {
+		this.speed = speed;
+	}
+
+	@Column(name = "position", nullable = false)
+	public String getPosition() {
+		return this.position;
+	}
+
+	public void setPosition(String position) {
+		this.position = position;
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "waypointByWaypointToId")

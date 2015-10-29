@@ -1,5 +1,6 @@
 package at.fhv.itm14.fhvgis.domain;
 
+import java.io.Serializable;
 import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
@@ -8,7 +9,7 @@ import java.util.List;
  * Line
  *
  */
-public class TransportationRoute extends Entity{
+public class TransportationRoute extends Entity implements Serializable{
 
 	private String name;
 	private Instant validFrom;

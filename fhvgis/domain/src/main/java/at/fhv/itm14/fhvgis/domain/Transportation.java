@@ -1,6 +1,8 @@
 package at.fhv.itm14.fhvgis.domain;
 
-public class Transportation extends Entity {
+import java.io.Serializable;
+
+public class Transportation extends Entity implements Serializable{
 
 	private String name;
 	private double maxSpeed;

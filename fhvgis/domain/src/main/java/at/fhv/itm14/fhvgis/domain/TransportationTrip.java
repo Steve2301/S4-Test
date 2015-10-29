@@ -1,11 +1,12 @@
 package at.fhv.itm14.fhvgis.domain;
 
+import java.io.Serializable;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TransportationTrip extends Entity {
+public class TransportationTrip extends Entity implements Serializable{
 
 	private TransportationRoute transportationRoute;
 	private List<Schedule> schedules;

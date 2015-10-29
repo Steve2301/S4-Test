@@ -1,8 +1,9 @@
 package at.fhv.itm14.fhvgis.domain;
 
+import java.io.Serializable;
 import java.time.Instant;
 
-public class Waypoint extends Entity {
+public class Waypoint extends Entity implements Serializable {
 
 	private GPSPosition postion;
 	private Instant recordTime;
