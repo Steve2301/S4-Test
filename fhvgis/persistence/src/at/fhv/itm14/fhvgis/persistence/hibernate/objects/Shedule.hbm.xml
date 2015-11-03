@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
-<!-- Generated 29.10.2015 22:12:10 by Hibernate Tools 3.4.0.CR1 -->
+<!-- Generated 03.11.2015 22:57:52 by Hibernate Tools 3.4.0.CR1 -->
 <hibernate-mapping>
     <class name="Shedule" table="shedule" schema="public">
         <id name="id" type="serializable">
@@ -11,7 +11,7 @@
         <many-to-one name="transportationRoute" class="TransportationRoute" fetch="select">
             <column name="transportation_route_id" not-null="true" />
         </many-to-one>
-        <many-to-one name="shedule" class="Shedule" fetch="select">
+        <many-to-one name="poi" class="Poi" fetch="select">
             <column name="poi_id" not-null="true" />
         </many-to-one>
         <many-to-one name="sheduleDay" class="SheduleDay" fetch="select">
@@ -38,11 +38,5 @@
         <property name="seqNo" type="java.lang.Integer">
             <column name="seq_no" />
         </property>
-        <set name="shedules" table="shedule" inverse="true" lazy="true" fetch="select">
-            <key>
-                <column name="poi_id" not-null="true" />
-            </key>
-            <one-to-many class="Shedule" />
-        </set>
     </class>
 </hibernate-mapping>

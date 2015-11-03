@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<domains project-version="3.0.0.1">
+<domain name="FHV_GIS">
+	<map name="FHV_GIS_Map" location="FHV_GIS_Map.map.xml"/>
+
+	<node name="FHV_GIS_Node"
+		 datasource="FHV_GIS_Node.driver.xml"
+		 factory="org.apache.cayenne.conf.DriverDataSourceFactory"
+		 schema-update-strategy="org.apache.cayenne.access.dbsync.CreateIfNoSchemaStrategy">
+			<map-ref name="FHV_GIS_Map"/>
+	 </node>
+</domain>
+</domains>

@@ -1,6 +1,6 @@
 package at.fhv.itm14.fhvgis.persistence.hibernate.objects;
 // default package
-// Generated 29.10.2015 22:12:10 by Hibernate Tools 3.4.0.CR1
+// Generated 03.11.2015 22:57:50 by Hibernate Tools 3.4.0.CR1
 
 import java.io.Serializable;
 import javax.persistence.Column;

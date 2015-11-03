@@ -1,6 +1,6 @@
 package at.fhv.itm14.fhvgis.persistence.hibernate.objects;
 // default package
-// Generated 29.10.2015 22:12:10 by Hibernate Tools 3.4.0.CR1
+// Generated 03.11.2015 22:57:50 by Hibernate Tools 3.4.0.CR1
 
 import java.io.Serializable;
 import javax.persistence.Column;
@@ -20,12 +20,12 @@ public class Geofence implements java.io.Serializable {
 
 	private String id;
 	private Poi poi;
-	private String positions;
+	private String[] positions;
 
 	public Geofence() {
 	}
 
-	public Geofence(String id, Poi poi, String positions) {
+	public Geofence(String id, Poi poi, String[] positions) {
 		this.id = id;
 		this.poi = poi;
 		this.positions = positions;
@@ -53,11 +53,11 @@ public class Geofence implements java.io.Serializable {
 	}
 
 	@Column(name = "positions", nullable = false)
-	public String getPositions() {
+	public String[] getPositions() {
 		return this.positions;
 	}
 
-	public void setPositions(String positions) {
+	public void setPositions(String[] positions) {
 		this.positions = positions;
 	}
 

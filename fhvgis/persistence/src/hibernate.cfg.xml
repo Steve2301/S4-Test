@@ -3,6 +3,7 @@
                                          "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
  <session-factory>
+  <property name="hibernate.bytecode.use_reflection_optimizer">false</property>
   <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
   <property name="hibernate.connection.password">se!Z.h[2?B5fE%tx</property>
   <property name="hibernate.connection.url">jdbc:postgresql://localhost:9000/gisdb</property>

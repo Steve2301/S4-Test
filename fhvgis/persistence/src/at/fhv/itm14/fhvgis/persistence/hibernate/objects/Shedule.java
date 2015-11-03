@@ -1,18 +1,15 @@
 package at.fhv.itm14.fhvgis.persistence.hibernate.objects;
 // default package
-// Generated 29.10.2015 22:12:10 by Hibernate Tools 3.4.0.CR1
+// Generated 03.11.2015 22:57:50 by Hibernate Tools 3.4.0.CR1
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -26,7 +23,7 @@ public class Shedule implements java.io.Serializable {
 
 	private String id;
 	private TransportationRoute transportationRoute;
-	private Shedule shedule;
+	private Poi poi;
 	private SheduleDay sheduleDay;
 	private int tripNr;
 	private Date validFrom;
@@ -35,27 +32,25 @@ public class Shedule implements java.io.Serializable {
 	private Date arrivalTime;
 	private Date departureTime;
 	private Integer seqNo;
-	private Set<Shedule> shedules = new HashSet<Shedule>(0);
 
 	public Shedule() {
 	}
 
-	public Shedule(String id, TransportationRoute transportationRoute, Shedule shedule, SheduleDay sheduleDay,
-			int tripNr, Date arrivalTime) {
+	public Shedule(String id, TransportationRoute transportationRoute, Poi poi, SheduleDay sheduleDay, int tripNr,
+			Date arrivalTime) {
 		this.id = id;
 		this.transportationRoute = transportationRoute;
-		this.shedule = shedule;
+		this.poi = poi;
 		this.sheduleDay = sheduleDay;
 		this.tripNr = tripNr;
 		this.arrivalTime = arrivalTime;
 	}
 
-	public Shedule(String id, TransportationRoute transportationRoute, Shedule shedule, SheduleDay sheduleDay,
-			int tripNr, Date validFrom, Date validUntil, Date explicitDate, Date arrivalTime, Date departureTime,
-			Integer seqNo, Set<Shedule> shedules) {
+	public Shedule(String id, TransportationRoute transportationRoute, Poi poi, SheduleDay sheduleDay, int tripNr,
+			Date validFrom, Date validUntil, Date explicitDate, Date arrivalTime, Date departureTime, Integer seqNo) {
 		this.id = id;
 		this.transportationRoute = transportationRoute;
-		this.shedule = shedule;
+		this.poi = poi;
 		this.sheduleDay = sheduleDay;
 		this.tripNr = tripNr;
 		this.validFrom = validFrom;
@@ -64,7 +59,6 @@ public class Shedule implements java.io.Serializable {
 		this.arrivalTime = arrivalTime;
 		this.departureTime = departureTime;
 		this.seqNo = seqNo;
-		this.shedules = shedules;
 	}
 
 	@Id
@@ -90,12 +84,12 @@ public class Shedule implements java.io.Serializable {
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "poi_id", nullable = false)
-	public Shedule getShedule() {
-		return this.shedule;
+	public Poi getPoi() {
+		return this.poi;
 	}
 
-	public void setShedule(Shedule shedule) {
-		this.shedule = shedule;
+	public void setPoi(Poi poi) {
+		this.poi = poi;
 	}
 
 	@ManyToOne(fetch = FetchType.LAZY)
@@ -174,15 +168,6 @@ public class Shedule implements java.io.Serializable {
 
 	public void setSeqNo(Integer seqNo) {
 		this.seqNo = seqNo;
-	}
-
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "shedule")
-	public Set<Shedule> getShedules() {
-		return this.shedules;
-	}
-
-	public void setShedules(Set<Shedule> shedules) {
-		this.shedules = shedules;
 	}
 
 }

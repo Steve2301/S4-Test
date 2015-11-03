@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
-<!-- Generated 29.10.2015 22:12:10 by Hibernate Tools 3.4.0.CR1 -->
+<!-- Generated 03.11.2015 22:57:52 by Hibernate Tools 3.4.0.CR1 -->
 <hibernate-mapping>
     <class name="Poi" table="poi" schema="public">
         <id name="id" type="serializable">
@@ -40,6 +40,12 @@
                 <column name="poi_from_id" />
             </key>
             <one-to-many class="Segment" />
+        </set>
+        <set name="shedules" table="shedule" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="poi_id" not-null="true" />
+            </key>
+            <one-to-many class="Shedule" />
         </set>
         <set name="segmentsForPoiToId" table="segment" inverse="true" lazy="true" fetch="select">
             <key>

@@ -1,0 +1,355 @@
+<?xml version="1.0" encoding="utf-8"?>
+<data-map xmlns="http://cayenne.apache.org/schema/3.0/modelMap"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://cayenne.apache.org/schema/3.0/modelMap http://cayenne.apache.org/schema/3.0/modelMap.xsd"
+  project-version="3.0.0.1">
+	<property name="defaultPackage" value="at.fhv.itm14.fhvgis.persistence.cayenne"/>
+	<db-entity name="device" schema="public">
+		<db-attribute name="id" type="OTHER" isPrimaryKey="true" isGenerated="true" isMandatory="true" length="2147483647"/>
+		<db-attribute name="token" type="CLOB" isMandatory="true" length="2147483647"/>
+		<db-attribute name="user_id" type="OTHER" isMandatory="true" length="2147483647"/>
+	</db-entity>
+	<db-entity name="geofence" schema="public">
+		<db-attribute name="id" type="OTHER" isPrimaryKey="true" isGenerated="true" isMandatory="true" length="2147483647"/>
+		<db-attribute name="poi_id" type="OTHER" isMandatory="true" length="2147483647"/>
+		<db-attribute name="positions" type="ARRAY" isMandatory="true" length="2147483647"/>
+	</db-entity>
+	<db-entity name="geography_columns" schema="public">
+	</db-entity>
+	<db-entity name="geometry_columns" schema="public">
+	</db-entity>
+	<db-entity name="log" schema="public">
+		<db-attribute name="device_id" type="OTHER" isMandatory="true" length="2147483647"/>
+		<db-attribute name="id" type="OTHER" isPrimaryKey="true" isGenerated="true" isMandatory="true" length="2147483647"/>
+		<db-attribute name="level" type="CLOB" length="2147483647"/>
+		<db-attribute name="log_time" type="TIMESTAMP" length="29"/>
+		<db-attribute name="message" type="CLOB" length="2147483647"/>
+		<db-attribute name="stacktrace" type="CLOB" length="2147483647"/>
+		<db-attribute name="tag" type="CLOB" length="2147483647"/>
+	</db-entity>
+	<db-entity name="poi" schema="public">
+		<db-attribute name="ext_ref" type="CLOB" length="2147483647"/>
+		<db-attribute name="id" type="OTHER" isPrimaryKey="true" isGenerated="true" isMandatory="true" length="2147483647"/>
+		<db-attribute name="name" type="CLOB" length="2147483647"/>
+		<db-attribute name="poi_type_id" type="OTHER" isMandatory="true" length="2147483647"/>
+		<db-attribute name="position" type="OTHER" isMandatory="true" length="2147483647"/>
+		<db-attribute name="radius" type="REAL" length="8" scale="8"/>
+	</db-entity>
+	<db-entity name="poi_type" schema="public">
+		<db-attribute name="id" type="OTHER" isPrimaryKey="true" isGenerated="true" isMandatory="true" length="2147483647"/>
+		<db-attribute name="name" type="CLOB" length="2147483647"/>
+		<db-attribute name="private" type="BIT" isMandatory="true" length="1"/>
+	</db-entity>
+	<db-entity name="raster_columns" schema="public">
+	</db-entity>
+	<db-entity name="raster_overviews" schema="public">
+	</db-entity>
+	<db-entity name="segment" schema="public">
+		<db-attribute name="id" type="OTHER" isPrimaryKey="true" isGenerated="true" isMandatory="true" length="2147483647"/>
+		<db-attribute name="poi_from_id" type="OTHER" length="2147483647"/>
+		<db-attribute name="poi_to_id" type="OTHER" length="2147483647"/>
+		<db-attribute name="transportation_analyzed_id" type="OTHER" isMandatory="true" length="2147483647"/>
+		<db-attribute name="transportation_route_analyzed_id" type="OTHER" length="2147483647"/>
+		<db-attribute name="waypoint_from_id" type="OTHER" isMandatory="true" length="2147483647"/>
+		<db-attribute name="waypoint_to_id" type="OTHER" isMandatory="true" length="2147483647"/>
+	</db-entity>
+	<db-entity name="shedule" schema="public">
+		<db-attribute name="arrival_time" type="TIME" isMandatory="true" length="15"/>
+		<db-attribute name="departure_time" type="TIME" length="15"/>
+		<db-attribute name="explicit_date" type="TIMESTAMP" length="29"/>
+		<db-attribute name="id" type="OTHER" isPrimaryKey="true" isGenerated="true" isMandatory="true" length="2147483647"/>
+		<db-attribute name="poi_id" type="OTHER" isMandatory="true" length="2147483647"/>
+		<db-attribute name="seq_no" type="INTEGER" length="10"/>
+		<db-attribute name="shedule_day_id" type="OTHER" isMandatory="true" length="2147483647"/>
+		<db-attribute name="transportation_route_id" type="OTHER" isMandatory="true" length="2147483647"/>
+		<db-attribute name="trip_nr" type="INTEGER" isMandatory="true" length="10"/>
+		<db-attribute name="valid_from" type="TIMESTAMP" length="29"/>
+		<db-attribute name="valid_until" type="TIMESTAMP" length="29"/>
+	</db-entity>
+	<db-entity name="shedule_day" schema="public">
+		<db-attribute name="description" type="CLOB" length="2147483647"/>
+		<db-attribute name="id" type="OTHER" isPrimaryKey="true" isGenerated="true" isMandatory="true" length="2147483647"/>
+		<db-attribute name="name" type="CLOB" length="2147483647"/>
+	</db-entity>
+	<db-entity name="spatial_ref_sys" schema="public">
+		<db-attribute name="auth_name" type="VARCHAR" length="256"/>
+		<db-attribute name="auth_srid" type="INTEGER" length="10"/>
+		<db-attribute name="proj4text" type="VARCHAR" length="2048"/>
+		<db-attribute name="srid" type="INTEGER" isPrimaryKey="true" isMandatory="true" length="10"/>
+		<db-attribute name="srtext" type="VARCHAR" length="2048"/>
+	</db-entity>
+	<db-entity name="track" schema="public">
+		<db-attribute name="device_id" type="OTHER" isMandatory="true" length="2147483647"/>
+		<db-attribute name="end" type="TIMESTAMP" isMandatory="true" length="29"/>
+		<db-attribute name="id" type="OTHER" isPrimaryKey="true" isGenerated="true" isMandatory="true" length="2147483647"/>
+		<db-attribute name="start" type="TIMESTAMP" isMandatory="true" length="29"/>
+	</db-entity>
+	<db-entity name="transportation" schema="public">
+		<db-attribute name="avarage_speed" type="REAL" length="8" scale="8"/>
+		<db-attribute name="color" type="CLOB" length="2147483647"/>
+		<db-attribute name="id" type="OTHER" isPrimaryKey="true" isGenerated="true" isMandatory="true" length="2147483647"/>
+		<db-attribute name="max_speed" type="REAL" length="8" scale="8"/>
+		<db-attribute name="name" type="CLOB" length="2147483647"/>
+	</db-entity>
+	<db-entity name="transportation_route" schema="public">
+		<db-attribute name="desc" type="CLOB" length="2147483647"/>
+		<db-attribute name="desc_from" type="CLOB" length="2147483647"/>
+		<db-attribute name="desc_to" type="CLOB" length="2147483647"/>
+		<db-attribute name="ext_ref" type="CLOB" length="2147483647"/>
+		<db-attribute name="id" type="OTHER" isPrimaryKey="true" isGenerated="true" isMandatory="true" length="2147483647"/>
+		<db-attribute name="name" type="CLOB" length="2147483647"/>
+		<db-attribute name="network" type="CLOB" length="2147483647"/>
+		<db-attribute name="operator" type="CLOB" length="2147483647"/>
+		<db-attribute name="route_no" type="CLOB" length="2147483647"/>
+		<db-attribute name="transportation_id" type="OTHER" isMandatory="true" length="2147483647"/>
+		<db-attribute name="valid_from" type="TIMESTAMP" isMandatory="true" length="29"/>
+		<db-attribute name="valid_until" type="TIMESTAMP" length="29"/>
+	</db-entity>
+	<db-entity name="user" schema="public">
+		<db-attribute name="id" type="OTHER" isPrimaryKey="true" isGenerated="true" isMandatory="true" length="2147483647"/>
+		<db-attribute name="password" type="CLOB" isMandatory="true" length="2147483647"/>
+		<db-attribute name="username" type="CLOB" isMandatory="true" length="2147483647"/>
+	</db-entity>
+	<db-entity name="waypoint" schema="public">
+		<db-attribute name="accuracy" type="DOUBLE" length="17" scale="17"/>
+		<db-attribute name="id" type="OTHER" isPrimaryKey="true" isGenerated="true" isMandatory="true" length="2147483647"/>
+		<db-attribute name="nr_of_satellites" type="INTEGER" isMandatory="true" length="10"/>
+		<db-attribute name="poi_id" type="OTHER" length="2147483647"/>
+		<db-attribute name="position" type="OTHER" isMandatory="true" length="2147483647"/>
+		<db-attribute name="record_time" type="TIMESTAMP" isMandatory="true" length="29"/>
+		<db-attribute name="speed" type="REAL" length="8" scale="8"/>
+		<db-attribute name="transportation_route_superv_id" type="OTHER" length="2147483647"/>
+		<db-attribute name="transportation_superv_id" type="OTHER" length="2147483647"/>
+		<db-attribute name="valid" type="BIT" isMandatory="true" length="1"/>
+	</db-entity>
+	<obj-entity name="Device" className="at.fhv.itm14.fhvgis.persistence.cayenne.Device" dbEntityName="device">
+		<obj-attribute name="token" type="java.lang.String" db-attribute-path="token"/>
+	</obj-entity>
+	<obj-entity name="Geofence" className="at.fhv.itm14.fhvgis.persistence.cayenne.Geofence" dbEntityName="geofence">
+		<obj-attribute name="positions" type="java.lang.String" db-attribute-path="positions"/>
+	</obj-entity>
+	<obj-entity name="GeographyColumns" className="at.fhv.itm14.fhvgis.persistence.cayenne.GeographyColumns" dbEntityName="geography_columns">
+	</obj-entity>
+	<obj-entity name="GeometryColumns" className="at.fhv.itm14.fhvgis.persistence.cayenne.GeometryColumns" dbEntityName="geometry_columns">
+	</obj-entity>
+	<obj-entity name="Log" className="at.fhv.itm14.fhvgis.persistence.cayenne.Log" dbEntityName="log">
+		<obj-attribute name="level" type="java.lang.String" db-attribute-path="level"/>
+		<obj-attribute name="logTime" type="java.util.Date" db-attribute-path="log_time"/>
+		<obj-attribute name="message" type="java.lang.String" db-attribute-path="message"/>
+		<obj-attribute name="stacktrace" type="java.lang.String" db-attribute-path="stacktrace"/>
+		<obj-attribute name="tag" type="java.lang.String" db-attribute-path="tag"/>
+	</obj-entity>
+	<obj-entity name="Poi" className="at.fhv.itm14.fhvgis.persistence.cayenne.Poi" dbEntityName="poi">
+		<obj-attribute name="extRef" type="java.lang.String" db-attribute-path="ext_ref"/>
+		<obj-attribute name="name" type="java.lang.String" db-attribute-path="name"/>
+		<obj-attribute name="position" type="java.lang.String" db-attribute-path="position"/>
+		<obj-attribute name="radius" type="java.lang.Float" db-attribute-path="radius"/>
+	</obj-entity>
+	<obj-entity name="PoiType" className="at.fhv.itm14.fhvgis.persistence.cayenne.PoiType" dbEntityName="poi_type">
+		<obj-attribute name="name" type="java.lang.String" db-attribute-path="name"/>
+		<obj-attribute name="private" type="java.lang.Boolean" db-attribute-path="private"/>
+	</obj-entity>
+	<obj-entity name="RasterColumns" className="at.fhv.itm14.fhvgis.persistence.cayenne.RasterColumns" dbEntityName="raster_columns">
+	</obj-entity>
+	<obj-entity name="RasterOverviews" className="at.fhv.itm14.fhvgis.persistence.cayenne.RasterOverviews" dbEntityName="raster_overviews">
+	</obj-entity>
+	<obj-entity name="Segment" className="at.fhv.itm14.fhvgis.persistence.cayenne.Segment" dbEntityName="segment">
+	</obj-entity>
+	<obj-entity name="Shedule" className="at.fhv.itm14.fhvgis.persistence.cayenne.Shedule" dbEntityName="shedule">
+		<obj-attribute name="arrivalTime" type="java.util.Date" db-attribute-path="arrival_time"/>
+		<obj-attribute name="departureTime" type="java.util.Date" db-attribute-path="departure_time"/>
+		<obj-attribute name="explicitDate" type="java.util.Date" db-attribute-path="explicit_date"/>
+		<obj-attribute name="seqNo" type="java.lang.Integer" db-attribute-path="seq_no"/>
+		<obj-attribute name="tripNr" type="java.lang.Integer" db-attribute-path="trip_nr"/>
+		<obj-attribute name="validFrom" type="java.util.Date" db-attribute-path="valid_from"/>
+		<obj-attribute name="validUntil" type="java.util.Date" db-attribute-path="valid_until"/>
+	</obj-entity>
+	<obj-entity name="SheduleDay" className="at.fhv.itm14.fhvgis.persistence.cayenne.SheduleDay" dbEntityName="shedule_day">
+		<obj-attribute name="description" type="java.lang.String" db-attribute-path="description"/>
+		<obj-attribute name="name" type="java.lang.String" db-attribute-path="name"/>
+	</obj-entity>
+	<obj-entity name="SpatialRefSys" className="at.fhv.itm14.fhvgis.persistence.cayenne.SpatialRefSys" dbEntityName="spatial_ref_sys">
+		<obj-attribute name="authName" type="java.lang.String" db-attribute-path="auth_name"/>
+		<obj-attribute name="authSrid" type="java.lang.Integer" db-attribute-path="auth_srid"/>
+		<obj-attribute name="proj4text" type="java.lang.String" db-attribute-path="proj4text"/>
+		<obj-attribute name="srtext" type="java.lang.String" db-attribute-path="srtext"/>
+	</obj-entity>
+	<obj-entity name="Track" className="at.fhv.itm14.fhvgis.persistence.cayenne.Track" dbEntityName="track">
+		<obj-attribute name="end" type="java.util.Date" db-attribute-path="end"/>
+		<obj-attribute name="start" type="java.util.Date" db-attribute-path="start"/>
+	</obj-entity>
+	<obj-entity name="Transportation" className="at.fhv.itm14.fhvgis.persistence.cayenne.Transportation" dbEntityName="transportation">
+		<obj-attribute name="avarageSpeed" type="java.lang.Float" db-attribute-path="avarage_speed"/>
+		<obj-attribute name="color" type="java.lang.String" db-attribute-path="color"/>
+		<obj-attribute name="maxSpeed" type="java.lang.Float" db-attribute-path="max_speed"/>
+		<obj-attribute name="name" type="java.lang.String" db-attribute-path="name"/>
+	</obj-entity>
+	<obj-entity name="TransportationRoute" className="at.fhv.itm14.fhvgis.persistence.cayenne.TransportationRoute" dbEntityName="transportation_route">
+		<obj-attribute name="desc" type="java.lang.String" db-attribute-path="desc"/>
+		<obj-attribute name="descFrom" type="java.lang.String" db-attribute-path="desc_from"/>
+		<obj-attribute name="descTo" type="java.lang.String" db-attribute-path="desc_to"/>
+		<obj-attribute name="extRef" type="java.lang.String" db-attribute-path="ext_ref"/>
+		<obj-attribute name="name" type="java.lang.String" db-attribute-path="name"/>
+		<obj-attribute name="network" type="java.lang.String" db-attribute-path="network"/>
+		<obj-attribute name="operator" type="java.lang.String" db-attribute-path="operator"/>
+		<obj-attribute name="routeNo" type="java.lang.String" db-attribute-path="route_no"/>
+		<obj-attribute name="validFrom" type="java.util.Date" db-attribute-path="valid_from"/>
+		<obj-attribute name="validUntil" type="java.util.Date" db-attribute-path="valid_until"/>
+	</obj-entity>
+	<obj-entity name="User" className="at.fhv.itm14.fhvgis.persistence.cayenne.User" dbEntityName="user">
+		<obj-attribute name="password" type="java.lang.String" db-attribute-path="password"/>
+		<obj-attribute name="username" type="java.lang.String" db-attribute-path="username"/>
+	</obj-entity>
+	<obj-entity name="Waypoint" className="at.fhv.itm14.fhvgis.persistence.cayenne.Waypoint" dbEntityName="waypoint">
+		<obj-attribute name="accuracy" type="java.lang.Double" db-attribute-path="accuracy"/>
+		<obj-attribute name="nrOfSatellites" type="java.lang.Integer" db-attribute-path="nr_of_satellites"/>
+		<obj-attribute name="position" type="java.lang.String" db-attribute-path="position"/>
+		<obj-attribute name="recordTime" type="java.util.Date" db-attribute-path="record_time"/>
+		<obj-attribute name="speed" type="java.lang.Float" db-attribute-path="speed"/>
+		<obj-attribute name="valid" type="java.lang.Boolean" db-attribute-path="valid"/>
+	</obj-entity>
+	<db-relationship name="logArray" source="device" target="log" toMany="true">
+		<db-attribute-pair source="id" target="device_id"/>
+	</db-relationship>
+	<db-relationship name="toUser" source="device" target="user" toMany="false">
+		<db-attribute-pair source="user_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="trackArray" source="device" target="track" toMany="true">
+		<db-attribute-pair source="id" target="device_id"/>
+	</db-relationship>
+	<db-relationship name="toPoi" source="geofence" target="poi" toMany="false">
+		<db-attribute-pair source="poi_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="toDevice" source="log" target="device" toMany="false">
+		<db-attribute-pair source="device_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="geofenceArray" source="poi" target="geofence" toMany="true">
+		<db-attribute-pair source="id" target="poi_id"/>
+	</db-relationship>
+	<db-relationship name="segmentArray" source="poi" target="segment" toMany="true">
+		<db-attribute-pair source="id" target="poi_from_id"/>
+	</db-relationship>
+	<db-relationship name="segmentArray1" source="poi" target="segment" toMany="true">
+		<db-attribute-pair source="id" target="poi_to_id"/>
+	</db-relationship>
+	<db-relationship name="sheduleArray" source="poi" target="shedule" toMany="true">
+		<db-attribute-pair source="id" target="poi_id"/>
+	</db-relationship>
+	<db-relationship name="toPoiType" source="poi" target="poi_type" toMany="false">
+		<db-attribute-pair source="poi_type_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="waypointArray" source="poi" target="waypoint" toMany="true">
+		<db-attribute-pair source="id" target="poi_id"/>
+	</db-relationship>
+	<db-relationship name="poiArray" source="poi_type" target="poi" toMany="true">
+		<db-attribute-pair source="id" target="poi_type_id"/>
+	</db-relationship>
+	<db-relationship name="toPoi" source="segment" target="poi" toMany="false">
+		<db-attribute-pair source="poi_from_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="toPoi1" source="segment" target="poi" toMany="false">
+		<db-attribute-pair source="poi_to_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="toTransportation" source="segment" target="transportation" toMany="false">
+		<db-attribute-pair source="transportation_analyzed_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="toTransportationRoute" source="segment" target="transportation_route" toMany="false">
+		<db-attribute-pair source="transportation_route_analyzed_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="toWaypoint" source="segment" target="waypoint" toMany="false">
+		<db-attribute-pair source="waypoint_from_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="toWaypoint1" source="segment" target="waypoint" toMany="false">
+		<db-attribute-pair source="waypoint_to_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="toPoi" source="shedule" target="poi" toMany="false">
+		<db-attribute-pair source="poi_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="toSheduleDay" source="shedule" target="shedule_day" toMany="false">
+		<db-attribute-pair source="shedule_day_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="toTransportationRoute" source="shedule" target="transportation_route" toMany="false">
+		<db-attribute-pair source="transportation_route_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="sheduleArray" source="shedule_day" target="shedule" toMany="true">
+		<db-attribute-pair source="id" target="shedule_day_id"/>
+	</db-relationship>
+	<db-relationship name="toDevice" source="track" target="device" toMany="false">
+		<db-attribute-pair source="device_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="segmentArray" source="transportation" target="segment" toMany="true">
+		<db-attribute-pair source="id" target="transportation_analyzed_id"/>
+	</db-relationship>
+	<db-relationship name="transportationRouteArray" source="transportation" target="transportation_route" toMany="true">
+		<db-attribute-pair source="id" target="transportation_id"/>
+	</db-relationship>
+	<db-relationship name="waypointArray" source="transportation" target="waypoint" toMany="true">
+		<db-attribute-pair source="id" target="transportation_superv_id"/>
+	</db-relationship>
+	<db-relationship name="segmentArray" source="transportation_route" target="segment" toMany="true">
+		<db-attribute-pair source="id" target="transportation_route_analyzed_id"/>
+	</db-relationship>
+	<db-relationship name="sheduleArray" source="transportation_route" target="shedule" toMany="true">
+		<db-attribute-pair source="id" target="transportation_route_id"/>
+	</db-relationship>
+	<db-relationship name="toTransportation" source="transportation_route" target="transportation" toMany="false">
+		<db-attribute-pair source="transportation_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="waypointArray" source="transportation_route" target="waypoint" toMany="true">
+		<db-attribute-pair source="id" target="transportation_route_superv_id"/>
+	</db-relationship>
+	<db-relationship name="deviceArray" source="user" target="device" toMany="true">
+		<db-attribute-pair source="id" target="user_id"/>
+	</db-relationship>
+	<db-relationship name="segmentArray" source="waypoint" target="segment" toMany="true">
+		<db-attribute-pair source="id" target="waypoint_from_id"/>
+	</db-relationship>
+	<db-relationship name="segmentArray1" source="waypoint" target="segment" toMany="true">
+		<db-attribute-pair source="id" target="waypoint_to_id"/>
+	</db-relationship>
+	<db-relationship name="toPoi" source="waypoint" target="poi" toMany="false">
+		<db-attribute-pair source="poi_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="toTransportation" source="waypoint" target="transportation" toMany="false">
+		<db-attribute-pair source="transportation_superv_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="toTransportationRoute" source="waypoint" target="transportation_route" toMany="false">
+		<db-attribute-pair source="transportation_route_superv_id" target="id"/>
+	</db-relationship>
+	<obj-relationship name="logArray" source="Device" target="Log" deleteRule="Deny" db-relationship-path="logArray"/>
+	<obj-relationship name="toUser" source="Device" target="User" deleteRule="Nullify" db-relationship-path="toUser"/>
+	<obj-relationship name="trackArray" source="Device" target="Track" deleteRule="Deny" db-relationship-path="trackArray"/>
+	<obj-relationship name="toPoi" source="Geofence" target="Poi" deleteRule="Nullify" db-relationship-path="toPoi"/>
+	<obj-relationship name="toDevice" source="Log" target="Device" deleteRule="Nullify" db-relationship-path="toDevice"/>
+	<obj-relationship name="geofenceArray" source="Poi" target="Geofence" deleteRule="Deny" db-relationship-path="geofenceArray"/>
+	<obj-relationship name="segmentArray" source="Poi" target="Segment" deleteRule="Deny" db-relationship-path="segmentArray"/>
+	<obj-relationship name="segmentArray1" source="Poi" target="Segment" deleteRule="Deny" db-relationship-path="segmentArray1"/>
+	<obj-relationship name="sheduleArray" source="Poi" target="Shedule" deleteRule="Deny" db-relationship-path="sheduleArray"/>
+	<obj-relationship name="toPoiType" source="Poi" target="PoiType" deleteRule="Nullify" db-relationship-path="toPoiType"/>
+	<obj-relationship name="waypointArray" source="Poi" target="Waypoint" deleteRule="Deny" db-relationship-path="waypointArray"/>
+	<obj-relationship name="poiArray" source="PoiType" target="Poi" deleteRule="Deny" db-relationship-path="poiArray"/>
+	<obj-relationship name="toPoi" source="Segment" target="Poi" deleteRule="Nullify" db-relationship-path="toPoi"/>
+	<obj-relationship name="toPoi1" source="Segment" target="Poi" deleteRule="Nullify" db-relationship-path="toPoi1"/>
+	<obj-relationship name="toTransportation" source="Segment" target="Transportation" deleteRule="Nullify" db-relationship-path="toTransportation"/>
+	<obj-relationship name="toTransportationRoute" source="Segment" target="TransportationRoute" deleteRule="Nullify" db-relationship-path="toTransportationRoute"/>
+	<obj-relationship name="toWaypoint" source="Segment" target="Waypoint" deleteRule="Nullify" db-relationship-path="toWaypoint"/>
+	<obj-relationship name="toWaypoint1" source="Segment" target="Waypoint" deleteRule="Nullify" db-relationship-path="toWaypoint1"/>
+	<obj-relationship name="toPoi" source="Shedule" target="Poi" deleteRule="Nullify" db-relationship-path="toPoi"/>
+	<obj-relationship name="toSheduleDay" source="Shedule" target="SheduleDay" deleteRule="Nullify" db-relationship-path="toSheduleDay"/>
+	<obj-relationship name="toTransportationRoute" source="Shedule" target="TransportationRoute" deleteRule="Nullify" db-relationship-path="toTransportationRoute"/>
+	<obj-relationship name="sheduleArray" source="SheduleDay" target="Shedule" deleteRule="Deny" db-relationship-path="sheduleArray"/>
+	<obj-relationship name="toDevice" source="Track" target="Device" deleteRule="Nullify" db-relationship-path="toDevice"/>
+	<obj-relationship name="segmentArray" source="Transportation" target="Segment" deleteRule="Deny" db-relationship-path="segmentArray"/>
+	<obj-relationship name="transportationRouteArray" source="Transportation" target="TransportationRoute" deleteRule="Deny" db-relationship-path="transportationRouteArray"/>
+	<obj-relationship name="waypointArray" source="Transportation" target="Waypoint" deleteRule="Deny" db-relationship-path="waypointArray"/>
+	<obj-relationship name="segmentArray" source="TransportationRoute" target="Segment" deleteRule="Deny" db-relationship-path="segmentArray"/>
+	<obj-relationship name="sheduleArray" source="TransportationRoute" target="Shedule" deleteRule="Deny" db-relationship-path="sheduleArray"/>
+	<obj-relationship name="toTransportation" source="TransportationRoute" target="Transportation" deleteRule="Nullify" db-relationship-path="toTransportation"/>
+	<obj-relationship name="waypointArray" source="TransportationRoute" target="Waypoint" deleteRule="Deny" db-relationship-path="waypointArray"/>
+	<obj-relationship name="deviceArray" source="User" target="Device" deleteRule="Deny" db-relationship-path="deviceArray"/>
+	<obj-relationship name="segmentArray" source="Waypoint" target="Segment" deleteRule="Deny" db-relationship-path="segmentArray"/>
+	<obj-relationship name="segmentArray1" source="Waypoint" target="Segment" deleteRule="Deny" db-relationship-path="segmentArray1"/>
+	<obj-relationship name="toPoi" source="Waypoint" target="Poi" deleteRule="Nullify" db-relationship-path="toPoi"/>
+	<obj-relationship name="toTransportation" source="Waypoint" target="Transportation" deleteRule="Nullify" db-relationship-path="toTransportation"/>
+	<obj-relationship name="toTransportationRoute" source="Waypoint" target="TransportationRoute" deleteRule="Nullify" db-relationship-path="toTransportationRoute"/>
+</data-map>

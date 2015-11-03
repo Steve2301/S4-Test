@@ -1,6 +1,6 @@
 package at.fhv.itm14.fhvgis.persistence.hibernate.objects;
 // default package
-// Generated 29.10.2015 22:12:10 by Hibernate Tools 3.4.0.CR1
+// Generated 03.11.2015 22:57:50 by Hibernate Tools 3.4.0.CR1
 
 import java.io.Serializable;
 import java.util.HashSet;
@@ -25,24 +25,25 @@ public class Poi implements java.io.Serializable {
 	private PoiType poiType;
 	private String name;
 	private Float radius;
-	private String position;
+	private String[] position;
 	private String extRef;
 	private Set<Waypoint> waypoints = new HashSet<Waypoint>(0);
 	private Set<Geofence> geofences = new HashSet<Geofence>(0);
 	private Set<Segment> segmentsForPoiFromId = new HashSet<Segment>(0);
+	private Set<Shedule> shedules = new HashSet<Shedule>(0);
 	private Set<Segment> segmentsForPoiToId = new HashSet<Segment>(0);
 
 	public Poi() {
 	}
 
-	public Poi(String id, PoiType poiType, String position) {
+	public Poi(String id, PoiType poiType, String[] position) {
 		this.id = id;
 		this.poiType = poiType;
 		this.position = position;
 	}
 
-	public Poi(String id, PoiType poiType, String name, Float radius, String position, String extRef,
-			Set<Waypoint> waypoints, Set<Geofence> geofences, Set<Segment> segmentsForPoiFromId,
+	public Poi(String id, PoiType poiType, String name, Float radius, String[] position, String extRef,
+			Set<Waypoint> waypoints, Set<Geofence> geofences, Set<Segment> segmentsForPoiFromId, Set<Shedule> shedules,
 			Set<Segment> segmentsForPoiToId) {
 		this.id = id;
 		this.poiType = poiType;
@@ -53,6 +54,7 @@ public class Poi implements java.io.Serializable {
 		this.waypoints = waypoints;
 		this.geofences = geofences;
 		this.segmentsForPoiFromId = segmentsForPoiFromId;
+		this.shedules = shedules;
 		this.segmentsForPoiToId = segmentsForPoiToId;
 	}
 
@@ -96,11 +98,11 @@ public class Poi implements java.io.Serializable {
 	}
 
 	@Column(name = "position", nullable = false)
-	public String getPosition() {
+	public String[] getPosition() {
 		return this.position;
 	}
 
-	public void setPosition(String position) {
+	public void setPosition(String[] position) {
 		this.position = position;
 	}
 
@@ -138,6 +140,15 @@ public class Poi implements java.io.Serializable {
 
 	public void setSegmentsForPoiFromId(Set<Segment> segmentsForPoiFromId) {
 		this.segmentsForPoiFromId = segmentsForPoiFromId;
+	}
+
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "poi")
+	public Set<Shedule> getShedules() {
+		return this.shedules;
+	}
+
+	public void setShedules(Set<Shedule> shedules) {
+		this.shedules = shedules;
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "poiByPoiToId")
