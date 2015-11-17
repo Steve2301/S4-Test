@@ -11,18 +11,23 @@ import java.util.List;
  */
 public class TransportationRoute extends Entity implements Serializable{
 
+	private static final long serialVersionUID = 1L;
 	private String name;
 	private Instant validFrom;
 	private Instant validTo;
 	private Transportation transportation;
+	private String externalRef;
 	private List<TransportationTrip> transportationTrips;
+	private String routeNo;
 	
-	public TransportationRoute(String name, Instant validFrom, Transportation transportation) {
+	public TransportationRoute(String name, Instant validFrom, Transportation transportation, String externalRef, String routeNo) {
 		super();
 		this.name = name;
 		this.validFrom = validFrom;
 		this.transportation = transportation;
 		this.transportationTrips = new ArrayList<>();
+		this.externalRef = externalRef;
+		this.routeNo = routeNo;
 	}
 
 	public void addTransportationTrip(TransportationTrip transportationTrip) {
@@ -69,4 +74,11 @@ public class TransportationRoute extends Entity implements Serializable{
 		return new ArrayList<>(transportationTrips);
 	}
 	
+	public String getExternalRef() {
+		return externalRef;
+	}
+
+	public String getRouteNo() {
+		return routeNo;
+	}
 }

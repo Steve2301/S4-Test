@@ -7,6 +7,7 @@ import java.util.UUID;
 
 public class User extends Entity implements Serializable {
 
+	private static final long serialVersionUID = 1L;
 	private String name;
 	private String password;
 	private List<Device> devices;
@@ -22,7 +23,6 @@ public class User extends Entity implements Serializable {
 		this.id = id;
 		this.name = name;
 		this.password = password;
-		this.devices = new ArrayList<>();
 	}
 
 	public void addDevice(Device device) {

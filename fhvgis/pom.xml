@@ -7,7 +7,9 @@
   <packaging>pom</packaging>
   <modules>
 	<module>domain</module>
+	<module>webservice</module>
 	<module>persistence</module>
+	<module>analysis</module>
   </modules>
   <build>
   	<plugins>

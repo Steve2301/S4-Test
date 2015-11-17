@@ -5,6 +5,7 @@ import java.time.LocalTime;
 
 public class Schedule extends Entity implements Serializable{
 
+	private static final long serialVersionUID = 1L;
 	private LocalTime arrivalTime;
 	private LocalTime departureTime;
 	private TransportationTrip transportationTrip;

@@ -3,8 +3,9 @@ package at.fhv.itm14.fhvgis.domain;
 import java.io.Serializable;
 import java.time.Instant;
 
-public class Waypoint extends Entity implements Serializable {
+public class Waypoint extends Entity implements Serializable{
 
+	private static final long serialVersionUID = 1L;
 	private GPSPosition postion;
 	private Instant recordTime;
 	// TODO redundancy btw acc, nrOfSats, fixType, isValid..
@@ -12,6 +13,7 @@ public class Waypoint extends Entity implements Serializable {
 	private int nrOfSatellites;
 	// TODO use FixType as enum or/and isValid
 	private boolean isValid;
+	private double speed;
 	private Transportation transportation;
 	private TransportationRoute transportationRoute;
 	private POI poi;
@@ -68,5 +70,9 @@ public class Waypoint extends Entity implements Serializable {
 
 	public boolean isValid() {
 		return isValid;
-	}	
+	}
+
+	public double getSpeed() {
+		return speed;
+	}
 }

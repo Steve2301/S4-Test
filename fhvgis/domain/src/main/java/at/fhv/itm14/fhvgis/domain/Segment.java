@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 public class Segment extends Entity implements Serializable{
 
+	private static final long serialVersionUID = 1L;
 	private Waypoint begin;
 	private Waypoint end;
 	private Transportation transportation;
