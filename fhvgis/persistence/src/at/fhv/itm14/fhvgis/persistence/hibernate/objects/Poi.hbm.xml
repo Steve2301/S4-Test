@@ -20,7 +20,7 @@
         <property name="extRef" type="string">
             <column name="ext_ref" />
         </property>
-        <property name="position" type="serializable">
+        <property name="position" type="org.hibernate.spatial.GeometryType">
             <column name="position" not-null="true" />
         </property>
         <set name="waypoints" table="waypoint" inverse="true" lazy="true" fetch="select">

@@ -32,7 +32,7 @@
         <property name="speed" type="java.lang.Float">
             <column name="speed" precision="8" scale="8" />
         </property>
-        <property name="position" type="serializable">
+        <property name="position" type="org.hibernate.spatial.GeometryType">
             <column name="position" not-null="true" />
         </property>
         <set name="segmentsForWaypointToId" table="segment" inverse="true" lazy="true" fetch="select">

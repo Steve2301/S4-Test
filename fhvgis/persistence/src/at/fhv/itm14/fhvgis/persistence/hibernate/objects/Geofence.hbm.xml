@@ -11,7 +11,7 @@
         <many-to-one name="poi" class="Poi" fetch="select">
             <column name="poi_id" not-null="true" />
         </many-to-one>
-        <property name="positions" type="serializable">
+        <property name="positions" type="org.hibernate.spatial.GeometryType">
             <column name="positions" not-null="true" />
         </property>
     </class>

@@ -37,6 +37,7 @@ public class Testclass {
 		{
 			for(Device u : users)
 			{
+				System.out.println(u.getId().toString());
 				System.out.println(u.getToken());
 			}
 		}
@@ -49,6 +50,7 @@ public class Testclass {
 		{
 			for(User u : users)
 			{
+				System.out.println(u.getId().toString());
 				System.out.println(u.getName());
 			}
 		}
