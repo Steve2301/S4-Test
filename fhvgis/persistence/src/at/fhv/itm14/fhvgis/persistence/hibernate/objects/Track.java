@@ -1,9 +1,12 @@
 package at.fhv.itm14.fhvgis.persistence.hibernate.objects;
+
 // default package
-// Generated 03.11.2015 22:57:50 by Hibernate Tools 3.4.0.CR1
+// Generated 17.11.2015 09:21:54 by Hibernate Tools 3.4.0.CR1
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.UUID;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -21,7 +24,7 @@ import javax.persistence.TemporalType;
 @Table(name = "track", schema = "public")
 public class Track implements java.io.Serializable {
 
-	private String id;
+	private UUID id;
 	private Device device;
 	private Date start;
 	private Date end;
@@ -29,7 +32,7 @@ public class Track implements java.io.Serializable {
 	public Track() {
 	}
 
-	public Track(String id, Device device, Date start, Date end) {
+	public Track(UUID id, Device device, Date start, Date end) {
 		this.id = id;
 		this.device = device;
 		this.start = start;
@@ -39,11 +42,11 @@ public class Track implements java.io.Serializable {
 	@Id
 
 	@Column(name = "id", unique = true, nullable = false)
-	public String getId() {
+	public UUID getId() {
 		return this.id;
 	}
 
-	public void setId(String id) {
+	public void setId(UUID id) {
 		this.id = id;
 	}
 

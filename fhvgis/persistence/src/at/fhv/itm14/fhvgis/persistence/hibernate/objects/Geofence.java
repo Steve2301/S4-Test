@@ -1,8 +1,11 @@
 package at.fhv.itm14.fhvgis.persistence.hibernate.objects;
+
 // default package
-// Generated 03.11.2015 22:57:50 by Hibernate Tools 3.4.0.CR1
+// Generated 17.11.2015 09:21:54 by Hibernate Tools 3.4.0.CR1
 
 import java.io.Serializable;
+import java.util.UUID;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -18,14 +21,14 @@ import javax.persistence.Table;
 @Table(name = "geofence", schema = "public")
 public class Geofence implements java.io.Serializable {
 
-	private String id;
+	private UUID id;
 	private Poi poi;
-	private String[] positions;
+	private Serializable positions;
 
 	public Geofence() {
 	}
 
-	public Geofence(String id, Poi poi, String[] positions) {
+	public Geofence(UUID id, Poi poi, Serializable positions) {
 		this.id = id;
 		this.poi = poi;
 		this.positions = positions;
@@ -34,11 +37,11 @@ public class Geofence implements java.io.Serializable {
 	@Id
 
 	@Column(name = "id", unique = true, nullable = false)
-	public String getId() {
+	public UUID getId() {
 		return this.id;
 	}
 
-	public void setId(String id) {
+	public void setId(UUID id) {
 		this.id = id;
 	}
 
@@ -53,11 +56,11 @@ public class Geofence implements java.io.Serializable {
 	}
 
 	@Column(name = "positions", nullable = false)
-	public String[] getPositions() {
+	public Serializable getPositions() {
 		return this.positions;
 	}
 
-	public void setPositions(String[] positions) {
+	public void setPositions(Serializable positions) {
 		this.positions = positions;
 	}
 

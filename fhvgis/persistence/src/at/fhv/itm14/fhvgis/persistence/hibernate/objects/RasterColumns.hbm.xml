@@ -1,0 +1,58 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 17.11.2015 09:21:55 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="RasterColumns" table="raster_columns" schema="public">
+        <composite-id name="id" class="RasterColumnsId">
+            <key-property name="RTableCatalog" type="string">
+                <column name="r_table_catalog" />
+            </key-property>
+            <key-property name="RTableSchema" type="string">
+                <column name="r_table_schema" />
+            </key-property>
+            <key-property name="RTableName" type="string">
+                <column name="r_table_name" />
+            </key-property>
+            <key-property name="RRasterColumn" type="string">
+                <column name="r_raster_column" />
+            </key-property>
+            <key-property name="srid" type="java.lang.Integer">
+                <column name="srid" />
+            </key-property>
+            <key-property name="scaleX" type="java.lang.Double">
+                <column name="scale_x" precision="17" scale="17" />
+            </key-property>
+            <key-property name="scaleY" type="java.lang.Double">
+                <column name="scale_y" precision="17" scale="17" />
+            </key-property>
+            <key-property name="blocksizeX" type="java.lang.Integer">
+                <column name="blocksize_x" />
+            </key-property>
+            <key-property name="blocksizeY" type="java.lang.Integer">
+                <column name="blocksize_y" />
+            </key-property>
+            <key-property name="sameAlignment" type="java.lang.Boolean">
+                <column name="same_alignment" />
+            </key-property>
+            <key-property name="regularBlocking" type="java.lang.Boolean">
+                <column name="regular_blocking" />
+            </key-property>
+            <key-property name="numBands" type="java.lang.Integer">
+                <column name="num_bands" />
+            </key-property>
+            <key-property name="pixelTypes" type="serializable">
+                <column name="pixel_types" />
+            </key-property>
+            <key-property name="nodataValues" type="serializable">
+                <column name="nodata_values" />
+            </key-property>
+            <key-property name="outDb" type="serializable">
+                <column name="out_db" />
+            </key-property>
+            <key-property name="extent" type="serializable">
+                <column name="extent" />
+            </key-property>
+        </composite-id>
+    </class>
+</hibernate-mapping>

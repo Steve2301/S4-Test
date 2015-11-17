@@ -1,10 +1,13 @@
 package at.fhv.itm14.fhvgis.persistence.hibernate.objects;
+
 // default package
-// Generated 03.11.2015 22:57:50 by Hibernate Tools 3.4.0.CR1
+// Generated 17.11.2015 09:21:54 by Hibernate Tools 3.4.0.CR1
 
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.UUID;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -21,25 +24,30 @@ import javax.persistence.Table;
 @Table(name = "device", schema = "public")
 public class Device implements java.io.Serializable {
 
-	private String id;
+	private UUID id;
 	private User user;
 	private String token;
+	private String deviceId;
+	private Set<MotionValues> motionValueses = new HashSet<MotionValues>(0);
 	private Set<Track> tracks = new HashSet<Track>(0);
 	private Set<Log> logs = new HashSet<Log>(0);
 
 	public Device() {
 	}
 
-	public Device(String id, User user, String token) {
+	public Device(UUID id, User user, String token) {
 		this.id = id;
 		this.user = user;
 		this.token = token;
 	}
 
-	public Device(String id, User user, String token, Set<Track> tracks, Set<Log> logs) {
+	public Device(UUID id, User user, String token, String deviceId, Set<MotionValues> motionValueses,
+			Set<Track> tracks, Set<Log> logs) {
 		this.id = id;
 		this.user = user;
 		this.token = token;
+		this.deviceId = deviceId;
+		this.motionValueses = motionValueses;
 		this.tracks = tracks;
 		this.logs = logs;
 	}
@@ -47,11 +55,11 @@ public class Device implements java.io.Serializable {
 	@Id
 
 	@Column(name = "id", unique = true, nullable = false)
-	public String getId() {
+	public UUID getId() {
 		return this.id;
 	}
 
-	public void setId(String id) {
+	public void setId(UUID id) {
 		this.id = id;
 	}
 
@@ -72,6 +80,24 @@ public class Device implements java.io.Serializable {
 
 	public void setToken(String token) {
 		this.token = token;
+	}
+
+	@Column(name = "device_id")
+	public String getDeviceId() {
+		return this.deviceId;
+	}
+
+	public void setDeviceId(String deviceId) {
+		this.deviceId = deviceId;
+	}
+
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "device")
+	public Set<MotionValues> getMotionValueses() {
+		return this.motionValueses;
+	}
+
+	public void setMotionValueses(Set<MotionValues> motionValueses) {
+		this.motionValueses = motionValueses;
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "device")

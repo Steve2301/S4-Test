@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 17.11.2015 09:21:55 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="MotionValues" table="motion_values" schema="public">
+        <id name="id" type="serializable">
+            <column name="id" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="device" class="Device" fetch="select">
+            <column name="device_id" not-null="true" />
+        </many-to-one>
+        <property name="x" type="java.lang.Double">
+            <column name="x" precision="17" scale="17" />
+        </property>
+        <property name="y" type="java.lang.Double">
+            <column name="y" precision="17" scale="17" />
+        </property>
+        <property name="z" type="java.lang.Double">
+            <column name="z" precision="17" scale="17" />
+        </property>
+        <property name="motionType" type="java.lang.Integer">
+            <column name="motion_type" />
+        </property>
+        <property name="isExported" type="java.lang.Integer">
+            <column name="is_exported" />
+        </property>
+        <property name="dateTimeCaptured" type="java.lang.Long">
+            <column name="date_time_captured" />
+        </property>
+    </class>
+</hibernate-mapping>

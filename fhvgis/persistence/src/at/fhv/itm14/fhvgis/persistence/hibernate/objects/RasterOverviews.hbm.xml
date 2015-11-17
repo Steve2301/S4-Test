@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 17.11.2015 09:21:55 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="RasterOverviews" table="raster_overviews" schema="public">
+        <composite-id name="id" class="RasterOverviewsId">
+            <key-property name="OTableCatalog" type="string">
+                <column name="o_table_catalog" />
+            </key-property>
+            <key-property name="OTableSchema" type="string">
+                <column name="o_table_schema" />
+            </key-property>
+            <key-property name="OTableName" type="string">
+                <column name="o_table_name" />
+            </key-property>
+            <key-property name="ORasterColumn" type="string">
+                <column name="o_raster_column" />
+            </key-property>
+            <key-property name="RTableCatalog" type="string">
+                <column name="r_table_catalog" />
+            </key-property>
+            <key-property name="RTableSchema" type="string">
+                <column name="r_table_schema" />
+            </key-property>
+            <key-property name="RTableName" type="string">
+                <column name="r_table_name" />
+            </key-property>
+            <key-property name="RRasterColumn" type="string">
+                <column name="r_raster_column" />
+            </key-property>
+            <key-property name="overviewFactor" type="java.lang.Integer">
+                <column name="overview_factor" />
+            </key-property>
+        </composite-id>
+    </class>
+</hibernate-mapping>

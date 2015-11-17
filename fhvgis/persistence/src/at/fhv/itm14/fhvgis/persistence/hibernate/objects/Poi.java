@@ -1,10 +1,13 @@
 package at.fhv.itm14.fhvgis.persistence.hibernate.objects;
+
 // default package
-// Generated 03.11.2015 22:57:50 by Hibernate Tools 3.4.0.CR1
+// Generated 17.11.2015 09:21:54 by Hibernate Tools 3.4.0.CR1
 
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.UUID;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -21,12 +24,12 @@ import javax.persistence.Table;
 @Table(name = "poi", schema = "public")
 public class Poi implements java.io.Serializable {
 
-	private String id;
+	private UUID id;
 	private PoiType poiType;
 	private String name;
 	private Float radius;
-	private String[] position;
 	private String extRef;
+	private Serializable position;
 	private Set<Waypoint> waypoints = new HashSet<Waypoint>(0);
 	private Set<Geofence> geofences = new HashSet<Geofence>(0);
 	private Set<Segment> segmentsForPoiFromId = new HashSet<Segment>(0);
@@ -36,21 +39,21 @@ public class Poi implements java.io.Serializable {
 	public Poi() {
 	}
 
-	public Poi(String id, PoiType poiType, String[] position) {
+	public Poi(UUID id, PoiType poiType, Serializable position) {
 		this.id = id;
 		this.poiType = poiType;
 		this.position = position;
 	}
 
-	public Poi(String id, PoiType poiType, String name, Float radius, String[] position, String extRef,
+	public Poi(UUID id, PoiType poiType, String name, Float radius, String extRef, Serializable position,
 			Set<Waypoint> waypoints, Set<Geofence> geofences, Set<Segment> segmentsForPoiFromId, Set<Shedule> shedules,
 			Set<Segment> segmentsForPoiToId) {
 		this.id = id;
 		this.poiType = poiType;
 		this.name = name;
 		this.radius = radius;
-		this.position = position;
 		this.extRef = extRef;
+		this.position = position;
 		this.waypoints = waypoints;
 		this.geofences = geofences;
 		this.segmentsForPoiFromId = segmentsForPoiFromId;
@@ -61,11 +64,11 @@ public class Poi implements java.io.Serializable {
 	@Id
 
 	@Column(name = "id", unique = true, nullable = false)
-	public String getId() {
+	public UUID getId() {
 		return this.id;
 	}
 
-	public void setId(String id) {
+	public void setId(UUID id) {
 		this.id = id;
 	}
 
@@ -97,15 +100,6 @@ public class Poi implements java.io.Serializable {
 		this.radius = radius;
 	}
 
-	@Column(name = "position", nullable = false)
-	public String[] getPosition() {
-		return this.position;
-	}
-
-	public void setPosition(String[] position) {
-		this.position = position;
-	}
-
 	@Column(name = "ext_ref")
 	public String getExtRef() {
 		return this.extRef;
@@ -113,6 +107,15 @@ public class Poi implements java.io.Serializable {
 
 	public void setExtRef(String extRef) {
 		this.extRef = extRef;
+	}
+
+	@Column(name = "position", nullable = false)
+	public Serializable getPosition() {
+		return this.position;
+	}
+
+	public void setPosition(Serializable position) {
+		this.position = position;
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "poi")

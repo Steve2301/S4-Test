@@ -1,10 +1,13 @@
 package at.fhv.itm14.fhvgis.persistence.hibernate.objects;
+
 // default package
-// Generated 03.11.2015 22:57:50 by Hibernate Tools 3.4.0.CR1
+// Generated 17.11.2015 09:21:54 by Hibernate Tools 3.4.0.CR1
 
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.UUID;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -19,7 +22,7 @@ import javax.persistence.Table;
 @Table(name = "poi_type", schema = "public")
 public class PoiType implements java.io.Serializable {
 
-	private String id;
+	private UUID id;
 	private String name;
 	private boolean private_;
 	private Set<Poi> pois = new HashSet<Poi>(0);
@@ -27,12 +30,12 @@ public class PoiType implements java.io.Serializable {
 	public PoiType() {
 	}
 
-	public PoiType(String id, boolean private_) {
+	public PoiType(UUID id, boolean private_) {
 		this.id = id;
 		this.private_ = private_;
 	}
 
-	public PoiType(String id, String name, boolean private_, Set<Poi> pois) {
+	public PoiType(UUID id, String name, boolean private_, Set<Poi> pois) {
 		this.id = id;
 		this.name = name;
 		this.private_ = private_;
@@ -42,11 +45,11 @@ public class PoiType implements java.io.Serializable {
 	@Id
 
 	@Column(name = "id", unique = true, nullable = false)
-	public String getId() {
+	public UUID getId() {
 		return this.id;
 	}
 
-	public void setId(String id) {
+	public void setId(UUID id) {
 		this.id = id;
 	}
 

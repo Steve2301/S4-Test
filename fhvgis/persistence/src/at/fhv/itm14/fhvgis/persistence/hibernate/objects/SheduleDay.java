@@ -1,10 +1,13 @@
 package at.fhv.itm14.fhvgis.persistence.hibernate.objects;
+
 // default package
-// Generated 03.11.2015 22:57:50 by Hibernate Tools 3.4.0.CR1
+// Generated 17.11.2015 09:21:54 by Hibernate Tools 3.4.0.CR1
 
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.UUID;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -19,7 +22,7 @@ import javax.persistence.Table;
 @Table(name = "shedule_day", schema = "public")
 public class SheduleDay implements java.io.Serializable {
 
-	private String id;
+	private UUID id;
 	private String name;
 	private String description;
 	private Set<Shedule> shedules = new HashSet<Shedule>(0);
@@ -27,11 +30,11 @@ public class SheduleDay implements java.io.Serializable {
 	public SheduleDay() {
 	}
 
-	public SheduleDay(String id) {
+	public SheduleDay(UUID id) {
 		this.id = id;
 	}
 
-	public SheduleDay(String id, String name, String description, Set<Shedule> shedules) {
+	public SheduleDay(UUID id, String name, String description, Set<Shedule> shedules) {
 		this.id = id;
 		this.name = name;
 		this.description = description;
@@ -41,11 +44,11 @@ public class SheduleDay implements java.io.Serializable {
 	@Id
 
 	@Column(name = "id", unique = true, nullable = false)
-	public String getId() {
+	public UUID getId() {
 		return this.id;
 	}
 
-	public void setId(String id) {
+	public void setId(UUID id) {
 		this.id = id;
 	}
 

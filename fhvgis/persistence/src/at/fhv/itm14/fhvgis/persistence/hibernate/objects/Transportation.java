@@ -1,10 +1,13 @@
 package at.fhv.itm14.fhvgis.persistence.hibernate.objects;
+
 // default package
-// Generated 03.11.2015 22:57:50 by Hibernate Tools 3.4.0.CR1
+// Generated 17.11.2015 09:21:54 by Hibernate Tools 3.4.0.CR1
 
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.UUID;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -19,7 +22,7 @@ import javax.persistence.Table;
 @Table(name = "transportation", schema = "public")
 public class Transportation implements java.io.Serializable {
 
-	private String id;
+	private UUID id;
 	private String name;
 	private Float maxSpeed;
 	private Float avarageSpeed;
@@ -31,11 +34,11 @@ public class Transportation implements java.io.Serializable {
 	public Transportation() {
 	}
 
-	public Transportation(String id) {
+	public Transportation(UUID id) {
 		this.id = id;
 	}
 
-	public Transportation(String id, String name, Float maxSpeed, Float avarageSpeed, String color,
+	public Transportation(UUID id, String name, Float maxSpeed, Float avarageSpeed, String color,
 			Set<TransportationRoute> transportationRoutes, Set<Segment> segments, Set<Waypoint> waypoints) {
 		this.id = id;
 		this.name = name;
@@ -50,11 +53,11 @@ public class Transportation implements java.io.Serializable {
 	@Id
 
 	@Column(name = "id", unique = true, nullable = false)
-	public String getId() {
+	public UUID getId() {
 		return this.id;
 	}
 
-	public void setId(String id) {
+	public void setId(UUID id) {
 		this.id = id;
 	}
 

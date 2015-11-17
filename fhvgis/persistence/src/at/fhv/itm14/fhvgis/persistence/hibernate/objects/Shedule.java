@@ -1,9 +1,12 @@
 package at.fhv.itm14.fhvgis.persistence.hibernate.objects;
+
 // default package
-// Generated 03.11.2015 22:57:50 by Hibernate Tools 3.4.0.CR1
+// Generated 17.11.2015 09:21:54 by Hibernate Tools 3.4.0.CR1
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.UUID;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -21,7 +24,7 @@ import javax.persistence.TemporalType;
 @Table(name = "shedule", schema = "public")
 public class Shedule implements java.io.Serializable {
 
-	private String id;
+	private UUID id;
 	private TransportationRoute transportationRoute;
 	private Poi poi;
 	private SheduleDay sheduleDay;
@@ -36,7 +39,7 @@ public class Shedule implements java.io.Serializable {
 	public Shedule() {
 	}
 
-	public Shedule(String id, TransportationRoute transportationRoute, Poi poi, SheduleDay sheduleDay, int tripNr,
+	public Shedule(UUID id, TransportationRoute transportationRoute, Poi poi, SheduleDay sheduleDay, int tripNr,
 			Date arrivalTime) {
 		this.id = id;
 		this.transportationRoute = transportationRoute;
@@ -46,7 +49,7 @@ public class Shedule implements java.io.Serializable {
 		this.arrivalTime = arrivalTime;
 	}
 
-	public Shedule(String id, TransportationRoute transportationRoute, Poi poi, SheduleDay sheduleDay, int tripNr,
+	public Shedule(UUID id, TransportationRoute transportationRoute, Poi poi, SheduleDay sheduleDay, int tripNr,
 			Date validFrom, Date validUntil, Date explicitDate, Date arrivalTime, Date departureTime, Integer seqNo) {
 		this.id = id;
 		this.transportationRoute = transportationRoute;
@@ -64,11 +67,11 @@ public class Shedule implements java.io.Serializable {
 	@Id
 
 	@Column(name = "id", unique = true, nullable = false)
-	public String getId() {
+	public UUID getId() {
 		return this.id;
 	}
 
-	public void setId(String id) {
+	public void setId(UUID id) {
 		this.id = id;
 	}
 

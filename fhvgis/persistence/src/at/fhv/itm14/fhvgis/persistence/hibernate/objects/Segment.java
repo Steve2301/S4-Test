@@ -1,8 +1,11 @@
 package at.fhv.itm14.fhvgis.persistence.hibernate.objects;
+
 // default package
-// Generated 03.11.2015 22:57:50 by Hibernate Tools 3.4.0.CR1
+// Generated 17.11.2015 09:21:54 by Hibernate Tools 3.4.0.CR1
 
 import java.io.Serializable;
+import java.util.UUID;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -18,7 +21,7 @@ import javax.persistence.Table;
 @Table(name = "segment", schema = "public")
 public class Segment implements java.io.Serializable {
 
-	private String id;
+	private UUID id;
 	private TransportationRoute transportationRoute;
 	private Poi poiByPoiToId;
 	private Transportation transportation;
@@ -29,7 +32,7 @@ public class Segment implements java.io.Serializable {
 	public Segment() {
 	}
 
-	public Segment(String id, Transportation transportation, Waypoint waypointByWaypointFromId,
+	public Segment(UUID id, Transportation transportation, Waypoint waypointByWaypointFromId,
 			Waypoint waypointByWaypointToId) {
 		this.id = id;
 		this.transportation = transportation;
@@ -37,7 +40,7 @@ public class Segment implements java.io.Serializable {
 		this.waypointByWaypointToId = waypointByWaypointToId;
 	}
 
-	public Segment(String id, TransportationRoute transportationRoute, Poi poiByPoiToId,
+	public Segment(UUID id, TransportationRoute transportationRoute, Poi poiByPoiToId,
 			Transportation transportation, Waypoint waypointByWaypointFromId, Poi poiByPoiFromId,
 			Waypoint waypointByWaypointToId) {
 		this.id = id;
@@ -52,11 +55,11 @@ public class Segment implements java.io.Serializable {
 	@Id
 
 	@Column(name = "id", unique = true, nullable = false)
-	public String getId() {
+	public UUID getId() {
 		return this.id;
 	}
 
-	public void setId(String id) {
+	public void setId(UUID id) {
 		this.id = id;
 	}
 

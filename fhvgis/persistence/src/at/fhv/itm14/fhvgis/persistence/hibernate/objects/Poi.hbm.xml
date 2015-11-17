@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
-<!-- Generated 03.11.2015 22:57:52 by Hibernate Tools 3.4.0.CR1 -->
+<!-- Generated 17.11.2015 09:21:55 by Hibernate Tools 3.4.0.CR1 -->
 <hibernate-mapping>
     <class name="Poi" table="poi" schema="public">
         <id name="id" type="serializable">
@@ -17,11 +17,11 @@
         <property name="radius" type="java.lang.Float">
             <column name="radius" precision="8" scale="8" />
         </property>
-        <property name="position" type="serializable">
-            <column name="position" not-null="true" />
-        </property>
         <property name="extRef" type="string">
             <column name="ext_ref" />
+        </property>
+        <property name="position" type="serializable">
+            <column name="position" not-null="true" />
         </property>
         <set name="waypoints" table="waypoint" inverse="true" lazy="true" fetch="select">
             <key>

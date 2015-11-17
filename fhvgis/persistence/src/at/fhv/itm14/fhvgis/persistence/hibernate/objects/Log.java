@@ -1,9 +1,12 @@
 package at.fhv.itm14.fhvgis.persistence.hibernate.objects;
+
 // default package
-// Generated 03.11.2015 22:57:50 by Hibernate Tools 3.4.0.CR1
+// Generated 17.11.2015 09:21:54 by Hibernate Tools 3.4.0.CR1
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.UUID;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -21,7 +24,7 @@ import javax.persistence.TemporalType;
 @Table(name = "log", schema = "public")
 public class Log implements java.io.Serializable {
 
-	private String id;
+	private UUID id;
 	private Device device;
 	private String level;
 	private Date logTime;
@@ -32,12 +35,12 @@ public class Log implements java.io.Serializable {
 	public Log() {
 	}
 
-	public Log(String id, Device device) {
+	public Log(UUID id, Device device) {
 		this.id = id;
 		this.device = device;
 	}
 
-	public Log(String id, Device device, String level, Date logTime, String tag, String message,
+	public Log(UUID id, Device device, String level, Date logTime, String tag, String message,
 			String stacktrace) {
 		this.id = id;
 		this.device = device;
@@ -51,11 +54,11 @@ public class Log implements java.io.Serializable {
 	@Id
 
 	@Column(name = "id", unique = true, nullable = false)
-	public String getId() {
+	public UUID getId() {
 		return this.id;
 	}
 
-	public void setId(String id) {
+	public void setId(UUID id) {
 		this.id = id;
 	}
 

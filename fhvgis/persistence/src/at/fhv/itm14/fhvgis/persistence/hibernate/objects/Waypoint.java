@@ -1,12 +1,14 @@
 package at.fhv.itm14.fhvgis.persistence.hibernate.objects;
 
 // default package
-// Generated 03.11.2015 22:57:50 by Hibernate Tools 3.4.0.CR1
+// Generated 17.11.2015 09:21:54 by Hibernate Tools 3.4.0.CR1
 
 import java.io.Serializable;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.UUID;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -25,7 +27,7 @@ import javax.persistence.TemporalType;
 @Table(name = "waypoint", schema = "public")
 public class Waypoint implements java.io.Serializable {
 
-	private String id;
+	private UUID id;
 	private Transportation transportation;
 	private Poi poi;
 	private TransportationRoute transportationRoute;
@@ -34,14 +36,14 @@ public class Waypoint implements java.io.Serializable {
 	private Double accuracy;
 	private boolean valid;
 	private Float speed;
-	private String position;
+	private Serializable position;
 	private Set<Segment> segmentsForWaypointToId = new HashSet<Segment>(0);
 	private Set<Segment> segmentsForWaypointFromId = new HashSet<Segment>(0);
 
 	public Waypoint() {
 	}
 
-	public Waypoint(String id, int nrOfSatellites, Date recordTime, boolean valid, String position) {
+	public Waypoint(UUID id, int nrOfSatellites, Date recordTime, boolean valid, Serializable position) {
 		this.id = id;
 		this.nrOfSatellites = nrOfSatellites;
 		this.recordTime = recordTime;
@@ -49,8 +51,8 @@ public class Waypoint implements java.io.Serializable {
 		this.position = position;
 	}
 
-	public Waypoint(String id, Transportation transportation, Poi poi, TransportationRoute transportationRoute,
-			int nrOfSatellites, Date recordTime, Double accuracy, boolean valid, Float speed, String position,
+	public Waypoint(UUID id, Transportation transportation, Poi poi, TransportationRoute transportationRoute,
+			int nrOfSatellites, Date recordTime, Double accuracy, boolean valid, Float speed, Serializable position,
 			Set<Segment> segmentsForWaypointToId, Set<Segment> segmentsForWaypointFromId) {
 		this.id = id;
 		this.transportation = transportation;
@@ -69,11 +71,11 @@ public class Waypoint implements java.io.Serializable {
 	@Id
 
 	@Column(name = "id", unique = true, nullable = false)
-	public String getId() {
+	public UUID getId() {
 		return this.id;
 	}
 
-	public void setId(String id) {
+	public void setId(UUID id) {
 		this.id = id;
 	}
 
@@ -154,11 +156,11 @@ public class Waypoint implements java.io.Serializable {
 	}
 
 	@Column(name = "position", nullable = false)
-	public String getPosition() {
+	public Serializable getPosition() {
 		return this.position;
 	}
 
-	public void setPosition(String position) {
+	public void setPosition(Serializable position) {
 		this.position = position;
 	}
 
