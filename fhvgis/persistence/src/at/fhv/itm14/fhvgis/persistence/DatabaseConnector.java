@@ -42,38 +42,52 @@ public class DatabaseConnector implements IDatabaseConnector {
 		}
 		return rv;
 	}
-	
+
 	@Override
-	public List<Device> getAllDevices()
-	{
+	public List<Device> getAllDevices() {
 		List<Device> rv = new LinkedList<>();
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		Transaction transaction = null;
-		try
-		{
+		try {
 			transaction = session.beginTransaction();
 			Query query = session.createQuery("from Device");
 			List<?> dbList = query.list();
-			if(dbList != null)
-			{
-				for(Object o : dbList)
-				{
+			if (dbList != null) {
+				for (Object o : dbList) {
 					Device tmp = (Device) o;
-					if(tmp != null)
-					{
+					if (tmp != null) {
 						rv.add(tmp);
 					}
 				}
 			}
-		}
-		catch(Exception e)
-		{
+		} catch (Exception e) {
 			e.printStackTrace();
-		}
-		finally
-		{
+		} finally {
 			session.close();
 		}
 		return rv;
+	}
+
+	@Override
+	public void insertUser(User user) {
+		Session session = HibernateUtil.getSessionFactory().openSession();
+		session.beginTransaction();
+		session.save(user);
+		session.getTransaction().commit();
+		session.close();
+	}
+
+	// new methods
+
+	@Override
+	public User getUserByName() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public User getUserByDeviceID(String deviceId) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }
