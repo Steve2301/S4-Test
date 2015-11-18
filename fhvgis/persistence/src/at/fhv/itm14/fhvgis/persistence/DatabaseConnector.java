@@ -79,15 +79,4 @@ public class DatabaseConnector implements IDatabaseConnector {
 
 	// new methods
 
-	@Override
-	public User getUserByName() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public User getUserByDeviceID(String deviceId) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 }

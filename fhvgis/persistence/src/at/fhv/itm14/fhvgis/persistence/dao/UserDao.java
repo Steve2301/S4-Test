@@ -6,6 +6,6 @@ public interface UserDao extends GenericDao<User>{
 	
 	public User findUserByName(String name);
 
-	public User findUserByDeviceId(String deviceId);
+	public User findUserByDevice(String deviceId);
 
 }

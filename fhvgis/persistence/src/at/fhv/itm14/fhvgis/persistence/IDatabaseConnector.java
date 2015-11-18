@@ -12,7 +12,4 @@ public interface IDatabaseConnector {
 
 	public void insertUser(User user);
 
-	public User getUserByName();
-
-	public User getUserByDeviceID(String deviceId);
 }
