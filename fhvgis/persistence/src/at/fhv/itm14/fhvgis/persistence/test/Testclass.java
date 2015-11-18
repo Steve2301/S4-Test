@@ -16,8 +16,6 @@ public class Testclass {
 	public static void main(String[] args) {
 		Testclass test = new Testclass();
 		test.loadUsers(test);
-		// test.insertUsers(test);
-		// test.loadUsers(test);
 		System.out.println("Success");
 
 	}

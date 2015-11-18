@@ -7,6 +7,9 @@ import java.util.List;
 import com.vividsolutions.jts.geom.Geometry;
 
 import at.fhv.itm14.fhvgis.domain.Device;
+import at.fhv.itm14.fhvgis.domain.POI;
+import at.fhv.itm14.fhvgis.domain.Schedule;
+import at.fhv.itm14.fhvgis.domain.Track;
 import at.fhv.itm14.fhvgis.domain.User;
 
 public class DatabaseController implements IDatabaseController {
@@ -53,31 +56,30 @@ public class DatabaseController implements IDatabaseController {
 
 	}
 
+	@Override
+	public List<POI> getPOIsByPosition(Geometry position) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Schedule> getScheduleByPositionAndTime(Geometry position, Date date) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Track> getTrackByDevice(String deviceId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Track> getTrackByUser(String name) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 	// new methods
-
-
-	@Override
-	public List getPOIsByPosition(Geometry position) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public List getScheduleByPositionAndTime(Geometry position, Date date) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public List getTrackByDevice(String deviceId) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public List getTrackByUser(String name) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 }

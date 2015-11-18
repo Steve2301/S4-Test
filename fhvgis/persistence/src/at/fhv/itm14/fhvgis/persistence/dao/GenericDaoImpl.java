@@ -13,11 +13,11 @@ import at.fhv.itm14.fhvgis.persistence.hibernate.objects.User;
 public abstract class GenericDaoImpl<T> implements GenericDao<T> {
 
 	public void save(T entity){
-		Session hibernateSession = HibernateUtil.getSessionFactory().openSession();
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		try {
 			session.beginTransaction();
-			hibernateSession.saveOrUpdate(entity);
+			session.saveOrUpdate(entity);
+			session.getTransaction().commit();
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -26,11 +26,11 @@ public abstract class GenericDaoImpl<T> implements GenericDao<T> {
 	}
 	
 	public void delete(T entity){
-		Session hibernateSession = HibernateUtil.getSessionFactory().openSession();
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		try {
 			session.beginTransaction();
-			hibernateSession.delete(entity);
+			session.delete(entity);
+			session.getTransaction().commit();
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {

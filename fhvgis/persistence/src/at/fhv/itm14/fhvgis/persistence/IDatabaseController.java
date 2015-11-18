@@ -19,8 +19,6 @@ public interface IDatabaseController {
 
 	public void insertUser(User user1);
 
-	// new interface methods
-
 
 	public List<POI> getPOIsByPosition(Geometry position);
 
