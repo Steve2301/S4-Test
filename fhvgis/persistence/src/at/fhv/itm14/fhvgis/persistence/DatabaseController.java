@@ -55,45 +55,6 @@ public class DatabaseController implements IDatabaseController {
 
 	// new methods
 
-	@Override
-	public void insert(Object value) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void update(Object value) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void delete(Object value) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public User getUserByName(String name) {
-		User rv;
-		rv = _databaseFacade.getDatabaseMapper()
-				.mapDatabaseUser(_databaseFacade.getDatabaseConnector().getUserByName());
-		return rv;
-	}
-
-	@Override
-	public User getUserByDeviceId(String deviceId) {
-		User rv;
-		rv = _databaseFacade.getDatabaseMapper()
-				.mapDatabaseUser(_databaseFacade.getDatabaseConnector().getUserByDeviceID(deviceId));
-		return rv;
-	}
-
-	@Override
-	public List getAll(Class classname) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 	@Override
 	public List getPOIsByPosition(Geometry position) {

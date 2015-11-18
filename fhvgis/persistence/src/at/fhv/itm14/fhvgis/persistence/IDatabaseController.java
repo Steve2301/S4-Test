@@ -11,7 +11,7 @@ import at.fhv.itm14.fhvgis.domain.Schedule;
 import at.fhv.itm14.fhvgis.domain.Track;
 import at.fhv.itm14.fhvgis.domain.User;
 
-public interface IDatabaseController<T> {
+public interface IDatabaseController {
 	// old stuff
 	public List<User> getAllUsers();
 
@@ -20,17 +20,7 @@ public interface IDatabaseController<T> {
 	public void insertUser(User user1);
 
 	// new interface methods
-	public void insert(T value);
 
-	public void update(T value);
-
-	public void delete(T value);
-
-	public User getUserByName(String name);
-
-	public User getUserByDeviceId(String deviceId);
-
-	public List<T> getAll(Class<T> classname);
 
 	public List<POI> getPOIsByPosition(Geometry position);
 
