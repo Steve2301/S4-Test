@@ -5,14 +5,12 @@ import java.util.List;
 
 import org.hibernate.Query;
 import org.hibernate.Session;
-import org.hibernate.Transaction;
 
 import at.fhv.itm14.fhvgis.persistence.hibernate.objects.HibernateUtil;
-import at.fhv.itm14.fhvgis.persistence.hibernate.objects.User;
 
-public abstract class GenericDaoImpl<T> implements GenericDao<T> {
+public abstract class GenericDao<T> implements IGenericDao<T> {
 
-	public void save(T entity){
+	public void save(T entity) {
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		try {
 			session.beginTransaction();
@@ -24,8 +22,8 @@ public abstract class GenericDaoImpl<T> implements GenericDao<T> {
 			session.close();
 		}
 	}
-	
-	public void delete(T entity){
+
+	public void delete(T entity) {
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		try {
 			session.beginTransaction();
@@ -37,10 +35,10 @@ public abstract class GenericDaoImpl<T> implements GenericDao<T> {
 			session.close();
 		}
 	}
-	
+
 	@SuppressWarnings({ "unchecked", "rawtypes" })
-	public List<T> findAll(Class clazz){
-        List<T> rv = new LinkedList<T>();
+	public List<T> findAll(Class clazz) {
+		List<T> rv = new LinkedList<T>();
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		try {
 			session.beginTransaction();
@@ -53,26 +51,26 @@ public abstract class GenericDaoImpl<T> implements GenericDao<T> {
 		}
 		return rv;
 	}
-	
+
 	@SuppressWarnings("unchecked")
-	public List<T> findMany(Query query){
+	public List<T> findMany(Query query) {
 		List<T> rv = new LinkedList<T>();
 		rv = query.list();
 		return rv;
 	}
-	
+
 	@SuppressWarnings("unchecked")
-	public T findOne(Query query){
+	public T findOne(Query query) {
 		T t;
-        t = (T) query.uniqueResult();
-        return t;
+		t = (T) query.uniqueResult();
+		return t;
 	}
-	
+
 	@SuppressWarnings("unchecked")
-	public T findById(Class<?> classname, long id ){
+	public T findById(Class<?> classname, long id) {
 		Session hibernateSession = HibernateUtil.getSessionFactory().getCurrentSession();
-	    T t = null;
-	    t = (T) hibernateSession.get(classname, id);
-	    return t;
+		T t = null;
+		t = (T) hibernateSession.get(classname, id);
+		return t;
 	}
 }

@@ -3,9 +3,23 @@ package at.fhv.itm14.fhvgis.persistence.dao;
 import org.hibernate.Query;
 import org.hibernate.Session;
 
-import at.fhv.itm14.fhvgis.persistence.hibernate.objects.*;
+import at.fhv.itm14.fhvgis.persistence.hibernate.objects.HibernateUtil;
+import at.fhv.itm14.fhvgis.persistence.hibernate.objects.User;
 
-public class UserDaoImpl extends GenericDaoImpl<User> implements UserDao{
+public class UserDao extends GenericDao<User> implements IUserDao {
+
+	private static UserDao _instance;
+
+	private UserDao() {
+
+	}
+
+	public static UserDao getInstance() {
+		if (_instance == null) {
+			_instance = new UserDao();
+		}
+		return _instance;
+	}
 
 	@Override
 	public User findUserByName(String name) {
@@ -40,5 +54,5 @@ public class UserDaoImpl extends GenericDaoImpl<User> implements UserDao{
 		}
 		return user;
 	}
-	
+
 }
