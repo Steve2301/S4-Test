@@ -3,9 +3,12 @@ package at.fhv.itm14.fhvgis.persistence;
 import java.util.List;
 
 import at.fhv.itm14.fhvgis.persistence.hibernate.objects.Device;
+import at.fhv.itm14.fhvgis.persistence.hibernate.objects.Log;
 import at.fhv.itm14.fhvgis.persistence.hibernate.objects.Poi;
+import at.fhv.itm14.fhvgis.persistence.hibernate.objects.Shedule;
 import at.fhv.itm14.fhvgis.persistence.hibernate.objects.Track;
 import at.fhv.itm14.fhvgis.persistence.hibernate.objects.User;
+import at.fhv.itm14.fhvgis.persistence.hibernate.objects.Waypoint;
 
 public class DatabaseService implements IDatabaseService {
 
@@ -27,45 +30,11 @@ public class DatabaseService implements IDatabaseService {
 	@Override
 	public List<User> getAllUsers() {
 		return _serviceFacade.getUserDaoInstance().findAll(User.class);
-		// List<User> rv = new LinkedList<User>();
-		// Session session = HibernateUtil.getSessionFactory().openSession();
-		// Transaction transaction = null;
-		// try {
-		// transaction = session.beginTransaction();
-		// List<User> rs = (List<User>) session.createQuery("from User").list();
-		// rv = rs;
-		// } catch (Exception e) {
-		// e.printStackTrace();
-		// } finally {
-		// session.close();
-		// }
-		// return rv;
 	}
 
 	@Override
 	public List<Device> getAllDevices() {
 		return _serviceFacade.getDeviceDaoInstance().findAll(Device.class);
-		// List<Device> rv = new LinkedList<>();
-		// Session session = HibernateUtil.getSessionFactory().openSession();
-		// Transaction transaction = null;
-		// try {
-		// transaction = session.beginTransaction();
-		// Query query = session.createQuery("from Device");
-		// List<?> dbList = query.list();
-		// if (dbList != null) {
-		// for (Object o : dbList) {
-		// Device tmp = (Device) o;
-		// if (tmp != null) {
-		// rv.add(tmp);
-		// }
-		// }
-		// }
-		// } catch (Exception e) {
-		// e.printStackTrace();
-		// } finally {
-		// session.close();
-		// }
-		// return rv;
 	}
 
 	@Override
@@ -81,6 +50,47 @@ public class DatabaseService implements IDatabaseService {
 	@Override
 	public List<Track> getAllTracks() {
 		return _serviceFacade.getTrackDaoInstance().findAll(Track.class);
+	}
+
+	@Override
+	public List<Shedule> getAllSchedules() {
+		return _serviceFacade.getScheduleDaoInstance().findAll(Shedule.class);
+	}
+
+	@Override
+	public List<Waypoint> getAllWaypoints() {
+		return _serviceFacade.getWaypointDaoInstance().findAll(Waypoint.class);
+	}
+
+	@Override
+	public void insertSchedule(Shedule schedule) {
+		_serviceFacade.getScheduleDaoInstance().save(schedule);
+		
+	}
+
+	@Override
+	public void insertDevice(Device device) {
+		_serviceFacade.getDeviceDaoInstance().save(device);		
+	}
+
+	@Override
+	public void insertTrack(Track track) {
+		_serviceFacade.getTrackDaoInstance().save(track);
+	}
+
+	@Override
+	public void insertPoi(Poi poi) {
+		_serviceFacade.getPoiDaoInstance().save(poi);
+	}
+
+	@Override
+	public void insertWaypoint(Waypoint waypoint) {
+		_serviceFacade.getWaypointDaoInstance().save(waypoint);
+	}
+
+	@Override
+	public void writeToLog(Log log) {
+		_serviceFacade.getLogDaoInstance().save(log);
 	}
 
 }
