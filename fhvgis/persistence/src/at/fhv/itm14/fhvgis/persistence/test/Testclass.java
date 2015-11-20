@@ -72,8 +72,8 @@ public class Testclass {
 	public void insertUsers() {
 		User user1 = new User("Stefan", "stefan");
 		User user2 = new User("Lucas", "lucas");
-		_test._dbController.insertUser(user1);
-		_test._dbController.insertUser(user2);
+		_test._dbController.addUser(user1);
+		_test._dbController.addUser(user2);
 	}
 
 }

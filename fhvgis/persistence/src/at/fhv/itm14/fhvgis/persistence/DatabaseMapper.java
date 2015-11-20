@@ -6,7 +6,15 @@ import java.util.List;
 import java.util.Set;
 
 import at.fhv.itm14.fhvgis.domain.Device;
+import at.fhv.itm14.fhvgis.domain.GPSPosition;
+import at.fhv.itm14.fhvgis.domain.Log;
+import at.fhv.itm14.fhvgis.domain.POI;
+import at.fhv.itm14.fhvgis.domain.Schedule;
+import at.fhv.itm14.fhvgis.domain.Track;
 import at.fhv.itm14.fhvgis.domain.User;
+import at.fhv.itm14.fhvgis.domain.Waypoint;
+import at.fhv.itm14.fhvgis.persistence.hibernate.objects.Poi;
+import at.fhv.itm14.fhvgis.persistence.hibernate.objects.Shedule;
 
 public class DatabaseMapper implements IDatabaseMapper {
 
@@ -98,4 +106,67 @@ public class DatabaseMapper implements IDatabaseMapper {
 		Device rv = new Device(dbDevice.getId(), dbDevice.getToken(), null, null);
 		return rv;
 	}
+
+	@Override
+	public POI mapDatabasePoi(Poi dbPoi) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<POI> mapDatabasePoiList(List<Poi> poi) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Track mapDatabaseTrack(at.fhv.itm14.fhvgis.persistence.hibernate.objects.Track track) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Track> mapDatabaseTrackList(List<at.fhv.itm14.fhvgis.persistence.hibernate.objects.Track> tracks) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Schedule> mapDatabaseScheduleList(List<Shedule> dbScheduleList) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Schedule mapDatabaseSchedule(Shedule schedule) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Waypoint> mapDatabaseWaypointList(
+			List<at.fhv.itm14.fhvgis.persistence.hibernate.objects.Waypoint> dbScheduleList) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Waypoint mapDatabaseWaypoint(at.fhv.itm14.fhvgis.persistence.hibernate.objects.Waypoint waypoint) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Log> mapDatabaseLogList(List<at.fhv.itm14.fhvgis.persistence.hibernate.objects.Log> dbScheduleList) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Log mapDatabaseLog(at.fhv.itm14.fhvgis.persistence.hibernate.objects.Log log) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	
 }

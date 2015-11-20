@@ -29,96 +29,140 @@ public class DatabaseService implements IDatabaseService {
 
 	@Override
 	public List<User> getAllUsers() {
-		return _serviceFacade.getUserDaoInstance().findAll(User.class);
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	@Override
 	public List<Device> getAllDevices() {
-		return _serviceFacade.getDeviceDaoInstance().findAll(Device.class);
-	}
-
-	@Override
-	public void insertUser(User user) {
-		_serviceFacade.getUserDaoInstance().save(user);
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	@Override
 	public List<Poi> getAllPois() {
-		return _serviceFacade.getPoiDaoInstance().findAll(Poi.class);
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	@Override
 	public List<Track> getAllTracks() {
-		return _serviceFacade.getTrackDaoInstance().findAll(Track.class);
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	@Override
 	public List<Shedule> getAllSchedules() {
-		return _serviceFacade.getScheduleDaoInstance().findAll(Shedule.class);
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	@Override
 	public List<Waypoint> getAllWaypoints() {
-		return _serviceFacade.getWaypointDaoInstance().findAll(Waypoint.class);
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	@Override
-	public void insertSchedule(Shedule schedule) {
-		_serviceFacade.getScheduleDaoInstance().save(schedule);
-
+	public List<Log> getAllLogs() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	@Override
-	public void insertDevice(Device device) {
-		_serviceFacade.getDeviceDaoInstance().save(device);
+	public void addUser(User user) {
+		// TODO Auto-generated method stub
+		
 	}
 
 	@Override
-	public void insertTrack(Track track) {
-		_serviceFacade.getTrackDaoInstance().save(track);
+	public void addSchedule(Shedule schedule) {
+		// TODO Auto-generated method stub
+		
 	}
 
 	@Override
-	public void insertPoi(Poi poi) {
-		_serviceFacade.getPoiDaoInstance().save(poi);
+	public void addDevice(Device device) {
+		// TODO Auto-generated method stub
+		
 	}
 
 	@Override
-	public void insertWaypoint(Waypoint waypoint) {
-		_serviceFacade.getWaypointDaoInstance().save(waypoint);
+	public void addTrack(Track track) {
+		// TODO Auto-generated method stub
+		
 	}
 
 	@Override
-	public void writeToLog(Log log) {
-		_serviceFacade.getLogDaoInstance().save(log);
+	public void addPoi(Poi poi) {
+		// TODO Auto-generated method stub
+		
 	}
 
 	@Override
-	public void updateUser(User user) {
-		_serviceFacade.getUserDaoInstance().save(user);
+	public void addWaypoint(Waypoint waypoint) {
+		// TODO Auto-generated method stub
+		
+	}
 
+	@Override
+	public void addLog(Log log) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void removeUser(User user) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void removeSchedule(Shedule schedule) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void removeDevice(Device device) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void removeTrack(Track track) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void removePoi(Poi poi) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void removeWaypoint(Waypoint waypoint) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void removeLog(Log log) {
+		// TODO Auto-generated method stub
+		
 	}
 
 	@Override
 	public User getUserByName(String username) {
-		return _serviceFacade.getUserDaoInstance().findUserByName(username);
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	@Override
-	public void deleteUser(User user) {
-		if (user != null) {
-			deleteDeviceByUser(user);
-			_serviceFacade.getUserDaoInstance().delete(user);
-		}
-
-	}
-
-	public void deleteDevice(Device device) {
-		_serviceFacade.getDeviceDaoInstance().delete(device);
-	}
-
-	public void deleteDeviceByUser(User user) {
-		_serviceFacade.getDeviceDaoInstance().deleteDeviceByUser(user);
+	public User getUserByDeviceId(String deviceId) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
