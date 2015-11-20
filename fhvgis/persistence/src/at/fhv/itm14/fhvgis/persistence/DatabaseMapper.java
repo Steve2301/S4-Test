@@ -36,9 +36,13 @@ public class DatabaseMapper implements IDatabaseMapper {
 	public at.fhv.itm14.fhvgis.persistence.hibernate.objects.User mapDomainUser(User domainUser) {
 
 		Set<at.fhv.itm14.fhvgis.persistence.hibernate.objects.Device> devices = new HashSet<>(
-				mapDomainDeviceList(domainUser.getDevices(), domainUser));
+				mapDomainDeviceList(domainUser.getDevices()));
 		at.fhv.itm14.fhvgis.persistence.hibernate.objects.User rv = new at.fhv.itm14.fhvgis.persistence.hibernate.objects.User(
-				domainUser.getId(), domainUser.getName(), domainUser.getPassword(), devices);
+				domainUser.getId(), domainUser.getName(), domainUser.getPassword(), null);
+		for (at.fhv.itm14.fhvgis.persistence.hibernate.objects.Device d : devices) {
+			d.setUser(rv);
+		}
+		rv.setDevices(devices);
 		return rv;
 	}
 
@@ -69,12 +73,11 @@ public class DatabaseMapper implements IDatabaseMapper {
 		return rv;
 	}
 
-	public List<at.fhv.itm14.fhvgis.persistence.hibernate.objects.Device> mapDomainDeviceList(List<Device> devices,
-			User user) {
+	public List<at.fhv.itm14.fhvgis.persistence.hibernate.objects.Device> mapDomainDeviceList(List<Device> devices) {
 		List<at.fhv.itm14.fhvgis.persistence.hibernate.objects.Device> rv = new ArrayList<>();
 		if (devices != null) {
 			for (Device u : devices) {
-				at.fhv.itm14.fhvgis.persistence.hibernate.objects.Device tmp = mapDomainDevice(u, user);
+				at.fhv.itm14.fhvgis.persistence.hibernate.objects.Device tmp = mapDomainDevice(u);
 				if (tmp != null) {
 					rv.add(tmp);
 				}
@@ -84,9 +87,9 @@ public class DatabaseMapper implements IDatabaseMapper {
 
 	}
 
-	private at.fhv.itm14.fhvgis.persistence.hibernate.objects.Device mapDomainDevice(Device u, User user) {
+	private at.fhv.itm14.fhvgis.persistence.hibernate.objects.Device mapDomainDevice(Device u) {
 		at.fhv.itm14.fhvgis.persistence.hibernate.objects.Device rv = new at.fhv.itm14.fhvgis.persistence.hibernate.objects.Device(
-				u.getId(), mapDomainUser(user), u.getToken());
+				u.getId(), null, u.getToken());
 		return rv;
 	}
 

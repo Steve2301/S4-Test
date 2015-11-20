@@ -18,8 +18,16 @@ public class Testclass {
 		_test = new Testclass();
 		List<User> temp = _test.loadUsers();
 		_test.removeAllUser(temp);
+		_test.insertUsers();
+		_test.insertDevice("Lucas");
+		_test.removeUserByName("Lucas");
 		System.out.println("Success");
 
+	}
+
+	private void removeUserByName(String username) {
+		User user = _test._dbController.getUserByName(username);
+		removeUser(user);
 	}
 
 	public Testclass() {
@@ -61,11 +69,11 @@ public class Testclass {
 		_test._dbController.deleteUser(user);
 	}
 
-	// public void insertUsers(Testclass test) {
-	// User user1 = new User("Stefan", "stefan");
-	// User user2 = new User("Lucas", "lucas");
-	// test._dbController.insertUser(user1);
-	// test._dbController.insertUser(user2);
-	// }
+	public void insertUsers() {
+		User user1 = new User("Stefan", "stefan");
+		User user2 = new User("Lucas", "lucas");
+		_test._dbController.insertUser(user1);
+		_test._dbController.insertUser(user2);
+	}
 
 }

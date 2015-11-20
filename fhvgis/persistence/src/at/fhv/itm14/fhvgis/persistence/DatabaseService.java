@@ -106,8 +106,19 @@ public class DatabaseService implements IDatabaseService {
 
 	@Override
 	public void deleteUser(User user) {
-		_serviceFacade.getUserDaoInstance().delete(user);
+		if (user != null) {
+			deleteDeviceByUser(user);
+			_serviceFacade.getUserDaoInstance().delete(user);
+		}
 
+	}
+
+	public void deleteDevice(Device device) {
+		_serviceFacade.getDeviceDaoInstance().delete(device);
+	}
+
+	public void deleteDeviceByUser(User user) {
+		_serviceFacade.getDeviceDaoInstance().deleteDeviceByUser(user);
 	}
 
 }
