@@ -25,11 +25,11 @@ public class UserDao extends GenericDao<User> implements IUserDao {
 	@Override
 	public User findUserByName(String name) {
 		User user = null;
-		String sql = "SELECT * from user as u WHERE u.name = :name";
+		String sql = "FROM User as u WHERE u.username = :name";
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		try {
 			session.beginTransaction();
-			Query query = session.createSQLQuery(sql).setParameter("name", name);
+			Query query = session.createQuery(sql).setParameter("name", name);
 			user = findOne(query);
 		} catch (Exception e) {
 			e.printStackTrace();

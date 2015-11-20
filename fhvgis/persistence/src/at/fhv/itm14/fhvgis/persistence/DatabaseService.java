@@ -101,8 +101,7 @@ public class DatabaseService implements IDatabaseService {
 
 	@Override
 	public User getUserByName(String username) {
-		_serviceFacade.getUserDaoInstance().findUserByName(username);
-		return null;
+		return _serviceFacade.getUserDaoInstance().findUserByName(username);
 	}
 
 	@Override
