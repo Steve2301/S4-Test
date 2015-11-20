@@ -3,6 +3,8 @@ package at.fhv.itm14.fhvgis.persistence;
 import java.util.List;
 
 import at.fhv.itm14.fhvgis.persistence.hibernate.objects.Device;
+import at.fhv.itm14.fhvgis.persistence.hibernate.objects.Poi;
+import at.fhv.itm14.fhvgis.persistence.hibernate.objects.Track;
 import at.fhv.itm14.fhvgis.persistence.hibernate.objects.User;
 
 public class DatabaseService implements IDatabaseService {
@@ -71,6 +73,14 @@ public class DatabaseService implements IDatabaseService {
 		_serviceFacade.getUserDaoInstance().save(user);
 	}
 
-	// new methods
+	@Override
+	public List<Poi> getAllPois() {
+		return _serviceFacade.getPoiDaoInstance().findAll(Poi.class);
+	}
+
+	@Override
+	public List<Track> getAllTracks() {
+		return _serviceFacade.getTrackDaoInstance().findAll(Track.class);
+	}
 
 }

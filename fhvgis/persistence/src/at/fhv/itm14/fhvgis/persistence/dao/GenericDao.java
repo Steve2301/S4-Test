@@ -6,6 +6,7 @@ import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
 
+import at.fhv.itm14.fhvgis.persistence.dao.interfaces.IGenericDao;
 import at.fhv.itm14.fhvgis.persistence.hibernate.objects.HibernateUtil;
 
 public abstract class GenericDao<T> implements IGenericDao<T> {

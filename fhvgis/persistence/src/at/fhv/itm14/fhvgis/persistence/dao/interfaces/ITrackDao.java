@@ -1,4 +1,4 @@
-package at.fhv.itm14.fhvgis.persistence.dao;
+package at.fhv.itm14.fhvgis.persistence.dao.interfaces;
 
 import java.util.List;
 

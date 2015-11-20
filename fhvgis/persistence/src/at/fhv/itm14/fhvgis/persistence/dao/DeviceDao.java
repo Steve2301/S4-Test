@@ -1,5 +1,6 @@
 package at.fhv.itm14.fhvgis.persistence.dao;
 
+import at.fhv.itm14.fhvgis.persistence.dao.interfaces.IDeviceDao;
 import at.fhv.itm14.fhvgis.persistence.hibernate.objects.Device;
 
 public class DeviceDao extends GenericDao<Device> implements IDeviceDao {

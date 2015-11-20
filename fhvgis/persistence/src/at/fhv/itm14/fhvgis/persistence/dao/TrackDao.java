@@ -3,6 +3,7 @@ package at.fhv.itm14.fhvgis.persistence.dao;
 import java.util.ArrayList;
 import java.util.List;
 
+import at.fhv.itm14.fhvgis.persistence.dao.interfaces.ITrackDao;
 import at.fhv.itm14.fhvgis.persistence.hibernate.objects.Track;
 
 public class TrackDao extends GenericDao<Track> implements ITrackDao {

@@ -3,6 +3,7 @@ package at.fhv.itm14.fhvgis.persistence.dao;
 import org.hibernate.Query;
 import org.hibernate.Session;
 
+import at.fhv.itm14.fhvgis.persistence.dao.interfaces.IUserDao;
 import at.fhv.itm14.fhvgis.persistence.hibernate.objects.HibernateUtil;
 import at.fhv.itm14.fhvgis.persistence.hibernate.objects.User;
 
