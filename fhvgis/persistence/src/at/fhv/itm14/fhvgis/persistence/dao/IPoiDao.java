@@ -1,5 +1,7 @@
 package at.fhv.itm14.fhvgis.persistence.dao;
 
-public interface IPoiDao {
+import at.fhv.itm14.fhvgis.persistence.hibernate.objects.Poi;
+
+public interface IPoiDao extends IGenericDao<Poi> {
 
 }
