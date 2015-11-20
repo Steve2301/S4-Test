@@ -23,6 +23,7 @@ public class User extends Entity implements Serializable {
 		this.id = id;
 		this.name = name;
 		this.password = password;
+		this.devices = new ArrayList<>();
 	}
 
 	public void addDevice(Device device) {

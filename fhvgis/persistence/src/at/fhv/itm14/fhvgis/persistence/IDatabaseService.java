@@ -11,7 +11,7 @@ import at.fhv.itm14.fhvgis.persistence.hibernate.objects.User;
 import at.fhv.itm14.fhvgis.persistence.hibernate.objects.Waypoint;
 
 public interface IDatabaseService {
-	
+
 	/* findAll* */
 	public List<User> getAllUsers();
 
@@ -20,28 +20,32 @@ public interface IDatabaseService {
 	public List<Poi> getAllPois();
 
 	public List<Track> getAllTracks();
-	
+
 	public List<Shedule> getAllSchedules();
-	
+
 	public List<Waypoint> getAllWaypoints();
-	
+
 	/* insert* */
 	public void insertUser(User user);
-	
+
 	public void insertSchedule(Shedule schedule);
-	
+
 	public void insertDevice(Device device);
-	
+
 	public void insertTrack(Track track);
-	
+
 	public void insertPoi(Poi poi);
-	
+
 	public void insertWaypoint(Waypoint waypoint);
-	
+
+	/* update */
+	public void updateUser(User user);
+
 	/* Miscellaneous */
 	public void writeToLog(Log log);
-	
-	
-	
+
+	public User getUserByName(String username);
+
+	public void deleteUser(User user);
 
 }

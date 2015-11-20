@@ -1,7 +1,9 @@
 package at.fhv.itm14.fhvgis.persistence;
 
-import java.util.LinkedList;
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import at.fhv.itm14.fhvgis.domain.Device;
 import at.fhv.itm14.fhvgis.domain.User;
@@ -23,20 +25,26 @@ public class DatabaseMapper implements IDatabaseMapper {
 
 	@Override
 	public User mapDatabaseUser(at.fhv.itm14.fhvgis.persistence.hibernate.objects.User dbUser) {
-		User rv = new User(dbUser.getId(), dbUser.getUsername(), dbUser.getPassword());
+		User rv = null;
+		if (dbUser != null) {
+			rv = new User(dbUser.getId(), dbUser.getUsername(), dbUser.getPassword());
+		}
 		return rv;
 	}
 
 	@Override
 	public at.fhv.itm14.fhvgis.persistence.hibernate.objects.User mapDomainUser(User domainUser) {
+
+		Set<at.fhv.itm14.fhvgis.persistence.hibernate.objects.Device> devices = new HashSet<>(
+				mapDomainDeviceList(domainUser.getDevices(), domainUser));
 		at.fhv.itm14.fhvgis.persistence.hibernate.objects.User rv = new at.fhv.itm14.fhvgis.persistence.hibernate.objects.User(
-				domainUser.getId(), domainUser.getName(), domainUser.getPassword());
+				domainUser.getId(), domainUser.getName(), domainUser.getPassword(), devices);
 		return rv;
 	}
 
 	@Override
 	public List<User> mapDatabaseUserList(List<at.fhv.itm14.fhvgis.persistence.hibernate.objects.User> dbUserList) {
-		List<User> rv = new LinkedList<User>();
+		List<User> rv = new ArrayList<User>();
 		for (at.fhv.itm14.fhvgis.persistence.hibernate.objects.User u : dbUserList) {
 			User tmp = mapDatabaseUser(u);
 			if (tmp != null) {
@@ -49,19 +57,42 @@ public class DatabaseMapper implements IDatabaseMapper {
 	@Override
 	public List<Device> mapDatabaseDeviceList(
 			List<at.fhv.itm14.fhvgis.persistence.hibernate.objects.Device> dbDeviceList) {
-		List<Device> rv = new LinkedList<Device>();
-		for (at.fhv.itm14.fhvgis.persistence.hibernate.objects.Device u : dbDeviceList) {
-			Device tmp = mapDatabaseDevice(u);
-			if (tmp != null) {
-				rv.add(tmp);
+		List<Device> rv = new ArrayList<Device>();
+		if (dbDeviceList != null) {
+			for (at.fhv.itm14.fhvgis.persistence.hibernate.objects.Device u : dbDeviceList) {
+				Device tmp = mapDatabaseDevice(u);
+				if (tmp != null) {
+					rv.add(tmp);
+				}
 			}
 		}
 		return rv;
 	}
 
+	public List<at.fhv.itm14.fhvgis.persistence.hibernate.objects.Device> mapDomainDeviceList(List<Device> devices,
+			User user) {
+		List<at.fhv.itm14.fhvgis.persistence.hibernate.objects.Device> rv = new ArrayList<>();
+		if (devices != null) {
+			for (Device u : devices) {
+				at.fhv.itm14.fhvgis.persistence.hibernate.objects.Device tmp = mapDomainDevice(u, user);
+				if (tmp != null) {
+					rv.add(tmp);
+				}
+			}
+		}
+		return rv;
+
+	}
+
+	private at.fhv.itm14.fhvgis.persistence.hibernate.objects.Device mapDomainDevice(Device u, User user) {
+		at.fhv.itm14.fhvgis.persistence.hibernate.objects.Device rv = new at.fhv.itm14.fhvgis.persistence.hibernate.objects.Device(
+				u.getId(), mapDomainUser(user), u.getToken());
+		return rv;
+	}
+
 	@Override
 	public Device mapDatabaseDevice(at.fhv.itm14.fhvgis.persistence.hibernate.objects.Device dbDevice) {
-		Device rv = new Device(dbDevice.getToken());
+		Device rv = new Device(dbDevice.getId(), dbDevice.getToken(), null, null);
 		return rv;
 	}
 }

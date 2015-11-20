@@ -3,25 +3,33 @@ package at.fhv.itm14.fhvgis.domain;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
-public class Device extends Entity implements Serializable{
+public class Device extends Entity implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	private String token;
 	private List<Track> tracks;
 	private List<Log> logs;
-	
+
 	public Device(String token) {
 		super();
 		this.token = token;
 		this.tracks = new ArrayList<>();
 		this.logs = new ArrayList<>();
 	}
-	
+
+	public Device(UUID id, String token, List<Track> tracks, List<Log> logs) {
+		this.id = id;
+		this.token = token;
+		this.tracks = tracks;
+		this.logs = logs;
+	}
+
 	public String getToken() {
 		return token;
 	}
-	
+
 	public void setToken(String token) {
 		this.token = token;
 	}
@@ -29,11 +37,11 @@ public class Device extends Entity implements Serializable{
 	public List<Track> getTracks() {
 		return new ArrayList<>(tracks);
 	}
-	
+
 	public void addTrack(Track track) {
 		this.tracks.add(track);
 	}
-	
+
 	public void removeTrack(Track track) {
 		this.tracks.remove(track);
 	}

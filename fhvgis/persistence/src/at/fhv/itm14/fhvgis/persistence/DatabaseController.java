@@ -31,7 +31,7 @@ public class DatabaseController implements IDatabaseController {
 	@Override
 	public List<User> getAllUsers() {
 		List<User> rv = new LinkedList<>();
-		List<at.fhv.itm14.fhvgis.persistence.hibernate.objects.User> dbUserList = _databaseFacade.getDatabaseConnector()
+		List<at.fhv.itm14.fhvgis.persistence.hibernate.objects.User> dbUserList = _databaseFacade.getDatabaseService()
 				.getAllUsers();
 		if (dbUserList != null) {
 			rv = _databaseFacade.getDatabaseMapper().mapDatabaseUserList(dbUserList);
@@ -43,7 +43,7 @@ public class DatabaseController implements IDatabaseController {
 	public List<Device> getAllDevices() {
 		List<Device> rv = new LinkedList<>();
 		List<at.fhv.itm14.fhvgis.persistence.hibernate.objects.Device> dbDeviceList = _databaseFacade
-				.getDatabaseConnector().getAllDevices();
+				.getDatabaseService().getAllDevices();
 		if (dbDeviceList != null) {
 			rv = _databaseFacade.getDatabaseMapper().mapDatabaseDeviceList(dbDeviceList);
 		}
@@ -52,7 +52,7 @@ public class DatabaseController implements IDatabaseController {
 
 	@Override
 	public void insertUser(User user) {
-		_databaseFacade.getDatabaseConnector().insertUser(_databaseFacade.getDatabaseMapper().mapDomainUser(user));
+		_databaseFacade.getDatabaseService().insertUser(_databaseFacade.getDatabaseMapper().mapDomainUser(user));
 
 	}
 
@@ -78,6 +78,24 @@ public class DatabaseController implements IDatabaseController {
 	public List<Track> getTrackByUser(String name) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public User getUserByName(String username) {
+		User rv = _databaseFacade.getDatabaseMapper()
+				.mapDatabaseUser(_databaseFacade.getDatabaseService().getUserByName(username));
+		return rv;
+	}
+
+	@Override
+	public void updateUser(User user) {
+		_databaseFacade.getDatabaseService().updateUser(_databaseFacade.getDatabaseMapper().mapDomainUser(user));
+	}
+
+	@Override
+	public void deleteUser(User user) {
+		_databaseFacade.getDatabaseService().deleteUser(_databaseFacade.getDatabaseMapper().mapDomainUser(user));
+
 	}
 
 	// new methods

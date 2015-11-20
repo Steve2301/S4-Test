@@ -19,7 +19,7 @@ public class DatabaseFacade implements IDatabaseFacade {
 		return _instance;
 	}
 
-	public IDatabaseService getDatabaseConnector() {
+	public IDatabaseService getDatabaseService() {
 		if (_databaseService == null) {
 			_databaseService = DatabaseService.getInstance();
 		}

@@ -19,7 +19,6 @@ public interface IDatabaseController {
 
 	public void insertUser(User user1);
 
-
 	public List<POI> getPOIsByPosition(Geometry position);
 
 	public List<Schedule> getScheduleByPositionAndTime(Geometry position, Date date);
@@ -27,5 +26,11 @@ public interface IDatabaseController {
 	public List<Track> getTrackByDevice(String deviceId);
 
 	public List<Track> getTrackByUser(String name);
+
+	public User getUserByName(String username);
+
+	public void updateUser(User user);
+
+	public void deleteUser(User user);
 
 }

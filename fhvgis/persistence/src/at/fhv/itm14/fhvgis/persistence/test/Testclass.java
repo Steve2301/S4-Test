@@ -12,10 +12,12 @@ public class Testclass {
 
 	private IDatabaseFacade _dbFacade;
 	public IDatabaseController _dbController;
+	private static Testclass _test;
 
 	public static void main(String[] args) {
-		Testclass test = new Testclass();
-		test.loadUsers(test);
+		_test = new Testclass();
+		List<User> temp = _test.loadUsers();
+		_test.removeAllUser(temp);
 		System.out.println("Success");
 
 	}
@@ -25,8 +27,8 @@ public class Testclass {
 		_dbController = _dbFacade.getDatabaseController();
 	}
 
-	public void loadDevices(Testclass test) {
-		List<Device> users = test._dbController.getAllDevices();
+	public void loadDevices() {
+		List<Device> users = _test._dbController.getAllDevices();
 		if (users != null) {
 			for (Device u : users) {
 				System.out.println(u.getId().toString());
@@ -35,21 +37,35 @@ public class Testclass {
 		}
 	}
 
-	public void loadUsers(Testclass test) {
-		List<User> users = test._dbController.getAllUsers();
+	public List<User> loadUsers() {
+		List<User> users = _test._dbController.getAllUsers();
+		return users;
+	}
+
+	public void insertDevice(String username) {
+		User user = _test._dbController.getUserByName(username);
+		Device d = new Device("abcdefg");
+		user.addDevice(d);
+		_test._dbController.updateUser(user);
+	}
+
+	public void removeAllUser(List<User> users) {
 		if (users != null) {
 			for (User u : users) {
-				System.out.println(u.getId().toString());
-				System.out.println(u.getName());
+				removeUser(u);
 			}
 		}
 	}
 
-	public void insertUsers(Testclass test) {
-		User user1 = new User("Stefan", "stefan");
-		User user2 = new User("Lucas", "lucas");
-		test._dbController.insertUser(user1);
-		test._dbController.insertUser(user2);
+	public void removeUser(User user) {
+		_test._dbController.deleteUser(user);
 	}
+
+	// public void insertUsers(Testclass test) {
+	// User user1 = new User("Stefan", "stefan");
+	// User user2 = new User("Lucas", "lucas");
+	// test._dbController.insertUser(user1);
+	// test._dbController.insertUser(user2);
+	// }
 
 }

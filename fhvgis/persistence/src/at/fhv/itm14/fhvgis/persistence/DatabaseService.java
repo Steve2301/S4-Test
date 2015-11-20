@@ -65,12 +65,12 @@ public class DatabaseService implements IDatabaseService {
 	@Override
 	public void insertSchedule(Shedule schedule) {
 		_serviceFacade.getScheduleDaoInstance().save(schedule);
-		
+
 	}
 
 	@Override
 	public void insertDevice(Device device) {
-		_serviceFacade.getDeviceDaoInstance().save(device);		
+		_serviceFacade.getDeviceDaoInstance().save(device);
 	}
 
 	@Override
@@ -91,6 +91,24 @@ public class DatabaseService implements IDatabaseService {
 	@Override
 	public void writeToLog(Log log) {
 		_serviceFacade.getLogDaoInstance().save(log);
+	}
+
+	@Override
+	public void updateUser(User user) {
+		_serviceFacade.getUserDaoInstance().save(user);
+
+	}
+
+	@Override
+	public User getUserByName(String username) {
+		_serviceFacade.getUserDaoInstance().findUserByName(username);
+		return null;
+	}
+
+	@Override
+	public void deleteUser(User user) {
+		_serviceFacade.getUserDaoInstance().delete(user);
+
 	}
 
 }
