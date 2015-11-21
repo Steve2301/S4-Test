@@ -54,7 +54,7 @@ public class Testclass {
 		User user = _test._dbController.getUserByName(username);
 		Device d = new Device("abcdefg");
 		user.addDevice(d);
-		_test._dbController.updateUser(user);
+		_test._dbController.addUser(user);
 	}
 
 	public void removeAllUser(List<User> users) {
@@ -66,7 +66,7 @@ public class Testclass {
 	}
 
 	public void removeUser(User user) {
-		_test._dbController.deleteUser(user);
+		_test._dbController.removeUser(user);
 	}
 
 	public void insertUsers() {

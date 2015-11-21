@@ -32,164 +32,137 @@ public class DatabaseService implements IDatabaseService {
 
 	@Override
 	public List<User> getAllUsers() {
-		// TODO Auto-generated method stub
-		return null;
+		return _serviceFacade.getUserDaoInstance().findAll(User.class);
 	}
 
 	@Override
 	public List<Device> getAllDevices() {
-		// TODO Auto-generated method stub
-		return null;
+		return _serviceFacade.getDeviceDaoInstance().findAll(Device.class);
 	}
 
 	@Override
 	public List<Poi> getAllPois() {
-		// TODO Auto-generated method stub
-		return null;
+		return _serviceFacade.getPoiDaoInstance().findAll(Poi.class);
 	}
 
 	@Override
 	public List<Track> getAllTracks() {
-		// TODO Auto-generated method stub
-		return null;
+		return _serviceFacade.getTrackDaoInstance().findAll(Track.class);
 	}
 
 	@Override
 	public List<Shedule> getAllSchedules() {
-		// TODO Auto-generated method stub
-		return null;
+		return _serviceFacade.getScheduleDaoInstance().findAll(Shedule.class);
 	}
 
 	@Override
 	public List<Waypoint> getAllWaypoints() {
-		// TODO Auto-generated method stub
-		return null;
+		return _serviceFacade.getWaypointDaoInstance().findAll(Waypoint.class);
 	}
 
 	@Override
 	public List<Log> getAllLogs() {
-		// TODO Auto-generated method stub
-		return null;
+		return _serviceFacade.getLogDaoInstance().findAll(Log.class);
 	}
 
 	@Override
 	public void addUser(User user) {
-		// TODO Auto-generated method stub
-		
+		_serviceFacade.getUserDaoInstance().save(user);
 	}
 
 	@Override
 	public void addSchedule(Shedule schedule) {
-		// TODO Auto-generated method stub
-		
+		_serviceFacade.getScheduleDaoInstance().save(schedule);
 	}
 
 	@Override
 	public void addDevice(Device device) {
-		// TODO Auto-generated method stub
-		
+		_serviceFacade.getDeviceDaoInstance().save(device);
 	}
 
 	@Override
 	public void addTrack(Track track) {
-		// TODO Auto-generated method stub
-		
+		_serviceFacade.getTrackDaoInstance().save(track);
 	}
 
 	@Override
 	public void addPoi(Poi poi) {
-		// TODO Auto-generated method stub
-		
+		_serviceFacade.getPoiDaoInstance().save(poi);
 	}
 
 	@Override
 	public void addWaypoint(Waypoint waypoint) {
-		// TODO Auto-generated method stub
-		
+		_serviceFacade.getWaypointDaoInstance().save(waypoint);
 	}
 
 	@Override
 	public void addLog(Log log) {
-		// TODO Auto-generated method stub
-		
+		_serviceFacade.getLogDaoInstance().save(log);
 	}
 
 	@Override
 	public void removeUser(User user) {
-		// TODO Auto-generated method stub
-		
+		_serviceFacade.getUserDaoInstance().delete(user);
 	}
 
 	@Override
 	public void removeSchedule(Shedule schedule) {
-		// TODO Auto-generated method stub
-		
+		_serviceFacade.getScheduleDaoInstance().delete(schedule);		
 	}
 
 	@Override
 	public void removeDevice(Device device) {
-		// TODO Auto-generated method stub
-		
+		_serviceFacade.getDeviceDaoInstance().delete(device);
 	}
 
 	@Override
 	public void removeTrack(Track track) {
-		// TODO Auto-generated method stub
-		
+		_serviceFacade.getTrackDaoInstance().delete(track);
 	}
 
 	@Override
 	public void removePoi(Poi poi) {
-		// TODO Auto-generated method stub
-		
+		_serviceFacade.getPoiDaoInstance().delete(poi);
 	}
 
 	@Override
 	public void removeWaypoint(Waypoint waypoint) {
-		// TODO Auto-generated method stub
-		
+		_serviceFacade.getWaypointDaoInstance().delete(waypoint);
 	}
 
 	@Override
 	public void removeLog(Log log) {
-		// TODO Auto-generated method stub
-		
+		_serviceFacade.getLogDaoInstance().delete(log);		
 	}
 
 	@Override
 	public User getUserByName(String username) {
-		// TODO Auto-generated method stub
-		return null;
+		return _serviceFacade.getUserDaoInstance().findUserByName(username);
 	}
 
 	@Override
 	public User getUserByDeviceId(String deviceId) {
-		// TODO Auto-generated method stub
-		return null;
+		return _serviceFacade.getUserDaoInstance().findUserByDevice(deviceId);
 	}
 
 	@Override
 	public List<Poi> getPoisByPosition(Geometry position) {
-		// TODO Auto-generated method stub
-		return null;
+		return _serviceFacade.getPoiDaoInstance().findPoisByPosition(position);
 	}
 
 	@Override
 	public List<Shedule> getScheduleByPositionAndTime(Geometry position, Date date) {
-		// TODO Auto-generated method stub
-		return null;
+		return _serviceFacade.getScheduleDaoInstance().findScheduleByPositionAndTime(position,date);
 	}
 
 	@Override
 	public List<Track> getTrackByDevice(String deviceId) {
-		// TODO Auto-generated method stub
-		return null;
+		return _serviceFacade.getTrackDaoInstance().getTrackByDevice(deviceId);
 	}
 
 	@Override
 	public List<Track> getTrackByUser(String name) {
-		// TODO Auto-generated method stub
-		return null;
+		return _serviceFacade.getTrackDaoInstance().getTrackByUser(name);
 	}
 
 }
