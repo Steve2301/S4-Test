@@ -32,4 +32,10 @@ public interface IDatabaseMapper {
 	public Poi mapDomainPoi(POI poi);
 	public at.fhv.itm14.fhvgis.persistence.hibernate.objects.Waypoint mapDomainWaypoint(Waypoint waypoint);
 	public at.fhv.itm14.fhvgis.persistence.hibernate.objects.Log mapDomainLog(Log log);
+	public List<Geofence> mapDatabaseGeofenceList(
+			List<at.fhv.itm14.fhvgis.persistence.hibernate.objects.Geofence> dbGeofenceList);
+	public List<Transportation> mapDatabaseTransportationList(
+			List<at.fhv.itm14.fhvgis.persistence.hibernate.objects.Transportation> dbGeofenceList);
+	public at.fhv.itm14.fhvgis.persistence.hibernate.objects.Geofence mapDomainGeofence(Geofence geofence);
+	public at.fhv.itm14.fhvgis.persistence.hibernate.objects.Transportation mapDomainTransportation(Transportation transportation);
 }

@@ -6,10 +6,12 @@ import java.util.List;
 import com.vividsolutions.jts.geom.Geometry;
 
 import at.fhv.itm14.fhvgis.persistence.hibernate.objects.Device;
+import at.fhv.itm14.fhvgis.persistence.hibernate.objects.Geofence;
 import at.fhv.itm14.fhvgis.persistence.hibernate.objects.Log;
 import at.fhv.itm14.fhvgis.persistence.hibernate.objects.Poi;
 import at.fhv.itm14.fhvgis.persistence.hibernate.objects.Shedule;
 import at.fhv.itm14.fhvgis.persistence.hibernate.objects.Track;
+import at.fhv.itm14.fhvgis.persistence.hibernate.objects.Transportation;
 import at.fhv.itm14.fhvgis.persistence.hibernate.objects.User;
 import at.fhv.itm14.fhvgis.persistence.hibernate.objects.Waypoint;
 
@@ -163,6 +165,36 @@ public class DatabaseService implements IDatabaseService {
 	@Override
 	public List<Track> getTrackByUser(String name) {
 		return _serviceFacade.getTrackDaoInstance().getTrackByUser(name);
+	}
+
+	@Override
+	public List<Geofence> getAllGeofences() {
+		return _serviceFacade.getGeofenceDaoInstance().findAll(Geofence.class);
+	}
+
+	@Override
+	public List<Transportation> getAllTransportation() {
+		return _serviceFacade.getTransportationDaoInstance().findAll(Transportation.class);
+	}
+
+	@Override
+	public void addGeofence(Geofence mapDomainGeofence) {
+		_serviceFacade.getGeofenceDaoInstance().save(mapDomainGeofence);		
+	}
+
+	@Override
+	public void addTransportation(Transportation mapDomainTransportation) {
+		_serviceFacade.getTransportationDaoInstance().save(mapDomainTransportation);
+	}
+
+	@Override
+	public void removeGeofence(Geofence geofence) {
+		_serviceFacade.getGeofenceDaoInstance().delete(geofence);
+	}
+
+	@Override
+	public void removeTransportation(Transportation mapDomainTransportation) {
+		_serviceFacade.getTransportationDaoInstance().delete(mapDomainTransportation);
 	}
 
 }

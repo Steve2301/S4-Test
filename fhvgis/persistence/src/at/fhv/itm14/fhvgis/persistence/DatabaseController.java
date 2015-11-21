@@ -8,10 +8,12 @@ import java.util.List;
 import com.vividsolutions.jts.geom.Geometry;
 
 import at.fhv.itm14.fhvgis.domain.Device;
+import at.fhv.itm14.fhvgis.domain.Geofence;
 import at.fhv.itm14.fhvgis.domain.Log;
 import at.fhv.itm14.fhvgis.domain.POI;
 import at.fhv.itm14.fhvgis.domain.Schedule;
 import at.fhv.itm14.fhvgis.domain.Track;
+import at.fhv.itm14.fhvgis.domain.Transportation;
 import at.fhv.itm14.fhvgis.domain.User;
 import at.fhv.itm14.fhvgis.domain.Waypoint;
 import at.fhv.itm14.fhvgis.persistence.hibernate.objects.Poi;
@@ -103,6 +105,27 @@ public class DatabaseController implements IDatabaseController {
 		}
 		return rv;
 	}
+	
+	@Override
+	public List<Geofence> getAllGeofences() {
+		List<Geofence> rv = new ArrayList<>();
+		List<at.fhv.itm14.fhvgis.persistence.hibernate.objects.Geofence> dbGeofenceList = _databaseFacade.getDatabaseService().getAllGeofences();
+		if(dbGeofenceList != null){
+			rv = _databaseFacade.getDatabaseMapper().mapDatabaseGeofenceList(dbGeofenceList);
+		}
+		return rv;
+	}
+
+	@Override
+	public List<Transportation> getAllTransportation() {
+		List<Transportation> rv = new ArrayList<>();
+		List<at.fhv.itm14.fhvgis.persistence.hibernate.objects.Transportation> dbGeofenceList = _databaseFacade.getDatabaseService().getAllTransportation();
+		if(dbGeofenceList != null){
+			rv = _databaseFacade.getDatabaseMapper().mapDatabaseTransportationList(dbGeofenceList);
+		}
+		return rv;
+	}
+
 
 
 	@Override
@@ -229,6 +252,29 @@ public class DatabaseController implements IDatabaseController {
 	public User getUserByDeviceId(String deviceId) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	
+	@Override
+	public void addGeofence(Geofence geofence) {
+		_databaseFacade.getDatabaseService().addGeofence(_databaseFacade.getDatabaseMapper().mapDomainGeofence(geofence));
+	}
+
+	@Override
+	public void addTransportation(Transportation transportation) {
+		_databaseFacade.getDatabaseService().addTransportation(_databaseFacade.getDatabaseMapper().mapDomainTransportation(transportation));
+		
+	}
+
+	@Override
+	public void removeGeofence(Geofence geofence) {
+		_databaseFacade.getDatabaseService().removeGeofence(_databaseFacade.getDatabaseMapper().mapDomainGeofence(geofence));
+	}
+
+	@Override
+	public void removeTransportation(Transportation transportation) {
+		_databaseFacade.getDatabaseService().removeTransportation(_databaseFacade.getDatabaseMapper().mapDomainTransportation(transportation));
+		
 	}
 
 	// new methods

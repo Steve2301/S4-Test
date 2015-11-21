@@ -7,10 +7,12 @@ import java.util.Set;
 
 import at.fhv.itm14.fhvgis.domain.Device;
 import at.fhv.itm14.fhvgis.domain.GPSPosition;
+import at.fhv.itm14.fhvgis.domain.Geofence;
 import at.fhv.itm14.fhvgis.domain.Log;
 import at.fhv.itm14.fhvgis.domain.POI;
 import at.fhv.itm14.fhvgis.domain.Schedule;
 import at.fhv.itm14.fhvgis.domain.Track;
+import at.fhv.itm14.fhvgis.domain.Transportation;
 import at.fhv.itm14.fhvgis.domain.User;
 import at.fhv.itm14.fhvgis.domain.Waypoint;
 import at.fhv.itm14.fhvgis.persistence.hibernate.objects.Poi;
@@ -194,6 +196,33 @@ public class DatabaseMapper implements IDatabaseMapper {
 
 	@Override
 	public at.fhv.itm14.fhvgis.persistence.hibernate.objects.Log mapDomainLog(Log log) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Geofence> mapDatabaseGeofenceList(
+			List<at.fhv.itm14.fhvgis.persistence.hibernate.objects.Geofence> dbGeofenceList) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Transportation> mapDatabaseTransportationList(
+			List<at.fhv.itm14.fhvgis.persistence.hibernate.objects.Transportation> dbGeofenceList) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public at.fhv.itm14.fhvgis.persistence.hibernate.objects.Geofence mapDomainGeofence(Geofence geofence) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public at.fhv.itm14.fhvgis.persistence.hibernate.objects.Transportation mapDomainTransportation(
+			Transportation transportation) {
 		// TODO Auto-generated method stub
 		return null;
 	}
