@@ -107,26 +107,42 @@ public class DatabaseController implements IDatabaseController {
 
 	@Override
 	public List<POI> getPOIsByPosition(Geometry position) {
-		// TODO Auto-generated method stub
-		return null;
+		List<POI> rv = new ArrayList<>();
+		List<at.fhv.itm14.fhvgis.persistence.hibernate.objects.Poi> dbPoiList = _databaseFacade.getDatabaseService().getPoisByPosition(position);
+		if(dbPoiList != null){
+			rv = _databaseFacade.getDatabaseMapper().mapDatabasePoiList(dbPoiList);
+		}
+		return rv;
 	}
 
 	@Override
 	public List<Schedule> getScheduleByPositionAndTime(Geometry position, Date date) {
-		// TODO Auto-generated method stub
-		return null;
+		List<Schedule> rv = new ArrayList<>();
+		List<at.fhv.itm14.fhvgis.persistence.hibernate.objects.Shedule> dbScheduleList = _databaseFacade.getDatabaseService().getScheduleByPositionAndTime(position,date);
+		if(dbScheduleList != null){
+			rv = _databaseFacade.getDatabaseMapper().mapDatabaseScheduleList(dbScheduleList);
+		}
+		return rv;
 	}
 
 	@Override
 	public List<Track> getTrackByDevice(String deviceId) {
-		// TODO Auto-generated method stub
-		return null;
+		List<Track> rv = new ArrayList<>();
+		List<at.fhv.itm14.fhvgis.persistence.hibernate.objects.Track> dbTrackList = _databaseFacade.getDatabaseService().getTrackByDevice(deviceId);
+		if(dbTrackList != null){
+			rv = _databaseFacade.getDatabaseMapper().mapDatabaseTrackList(dbTrackList);
+		}
+		return rv;
 	}
 
 	@Override
 	public List<Track> getTrackByUser(String name) {
-		// TODO Auto-generated method stub
-		return null;
+		List<Track> rv = new ArrayList<>();
+		List<at.fhv.itm14.fhvgis.persistence.hibernate.objects.Track> dbTrackList = _databaseFacade.getDatabaseService().getTrackByUser(name);
+		if(dbTrackList != null){
+			rv = _databaseFacade.getDatabaseMapper().mapDatabaseTrackList(dbTrackList);
+		}
+		return rv;
 	}
 
 	@Override
@@ -147,78 +163,66 @@ public class DatabaseController implements IDatabaseController {
 
 	}
 
-
-
 	@Override
 	public void addSchedule(Schedule schedule) {
-		// TODO Auto-generated method stub
+		_databaseFacade.getDatabaseService().addSchedule(_databaseFacade.getDatabaseMapper().mapDomainSchedule(schedule));
 		
 	}
 
 	@Override
 	public void addDevice(Device device) {
-		// TODO Auto-generated method stub
-		
+		_databaseFacade.getDatabaseService().addDevice(_databaseFacade.getDatabaseMapper().mapDomainDevice(device));
 	}
 
 	@Override
 	public void addTrack(Track track) {
-		// TODO Auto-generated method stub
-		
+		_databaseFacade.getDatabaseService().addTrack(_databaseFacade.getDatabaseMapper().mapDomainTrack(track));
 	}
 
 	@Override
 	public void addPoi(POI poi) {
-		// TODO Auto-generated method stub
-		
+		_databaseFacade.getDatabaseService().addPoi(_databaseFacade.getDatabaseMapper().mapDomainPoi(poi));
 	}
 
 	@Override
 	public void addWaypoint(Waypoint waypoint) {
-		// TODO Auto-generated method stub
-		
+		_databaseFacade.getDatabaseService().addWaypoint(_databaseFacade.getDatabaseMapper().mapDomainWaypoint(waypoint));
 	}
 
 	@Override
 	public void addLog(Log log) {
-		// TODO Auto-generated method stub
+		_databaseFacade.getDatabaseService().addLog(_databaseFacade.getDatabaseMapper().mapDomainLog(log));
 		
 	}
 
 	@Override
 	public void removeSchedule(Schedule schedule) {
-		// TODO Auto-generated method stub
-		
+		_databaseFacade.getDatabaseService().removeSchedule(_databaseFacade.getDatabaseMapper().mapDomainSchedule(schedule));
 	}
 
 	@Override
 	public void removeDevice(Device device) {
-		// TODO Auto-generated method stub
-		
+		_databaseFacade.getDatabaseService().removeDevice(_databaseFacade.getDatabaseMapper().mapDomainDevice(device));
 	}
 
 	@Override
 	public void removeTrack(Track track) {
-		// TODO Auto-generated method stub
-		
+		_databaseFacade.getDatabaseService().removeTrack(_databaseFacade.getDatabaseMapper().mapDomainTrack(track));
 	}
 
 	@Override
 	public void removePoi(POI poi) {
-		// TODO Auto-generated method stub
-		
+		_databaseFacade.getDatabaseService().removePoi(_databaseFacade.getDatabaseMapper().mapDomainPoi(poi));
 	}
 
 	@Override
 	public void removeWaypoint(Waypoint waypoint) {
-		// TODO Auto-generated method stub
-		
+		_databaseFacade.getDatabaseService().removeWaypoint(_databaseFacade.getDatabaseMapper().mapDomainWaypoint(waypoint));	
 	}
 
 	@Override
 	public void removeLog(Log log) {
-		// TODO Auto-generated method stub
-		
+		_databaseFacade.getDatabaseService().removeLog(_databaseFacade.getDatabaseMapper().mapDomainLog(log));	
 	}
 
 	@Override

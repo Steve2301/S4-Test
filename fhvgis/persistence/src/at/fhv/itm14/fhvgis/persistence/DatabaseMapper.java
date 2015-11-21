@@ -95,7 +95,7 @@ public class DatabaseMapper implements IDatabaseMapper {
 
 	}
 
-	private at.fhv.itm14.fhvgis.persistence.hibernate.objects.Device mapDomainDevice(Device u) {
+	public at.fhv.itm14.fhvgis.persistence.hibernate.objects.Device mapDomainDevice(Device u) {
 		at.fhv.itm14.fhvgis.persistence.hibernate.objects.Device rv = new at.fhv.itm14.fhvgis.persistence.hibernate.objects.Device(
 				u.getId(), null, u.getToken());
 		return rv;
@@ -164,6 +164,36 @@ public class DatabaseMapper implements IDatabaseMapper {
 
 	@Override
 	public Log mapDatabaseLog(at.fhv.itm14.fhvgis.persistence.hibernate.objects.Log log) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Shedule mapDomainSchedule(Schedule schedule) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public at.fhv.itm14.fhvgis.persistence.hibernate.objects.Track mapDomainTrack(Track track) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Poi mapDomainPoi(POI poi) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public at.fhv.itm14.fhvgis.persistence.hibernate.objects.Waypoint mapDomainWaypoint(Waypoint waypoint) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public at.fhv.itm14.fhvgis.persistence.hibernate.objects.Log mapDomainLog(Log log) {
 		// TODO Auto-generated method stub
 		return null;
 	}

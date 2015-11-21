@@ -3,6 +3,7 @@ package at.fhv.itm14.fhvgis.persistence;
 import java.util.List;
 
 import at.fhv.itm14.fhvgis.domain.*;
+import at.fhv.itm14.fhvgis.persistence.hibernate.objects.Poi;
 import at.fhv.itm14.fhvgis.persistence.hibernate.objects.Shedule;
 
 public interface IDatabaseMapper {
@@ -25,4 +26,10 @@ public interface IDatabaseMapper {
 	public Waypoint mapDatabaseWaypoint(at.fhv.itm14.fhvgis.persistence.hibernate.objects.Waypoint waypoint);
 	public List<Log> mapDatabaseLogList(List<at.fhv.itm14.fhvgis.persistence.hibernate.objects.Log> dbScheduleList);
 	public Log mapDatabaseLog(at.fhv.itm14.fhvgis.persistence.hibernate.objects.Log log);
+	public Shedule mapDomainSchedule(Schedule schedule);
+	public at.fhv.itm14.fhvgis.persistence.hibernate.objects.Device mapDomainDevice(Device device);
+	public at.fhv.itm14.fhvgis.persistence.hibernate.objects.Track mapDomainTrack(Track track);
+	public Poi mapDomainPoi(POI poi);
+	public at.fhv.itm14.fhvgis.persistence.hibernate.objects.Waypoint mapDomainWaypoint(Waypoint waypoint);
+	public at.fhv.itm14.fhvgis.persistence.hibernate.objects.Log mapDomainLog(Log log);
 }

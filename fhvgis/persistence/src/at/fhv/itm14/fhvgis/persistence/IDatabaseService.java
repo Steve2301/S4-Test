@@ -1,6 +1,9 @@
 package at.fhv.itm14.fhvgis.persistence;
 
+import java.util.Date;
 import java.util.List;
+
+import com.vividsolutions.jts.geom.Geometry;
 
 import at.fhv.itm14.fhvgis.persistence.hibernate.objects.Device;
 import at.fhv.itm14.fhvgis.persistence.hibernate.objects.Log;
@@ -9,6 +12,7 @@ import at.fhv.itm14.fhvgis.persistence.hibernate.objects.Shedule;
 import at.fhv.itm14.fhvgis.persistence.hibernate.objects.Track;
 import at.fhv.itm14.fhvgis.persistence.hibernate.objects.User;
 import at.fhv.itm14.fhvgis.persistence.hibernate.objects.Waypoint;
+import at.fhv.itm14.fhvgis.persistence.hibernate.objects.Poi;
 
 public interface IDatabaseService {
 	
@@ -45,5 +49,9 @@ public interface IDatabaseService {
 	/* -----User------ */
 	public User getUserByName(String username);
 	public User getUserByDeviceId(String deviceId);
+	public List<Poi> getPoisByPosition(Geometry position);
+	public List<Shedule> getScheduleByPositionAndTime(Geometry position, Date date);
+	public List<at.fhv.itm14.fhvgis.persistence.hibernate.objects.Track> getTrackByDevice(String deviceId);
+	public List<at.fhv.itm14.fhvgis.persistence.hibernate.objects.Track> getTrackByUser(String name);
 
 }

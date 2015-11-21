@@ -1,6 +1,9 @@
 package at.fhv.itm14.fhvgis.persistence;
 
+import java.util.Date;
 import java.util.List;
+
+import com.vividsolutions.jts.geom.Geometry;
 
 import at.fhv.itm14.fhvgis.persistence.hibernate.objects.Device;
 import at.fhv.itm14.fhvgis.persistence.hibernate.objects.Log;
@@ -161,6 +164,30 @@ public class DatabaseService implements IDatabaseService {
 
 	@Override
 	public User getUserByDeviceId(String deviceId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Poi> getPoisByPosition(Geometry position) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Shedule> getScheduleByPositionAndTime(Geometry position, Date date) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Track> getTrackByDevice(String deviceId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Track> getTrackByUser(String name) {
 		// TODO Auto-generated method stub
 		return null;
 	}
