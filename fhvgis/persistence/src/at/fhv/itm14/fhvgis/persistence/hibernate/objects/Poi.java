@@ -8,6 +8,7 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.UUID;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -122,7 +123,7 @@ public class Poi implements java.io.Serializable {
 		this.position = position;
 	}
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "poi")
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "poi", cascade = CascadeType.ALL)
 	public Set<Waypoint> getWaypoints() {
 		return this.waypoints;
 	}
@@ -131,7 +132,7 @@ public class Poi implements java.io.Serializable {
 		this.waypoints = waypoints;
 	}
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "poi")
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "poi", cascade = CascadeType.ALL)
 	public Set<Geofence> getGeofences() {
 		return this.geofences;
 	}
@@ -140,7 +141,7 @@ public class Poi implements java.io.Serializable {
 		this.geofences = geofences;
 	}
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "poiByPoiFromId")
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "poiByPoiFromId", cascade = CascadeType.ALL)
 	public Set<Segment> getSegmentsForPoiFromId() {
 		return this.segmentsForPoiFromId;
 	}
@@ -149,7 +150,7 @@ public class Poi implements java.io.Serializable {
 		this.segmentsForPoiFromId = segmentsForPoiFromId;
 	}
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "poi")
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "poi", cascade = CascadeType.ALL)
 	public Set<Shedule> getShedules() {
 		return this.shedules;
 	}
@@ -158,7 +159,7 @@ public class Poi implements java.io.Serializable {
 		this.shedules = shedules;
 	}
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "poiByPoiToId")
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "poiByPoiToId", cascade = CascadeType.ALL)
 	public Set<Segment> getSegmentsForPoiToId() {
 		return this.segmentsForPoiToId;
 	}
