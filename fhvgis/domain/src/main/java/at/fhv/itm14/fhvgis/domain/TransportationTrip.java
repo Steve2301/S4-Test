@@ -6,7 +6,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TransportationTrip extends Entity implements Serializable{
+public class TransportationTrip extends DomainEntity implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 	private TransportationRoute transportationRoute;

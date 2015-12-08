@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+                                         "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+ <session-factory>
+  <property name="hibernate.bytecode.use_reflection_optimizer">false</property>
+  <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
+  <property name="hibernate.connection.password">se!Z.h[2?B5fE%tx</property>
+  <property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/gisdb</property>
+  <property name="hibernate.connection.username">gisuser</property>
+  <property name="hibernate.dialect">org.hibernate.spatial.dialect.postgis.PostgisDialect</property>
+  <property name="hibernate.search.autoregister_listeners">false</property>
+  <mapping class="at.fhv.itm14.fhvgis.domain.Device"/>
+  <mapping class="at.fhv.itm14.fhvgis.domain.Geofence"/>
+  <mapping class="at.fhv.itm14.fhvgis.domain.Log"/>
+  <mapping class="at.fhv.itm14.fhvgis.domain.POI"/>
+  <mapping class="at.fhv.itm14.fhvgis.domain.POIType"/>
+  <mapping class="at.fhv.itm14.fhvgis.domain.Schedule"/>
+  <mapping class="at.fhv.itm14.fhvgis.domain.Segment"/>
+  <mapping class="at.fhv.itm14.fhvgis.domain.Track"/>
+  <mapping class="at.fhv.itm14.fhvgis.domain.Transportation"/>
+  <mapping class="at.fhv.itm14.fhvgis.domain.TransportationRoute"/>
+  <mapping class="at.fhv.itm14.fhvgis.domain.User"/>
+  <mapping class="at.fhv.itm14.fhvgis.domain.Waypoint"/>
+  <mapping class="at.fhv.itm14.fhvgis.domain.raw.RawMotionValue"/>
+  <mapping class="at.fhv.itm14.fhvgis.domain.raw.RawWaypoint"/>
+ </session-factory>
+</hibernate-configuration>

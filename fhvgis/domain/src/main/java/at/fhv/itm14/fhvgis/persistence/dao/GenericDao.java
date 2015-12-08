@@ -1,0 +1,104 @@
+package at.fhv.itm14.fhvgis.persistence.dao;
+
+import java.util.LinkedList;
+import java.util.List;
+
+import org.hibernate.Query;
+import org.hibernate.Session;
+
+import at.fhv.itm14.fhvgis.persistence.dao.interfaces.HibernateUtil;
+import at.fhv.itm14.fhvgis.persistence.dao.interfaces.IGenericDao;
+
+public abstract class GenericDao<T> implements IGenericDao<T> {
+	
+	private Class< T > clazz;
+	
+	public final void setClazz( Class< T > clazz ){
+	      this.clazz = clazz;
+	}
+
+	@Override
+	public void delete(T obj) {
+		Session session = getCurrentSession();
+		try {
+			session.beginTransaction();
+			session.delete(obj);
+			session.getTransaction().commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
+	}
+
+	@Override
+	public void persist(T obj) {
+		Session session = getCurrentSession();
+		try {
+			session.beginTransaction();
+			session.persist(obj);
+			session.getTransaction().commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
+		
+	}
+
+	@Override
+	public void update(T obj) {
+		Session session = getCurrentSession();
+		try {
+			session.beginTransaction();
+			session.update(obj);
+			session.getTransaction().commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
+		
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<T> findAll() {
+		Session session = getCurrentSession();
+		List<T> rs = null;
+		try {
+			session.beginTransaction();
+			rs = (List<T>) session.createQuery("from " + clazz.getName()).list();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if(session.isOpen())
+			session.close();
+		}
+		return rs;
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<T> findMany(Query query) {
+		List<T> rv = new LinkedList<T>();
+		rv = query.list();
+		return rv;
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public T findOne(Query query) {
+		T t;
+		t = (T) query.uniqueResult();
+		return t;
+	}
+
+	
+	protected final Session getCurrentSession(){
+		return HibernateUtil.getSessionFactory().getCurrentSession();
+	}
+	
+	
+
+}

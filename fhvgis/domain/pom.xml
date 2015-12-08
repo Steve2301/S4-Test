@@ -2,7 +2,20 @@
   <modelVersion>4.0.0</modelVersion>
   <artifactId>domain</artifactId>
   <name>domain</name>
+  <repositories>
+            <repository>
+                    <id>OSGEO GeoTools repo</id>
+                    <url>http://download.osgeo.org/webdav/geotools</url>
+            </repository>
+         
+    </repositories>
   <build>
+  	<resources>
+		<resource>
+		<directory>src/main/resources</directory>
+		</resource>
+	</resources>
+	<sourceDirectory>src</sourceDirectory>
   	<plugins>
   		<plugin>
   			<artifactId>maven-compiler-plugin</artifactId>
@@ -14,6 +27,45 @@
   		</plugin>
   	</plugins>
   </build>
+  	<dependencies>
+		<!-- Hibernate Spatial -->
+		<dependency>
+            <groupId>org.hibernate</groupId>
+        	<artifactId>hibernate-spatial</artifactId>
+            <version>5.0.4.Final</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-entitymanager</artifactId>
+            <version>5.0.4.Final</version>
+        </dependency>
+        
+        <dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-java8</artifactId>
+			<version>5.0.4.Final</version>
+		</dependency>
+
+		<dependency>
+        	<groupId>org.hibernate.common</groupId>
+        	<artifactId>hibernate-commons-annotations</artifactId>
+        	<version>4.0.4.Final</version>
+    	</dependency>
+    	<dependency>
+      		<groupId>javax.transaction</groupId>
+      		<artifactId>jta</artifactId>
+      		<version>1.1</version>
+  		</dependency>
+        
+
+        <!-- the postgresql driver -->
+        <dependency>
+            <groupId>postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>8.4-701.jdbc3</version>
+        </dependency>
+	</dependencies>
   <parent>
   	<groupId>at.fhv.itm14.fhvgis</groupId>
   	<artifactId>fhvgis</artifactId>
