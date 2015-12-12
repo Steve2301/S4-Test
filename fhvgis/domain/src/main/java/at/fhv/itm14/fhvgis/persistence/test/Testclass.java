@@ -45,7 +45,7 @@ public class Testclass {
 		_test = new Testclass();
 		 _test.TestDatabaseDeleteAll();
 		 _test.TestDatabaseInsertAll();
-		 _test.TestDatabaseFindUserAndDevice();
+		// _test.TestDatabaseFindUserAndDevice();
 		System.out.println("Success");
 
 	}
@@ -76,6 +76,7 @@ public class Testclass {
 		_dbController.updateDevice(d);
 		
 		POI poi = new POI("poitest", new POIType("home", true), factory.createPoint(new Coordinate(5, 5)), "external ref");
+		_dbController.persistPOI(poi);
 
 		
 	}

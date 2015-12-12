@@ -12,6 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity 
 @Table(name = "schedule", schema = "public")
@@ -68,7 +69,8 @@ public class Schedule extends DomainEntity implements Serializable {
 	public LocalTime getDepartureTime() {
 		return departureTime;
 	}
-
+	
+	@Transient
 	public TransportationTrip getTransportationTrip() {
 		return transportationTrip;
 	}
