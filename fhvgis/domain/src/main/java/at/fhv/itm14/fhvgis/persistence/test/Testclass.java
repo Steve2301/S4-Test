@@ -23,7 +23,7 @@ import at.fhv.itm14.fhvgis.domain.Waypoint;
 import at.fhv.itm14.fhvgis.persistence.DatabaseFacade;
 import at.fhv.itm14.fhvgis.persistence.IDatabaseController;
 import at.fhv.itm14.fhvgis.persistence.IDatabaseFacade;
-import at.fhv.itm14.fhvgis.persistence.dao.interfaces.HibernateUtil;
+import at.fhv.itm14.fhvgis.persistence.utils.HibernateUtil;
 
 
 
@@ -68,15 +68,15 @@ public class Testclass {
 		_dbController.persistTransportation(trans1);
 		_dbController.persistTransportation(trans2);
 
-		TransportationRoute transportationRoute = new TransportationRoute("Test route", Instant.now(), trans1,"externalref" , "15");
+		//TransportationRoute transportationRoute = new TransportationRoute("Test route", Instant.now(), trans1,"externalref" , "15");
 		
-		_dbController.persistTransportationRoute(transportationRoute);
+		//_dbController.persistTransportationRoute(transportationRoute);
 		
 		w1.setTransportation(trans1);
 		w1.setTransportation(trans2);
 		
-		w1.setTransportationRoute(transportationRoute);
-		w2.setTransportationRoute(transportationRoute);
+		//w1.setTransportationRoute(transportationRoute);
+		//w2.setTransportationRoute(transportationRoute);
 		
 		t.addWaypoint(w1);
 		t.addWaypoint(w2);

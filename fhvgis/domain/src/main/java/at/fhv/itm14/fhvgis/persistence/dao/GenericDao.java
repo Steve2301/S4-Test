@@ -8,8 +8,8 @@ import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
 
-import at.fhv.itm14.fhvgis.persistence.dao.interfaces.HibernateUtil;
 import at.fhv.itm14.fhvgis.persistence.dao.interfaces.IGenericDao;
+import at.fhv.itm14.fhvgis.persistence.utils.HibernateUtil;
 
 public abstract class GenericDao<T> implements IGenericDao<T> {
 	

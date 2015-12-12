@@ -1,4 +1,4 @@
-package at.fhv.itm14.fhvgis.persistence.dao.interfaces;
+package at.fhv.itm14.fhvgis.persistence.utils;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;

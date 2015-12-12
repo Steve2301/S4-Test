@@ -8,8 +8,8 @@ import org.hibernate.Session;
 
 import at.fhv.itm14.fhvgis.domain.Device;
 import at.fhv.itm14.fhvgis.domain.User;
-import at.fhv.itm14.fhvgis.persistence.dao.interfaces.HibernateUtil;
 import at.fhv.itm14.fhvgis.persistence.dao.interfaces.IUserDao;
+import at.fhv.itm14.fhvgis.persistence.utils.HibernateUtil;
 
 public class UserDao extends GenericDao<User> implements IUserDao{
 	

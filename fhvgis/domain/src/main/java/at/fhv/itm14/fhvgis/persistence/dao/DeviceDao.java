@@ -4,8 +4,8 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 
 import at.fhv.itm14.fhvgis.domain.Device;
-import at.fhv.itm14.fhvgis.persistence.dao.interfaces.HibernateUtil;
 import at.fhv.itm14.fhvgis.persistence.dao.interfaces.IDeviceDao;
+import at.fhv.itm14.fhvgis.persistence.utils.HibernateUtil;
 
 public class DeviceDao extends GenericDao<Device> implements IDeviceDao{
 	

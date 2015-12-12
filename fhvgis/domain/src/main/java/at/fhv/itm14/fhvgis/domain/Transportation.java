@@ -8,6 +8,7 @@ import java.util.UUID;
 import javax.persistence.*;
 
 import at.fhv.itm14.fhvgis.domain.raw.RawWaypoint;
+import at.fhv.itm14.fhvgis.persistence.utils.ColorConverter;
 
 @Entity
 @Table(name = "transportation", schema = "public")
@@ -80,6 +81,7 @@ public class Transportation extends DomainEntity implements Serializable {
 	}
 	
 	@Column(name = "color")
+	@Convert(converter = ColorConverter.class)
 	//TODO check this mapping
 	public Color getColor() {
 		return color;
