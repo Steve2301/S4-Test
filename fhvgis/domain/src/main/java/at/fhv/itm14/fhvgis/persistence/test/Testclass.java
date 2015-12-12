@@ -1,5 +1,6 @@
 package at.fhv.itm14.fhvgis.persistence.test;
 
+import java.awt.Color;
 import java.time.Instant;
 import java.util.LinkedList;
 import java.util.List;
@@ -15,6 +16,8 @@ import com.vividsolutions.jts.geom.Point;
 
 import at.fhv.itm14.fhvgis.domain.Device;
 import at.fhv.itm14.fhvgis.domain.Track;
+import at.fhv.itm14.fhvgis.domain.Transportation;
+import at.fhv.itm14.fhvgis.domain.TransportationRoute;
 import at.fhv.itm14.fhvgis.domain.User;
 import at.fhv.itm14.fhvgis.domain.Waypoint;
 import at.fhv.itm14.fhvgis.persistence.DatabaseFacade;
@@ -58,16 +61,29 @@ public class Testclass {
 
 		Waypoint w1 = new Waypoint(point1, Instant.now(), 5, 6, true, 7, 8, 9, 10);
 		Waypoint w2 = new Waypoint(point2, Instant.now(), 5, 6, true, 7, 8, 9, 10);
+	
+		Transportation trans1 = new Transportation("Bus", 100, Color.YELLOW);
+		Transportation trans2 = new Transportation("Car", 260, Color.BLUE);
+		
+		_dbController.persistTransportation(trans1);
+		_dbController.persistTransportation(trans2);
 
+		TransportationRoute transportationRoute = new TransportationRoute("Test route", Instant.now(), trans1,"externalref" , "15");
+		
+		_dbController.persistTransportationRoute(transportationRoute);
+		
+		w1.setTransportation(trans1);
+		w1.setTransportation(trans2);
+		
+		w1.setTransportationRoute(transportationRoute);
+		w2.setTransportationRoute(transportationRoute);
+		
 		t.addWaypoint(w1);
 		t.addWaypoint(w2);
 		d.addTrack(t);
 
 		_dbController.updateDevice(d);
-		
-		_dbController.deleteDevice(d);
-		
-		//_dbController.findWaypointsOfTrack("kaka");
+
 		
 	}
 

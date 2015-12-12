@@ -10,8 +10,6 @@ import org.hibernate.Hibernate;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
-import at.fhv.itm14.fhvgis.domain.*;
-
 public class HibernateUtil {
 
 	private static final SessionFactory _sessionFactory;

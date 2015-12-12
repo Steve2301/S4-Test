@@ -6,6 +6,8 @@ import java.util.UUID;
 import at.fhv.itm14.fhvgis.domain.Device;
 import at.fhv.itm14.fhvgis.domain.Log;
 import at.fhv.itm14.fhvgis.domain.Track;
+import at.fhv.itm14.fhvgis.domain.Transportation;
+import at.fhv.itm14.fhvgis.domain.TransportationRoute;
 import at.fhv.itm14.fhvgis.domain.User;
 import at.fhv.itm14.fhvgis.domain.Waypoint;
 
@@ -160,6 +162,57 @@ public class DatabaseController implements IDatabaseController{
 	@Override
 	public Log findLog(UUID id) {
 		return _databaseFacade.getDatabaseDaoFacade().getLogDaoInstance().find(id);
+	}
+
+	@Override
+	public void updateTransportation(Transportation transportation) {
+		_databaseFacade.getDatabaseDaoFacade().getTransportationDaoInstance().update(transportation);
+	}
+
+	@Override
+	public void updateTransportationRoute(TransportationRoute transportationRoute) {
+		_databaseFacade.getDatabaseDaoFacade().getTransportationRouteDaoInstance().update(transportationRoute);
+	}
+
+	@Override
+	public void deleteTransportation(Transportation transportation) {
+		_databaseFacade.getDatabaseDaoFacade().getTransportationDaoInstance().delete(transportation);
+	}
+
+	@Override
+	public void deleteTransportationRoute(TransportationRoute transportationRoute) {
+		_databaseFacade.getDatabaseDaoFacade().getTransportationRouteDaoInstance().delete(transportationRoute);		
+	}
+
+	@Override
+	public List<Transportation> findAllTransportations() {
+		return _databaseFacade.getDatabaseDaoFacade().getTransportationDaoInstance().findAll();
+	}
+
+	@Override
+	public List<TransportationRoute> findAllTransportationRoutes() {
+		return  _databaseFacade.getDatabaseDaoFacade().getTransportationRouteDaoInstance().findAll();
+	}
+
+	@Override
+	public Transportation findTransportation(UUID id) {
+		return _databaseFacade.getDatabaseDaoFacade().getTransportationDaoInstance().find(id);
+	}
+
+	@Override
+	public TransportationRoute findTransportationRoute(UUID id) {
+		return _databaseFacade.getDatabaseDaoFacade().getTransportationRouteDaoInstance().find(id);
+
+	}
+
+	@Override
+	public void persistTransportation(Transportation transportation) {
+		_databaseFacade.getDatabaseDaoFacade().getTransportationDaoInstance().persist(transportation);
+	}
+
+	@Override
+	public void persistTransportationRoute(TransportationRoute transportationRoute) {
+		_databaseFacade.getDatabaseDaoFacade().getTransportationRouteDaoInstance().persist(transportationRoute);
 	}
 
 

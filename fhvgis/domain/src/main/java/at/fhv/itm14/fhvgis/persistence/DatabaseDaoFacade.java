@@ -76,12 +76,12 @@ public class DatabaseDaoFacade implements IDatabaseDaoFacade{
 
 		@Override
 		public ITransportationDao getTransportationDaoInstance() {
-			throw new UnsupportedOperationException("not yet implemented");
+			return TransportationDao.getInstance();
 		}
 
 		@Override
 		public ITransportationRouteDao getTransportationRouteDaoInstance() {
-			throw new UnsupportedOperationException("not yet implemented");
+			return TransportationRouteDao.getInstance();
 		}
 
 
