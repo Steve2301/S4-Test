@@ -46,7 +46,7 @@ public class DatabaseDaoFacade implements IDatabaseDaoFacade{
 
 		@Override
 		public ILogDao getLogDaoInstance() {
-			throw new UnsupportedOperationException("not yet implemented");
+			return LogDao.getInstance();
 		}
 
 		@Override

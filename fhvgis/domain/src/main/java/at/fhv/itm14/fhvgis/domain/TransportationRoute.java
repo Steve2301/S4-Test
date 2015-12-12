@@ -162,7 +162,7 @@ public class TransportationRoute extends DomainEntity implements Serializable {
 		this.descTo = descTo;
 	}
 	
-	@Column(name = "desc")
+	@Column(name = "desce")
 	public String getDesc() {
 		return desc;
 	}

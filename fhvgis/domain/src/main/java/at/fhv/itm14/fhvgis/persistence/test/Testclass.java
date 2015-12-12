@@ -42,8 +42,8 @@ public class Testclass {
 		
 		_test = new Testclass();
 		 _test.TestDatabaseDeleteAll();
-		// _test.TestDatabaseInsertAll();
-		 //_test.TestDatabaseFindUserAndDevice();
+		 _test.TestDatabaseInsertAll();
+		 _test.TestDatabaseFindUserAndDevice();
 		System.out.println("Success");
 
 	}
@@ -51,38 +51,41 @@ public class Testclass {
 	private void TestDatabaseFindUserAndDevice() {
 		User u = _dbController.findUserByUsername("Lucas");
 		Device d = _dbController.findDeviceByDeviceId("kaka");
-		
 		Track t = new Track(d, Instant.now(), Instant.now().plusSeconds(80000));
-		
-		
 		GeometryFactory factory = new GeometryFactory();
 		Point point1 = factory.createPoint(new Coordinate(10, 50));
 		Point point2 = factory.createPoint(new Coordinate(11, 51));
-
 		Waypoint w1 = new Waypoint(point1, Instant.now(), 5, 6, true, 7, 8, 9, 10);
 		Waypoint w2 = new Waypoint(point2, Instant.now(), 5, 6, true, 7, 8, 9, 10);
-	
 		Transportation trans1 = new Transportation("Bus", 100, Color.YELLOW);
 		Transportation trans2 = new Transportation("Car", 260, Color.BLUE);
-		
-		
 		_dbController.persistTransportation(trans1);
 		_dbController.persistTransportation(trans2);
-
-		//TransportationRoute transportationRoute = new TransportationRoute("Test route", Instant.now(), trans1,"externalref" , "15");
-		
-		//_dbController.persistTransportationRoute(transportationRoute);
-		
+		TransportationRoute transportationRoute = new TransportationRoute("Test route", Instant.now(), trans1,"externalref" , "15");
+		_dbController.persistTransportationRoute(transportationRoute);	
 		w1.setTransportation(trans1);
-		w1.setTransportation(trans2);
-		
-		//w1.setTransportationRoute(transportationRoute);
-		//w2.setTransportationRoute(transportationRoute);
-		
+		w2.setTransportation(trans2);
+		w1.setTransportationRoute(transportationRoute);
+		w2.setTransportationRoute(transportationRoute);
 		t.addWaypoint(w1);
 		t.addWaypoint(w2);
 		d.addTrack(t);
-
+ 
+//		
+//
+//		
+//		_dbController.persistTrack(t);
+//		_dbController.persistWaypoint(w1);
+//		_dbController.persistWaypoint(w2);
+//		_dbController.updateTrack(t);
+//	
+//		
+//	
+//	
+//		_dbController.persistTransportation(trans1);
+//		_dbController.persistTransportation(trans2);
+//		
+//		_dbController.updateTrack(t);
 		_dbController.updateDevice(d);
 
 		
