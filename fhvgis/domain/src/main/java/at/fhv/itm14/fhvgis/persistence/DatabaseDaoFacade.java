@@ -56,7 +56,7 @@ public class DatabaseDaoFacade implements IDatabaseDaoFacade{
 
 		@Override
 		public IPoiDao getPoiDaoInstance() {
-			throw new UnsupportedOperationException("not yet implemented");
+			return POIDao.getInstance();
 		}
 
 		@Override

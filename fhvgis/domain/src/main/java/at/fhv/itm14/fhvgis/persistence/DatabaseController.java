@@ -4,7 +4,9 @@ import java.util.List;
 import java.util.UUID;
 
 import at.fhv.itm14.fhvgis.domain.Device;
+import at.fhv.itm14.fhvgis.domain.Geofence;
 import at.fhv.itm14.fhvgis.domain.Log;
+import at.fhv.itm14.fhvgis.domain.POI;
 import at.fhv.itm14.fhvgis.domain.Track;
 import at.fhv.itm14.fhvgis.domain.Transportation;
 import at.fhv.itm14.fhvgis.domain.TransportationRoute;
@@ -213,6 +215,57 @@ public class DatabaseController implements IDatabaseController{
 	@Override
 	public void persistTransportationRoute(TransportationRoute transportationRoute) {
 		_databaseFacade.getDatabaseDaoFacade().getTransportationRouteDaoInstance().persist(transportationRoute);
+	}
+
+	@Override
+	public void persistPOI(POI poi) {
+		_databaseFacade.getDatabaseDaoFacade().getPoiDaoInstance().persist(poi);	
+	}
+
+	@Override
+	public void persistGeofence(Geofence geofence) {
+		_databaseFacade.getDatabaseDaoFacade().getGeofenceDaoInstance().persist(geofence);		
+	}
+
+	@Override
+	public void updatePOI(POI poi) {
+		_databaseFacade.getDatabaseDaoFacade().getPoiDaoInstance().update(poi);	
+	}
+
+	@Override
+	public void updateGeofence(Geofence geofence) {
+		_databaseFacade.getDatabaseDaoFacade().getGeofenceDaoInstance().update(geofence);
+	}
+
+	@Override
+	public void deletePOI(POI poi) {
+		_databaseFacade.getDatabaseDaoFacade().getPoiDaoInstance().delete(poi);
+	}
+
+	@Override
+	public void deleteGeofence(Geofence geofence) {
+		_databaseFacade.getDatabaseDaoFacade().getGeofenceDaoInstance().delete(geofence);
+	}
+
+	@Override
+	public List<POI> findAllPOIs() {
+		return _databaseFacade.getDatabaseDaoFacade().getPoiDaoInstance().findAll();
+	}
+
+	@Override
+	public List<Geofence> findAllGeofences() {
+		return 	_databaseFacade.getDatabaseDaoFacade().getGeofenceDaoInstance().findAll();
+
+	}
+
+	@Override
+	public POI findPOI(UUID id) {
+		return _databaseFacade.getDatabaseDaoFacade().getPoiDaoInstance().find(id);
+	}
+
+	@Override
+	public Geofence findGeofence(UUID id) {
+		return _databaseFacade.getDatabaseDaoFacade().getGeofenceDaoInstance().find(id);
 	}
 
 

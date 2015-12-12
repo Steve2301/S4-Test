@@ -8,7 +8,7 @@ import at.fhv.itm14.fhvgis.persistence.dao.interfaces.ILogDao;
 
 public class LogDao extends GenericDao<Log> implements ILogDao{
 	
-private static LogDao _instance;
+	private static LogDao _instance;
 	
 	public static LogDao getInstance() {
 		if (_instance == null) {

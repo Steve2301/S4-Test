@@ -70,22 +70,7 @@ public class Testclass {
 		t.addWaypoint(w1);
 		t.addWaypoint(w2);
 		d.addTrack(t);
- 
-//		
-//
-//		
-//		_dbController.persistTrack(t);
-//		_dbController.persistWaypoint(w1);
-//		_dbController.persistWaypoint(w2);
-//		_dbController.updateTrack(t);
-//	
-//		
-//	
-//	
-//		_dbController.persistTransportation(trans1);
-//		_dbController.persistTransportation(trans2);
-//		
-//		_dbController.updateTrack(t);
+
 		_dbController.updateDevice(d);
 
 		
