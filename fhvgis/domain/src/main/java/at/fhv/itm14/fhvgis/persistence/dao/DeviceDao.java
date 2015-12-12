@@ -17,7 +17,7 @@ public class DeviceDao extends GenericDao<Device> implements IDeviceDao{
 			_instance = new DeviceDao();
 		}
 		return _instance;
-	}
+	}	
 
 	@Override
 	public Device findDeviceByDeviceId(String deviceId) {
