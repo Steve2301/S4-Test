@@ -12,7 +12,7 @@ import javax.persistence.*;
 public class User extends DomainEntity implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
-	private String name;
+	private String username;
 	private String password;
 	private List<Device> devices;
 
@@ -22,14 +22,14 @@ public class User extends DomainEntity implements Serializable {
 
 	public User(String name, String password) {
 		super();
-		this.name = name;
+		this.username = name;
 		this.password = password;
 		this.devices = new ArrayList<>();
 	}
 	
 	public User(UUID id, String name, String password) {
 		this.id = id;
-		this.name = name;
+		this.username = name;
 		this.password = password;
 		this.devices = new ArrayList<>();
 	}
@@ -54,12 +54,12 @@ public class User extends DomainEntity implements Serializable {
 	}
 	
 	@Column(name = "username", nullable = false)
-	public String getName() {
-		return name;
+	public String getUsername() {
+		return username;
 	}
 	
-	public void setName(String name) {
-		this.name = name;
+	public void setUsername(String name) {
+		this.username = name;
 	}
 	
 	@Column(name = "password", nullable = false)

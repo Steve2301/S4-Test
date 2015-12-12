@@ -29,7 +29,6 @@ public class DeviceDao extends GenericDao<Device> implements IDeviceDao{
 			Query query = session.createQuery(sql).setParameter("deviceId", deviceId);
 			device = findOne(query);
 			Hibernate.initialize(device.getLogs().size());
-			Hibernate.initialize(device.getRawMotionValues().size());
 			Hibernate.initialize(device.getTracks().size());
 		} catch (Exception e) {
 			e.printStackTrace();

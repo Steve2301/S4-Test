@@ -1,5 +1,6 @@
 package at.fhv.itm14.fhvgis.persistence.test;
 
+import java.time.Instant;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -8,9 +9,14 @@ import org.hibernate.Hibernate;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+import com.vividsolutions.jts.geom.Coordinate;
+import com.vividsolutions.jts.geom.GeometryFactory;
+import com.vividsolutions.jts.geom.Point;
+
 import at.fhv.itm14.fhvgis.domain.Device;
 import at.fhv.itm14.fhvgis.domain.Track;
 import at.fhv.itm14.fhvgis.domain.User;
+import at.fhv.itm14.fhvgis.domain.Waypoint;
 import at.fhv.itm14.fhvgis.persistence.DatabaseFacade;
 import at.fhv.itm14.fhvgis.persistence.IDatabaseController;
 import at.fhv.itm14.fhvgis.persistence.IDatabaseFacade;
@@ -34,16 +40,41 @@ public class Testclass {
 		_test = new Testclass();
 		 _test.TestDatabaseDeleteAll();
 		 _test.TestDatabaseInsertAll();
+		 _test.TestDatabaseFindUserAndDevice();
 		System.out.println("Success");
 
 	}
 
+	private void TestDatabaseFindUserAndDevice() {
+		User u = _dbController.findUserByUsername("Lucas");
+		Device d = _dbController.findDeviceByDeviceId("kaka");
+		Track t = new Track(d, Instant.now(), Instant.now().plusSeconds(80000));
+		
+		GeometryFactory factory = new GeometryFactory();
+		Point point1 = factory.createPoint(new Coordinate(10, 50));
+		Point point2 = factory.createPoint(new Coordinate(11, 51));
+
+		Waypoint w1 = new Waypoint(point1, Instant.now(), 5, 6, true, 7, 8, 9, 10);
+		Waypoint w2 = new Waypoint(point2, Instant.now(), 5, 6, true, 7, 8, 9, 10);
+
+		t.addWaypoint(w1);
+		t.addWaypoint(w2);
+		d.addTrack(t);
+
+		_dbController.updateDevice(d);
+		
+		
+		
+	}
+
 	private void TestDatabaseDeleteAll() {
-		List<User> users = _test.findAllUsers();
+		List<User> users = _test._dbController.findAllUsers();
+		
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		try {
 			Transaction t = session.beginTransaction();
 			session.delete(users.get(0));
+			session.delete(users.get(1)); 
 			t.commit();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -53,45 +84,13 @@ public class Testclass {
 		}
 		
 	}
-	
-	private List<User> findAllUsers(){
-		List<User> rv = new LinkedList<User>();
-		Session session = HibernateUtil.getSessionFactory().openSession();
-		try {
-			session.beginTransaction();
-			@SuppressWarnings("unchecked")
-			List<User> rs = session.createQuery("from User").list();
-			if (rs != null) {
-				for (User t : rs) {
-					Hibernate.initialize(t.getDevices());
-					for(Device d : t.getDevices()){
-						Hibernate.initialize(d.getLogs());
-						Hibernate.initialize(d.getTracks());
-						for(Track track : d.getTracks()){
-							Hibernate.initialize(track.getSegments());
-							Hibernate.initialize(track.getWaypoints());
-							Hibernate.initialize(track.getRawWaypoints());
-						}
-						Hibernate.initialize(d.getRawMotionValues());
-					}
-				}
-			}
-			rv = rs;
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			if (session.isOpen())
-				session.close();
-		}
-		return rv;
-	}
-
 
 	private void TestDatabaseInsertAll() {
 		User u = new User("Lucas", "luketheduke");
 		Device d = new Device("lucasdev", "kaka");
-		u.addDevice(d);
+		d.setUser(u);
 		_dbController.persistUser(u);
+		_dbController.persistDevice(d);
 		
 	}
 

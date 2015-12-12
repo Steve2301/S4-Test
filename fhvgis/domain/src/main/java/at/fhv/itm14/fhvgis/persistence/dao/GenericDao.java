@@ -83,6 +83,9 @@ public abstract class GenericDao<T> implements IGenericDao<T> {
 	public List<T> findMany(Query query) {
 		List<T> rv = new LinkedList<T>();
 		rv = query.list();
+		for(T entity : rv){
+			HibernateUtil.initializeObject(entity, "at.fhv.itm14.fhvgis.domain");
+		}
 		return rv;
 	}
 
@@ -91,6 +94,7 @@ public abstract class GenericDao<T> implements IGenericDao<T> {
 	public T findOne(Query query) {
 		T t;
 		t = (T) query.uniqueResult();
+		HibernateUtil.initializeObject(t, "at.fhv.itm14.fhvgis.domain");
 		return t;
 	}
 

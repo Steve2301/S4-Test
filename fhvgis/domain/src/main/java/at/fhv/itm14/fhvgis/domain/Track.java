@@ -89,6 +89,7 @@ public class Track extends DomainEntity implements Serializable {
 	}
 
 	public void addWaypoint(Waypoint waypoint) {
+		waypoint.setTrack(this);
 		this.waypoints.add(waypoint);
 	}
 
