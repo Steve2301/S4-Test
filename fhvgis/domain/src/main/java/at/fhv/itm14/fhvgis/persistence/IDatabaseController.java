@@ -17,6 +17,7 @@ public interface IDatabaseController {
 	void persistTransportationRoute(TransportationRoute transportationRoute);
 	void persistPOI(POI poi);
 	void persistGeofence(Geofence geofence);
+	void persistPOIType(POIType poitype);
 	
 	/* Update existing objects*/
 	void updateUser(User user);
@@ -28,6 +29,7 @@ public interface IDatabaseController {
 	void updateTransportationRoute(TransportationRoute transportationRoute);
 	void updatePOI(POI poi);
 	void updateGeofence(Geofence geofence);
+	void updatePOIType(POIType poitype);
 	
 	/* Remove objects */
 	void deleteUser(User user);
@@ -39,6 +41,7 @@ public interface IDatabaseController {
 	void deleteTransportationRoute(TransportationRoute transportationRoute);
 	void deletePOI(POI poi);
 	void deleteGeofence(Geofence geofence);
+	void deletePOIType(POIType poitype);
 	
 	/* Get all the objects  of a certain type */
 	List<User> findAllUsers();
@@ -50,6 +53,7 @@ public interface IDatabaseController {
 	List<TransportationRoute> findAllTransportationRoutes();
 	List<POI> findAllPOIs();
 	List<Geofence> findAllGeofences();
+	List<POIType> findAllPOITypes();
 	
 	/* Get objects by their UUID */
 	User findUser(UUID id);
@@ -61,6 +65,7 @@ public interface IDatabaseController {
 	TransportationRoute findTransportationRoute(UUID id);
 	POI findPOI(UUID id);
 	Geofence findGeofence(UUID id);
+	POIType findPOIType(UUID id);
 	
 	/* Miscellaneous */
 	

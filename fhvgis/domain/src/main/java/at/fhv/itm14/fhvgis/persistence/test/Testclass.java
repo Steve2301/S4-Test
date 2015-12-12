@@ -15,6 +15,8 @@ import com.vividsolutions.jts.geom.GeometryFactory;
 import com.vividsolutions.jts.geom.Point;
 
 import at.fhv.itm14.fhvgis.domain.Device;
+import at.fhv.itm14.fhvgis.domain.POI;
+import at.fhv.itm14.fhvgis.domain.POIType;
 import at.fhv.itm14.fhvgis.domain.Track;
 import at.fhv.itm14.fhvgis.domain.Transportation;
 import at.fhv.itm14.fhvgis.domain.TransportationRoute;
@@ -72,6 +74,8 @@ public class Testclass {
 		d.addTrack(t);
 
 		_dbController.updateDevice(d);
+		
+		POI poi = new POI("poitest", new POIType("home", true), factory.createPoint(new Coordinate(5, 5)), "external ref");
 
 		
 	}

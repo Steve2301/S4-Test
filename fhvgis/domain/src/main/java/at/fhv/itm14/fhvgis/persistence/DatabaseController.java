@@ -7,6 +7,7 @@ import at.fhv.itm14.fhvgis.domain.Device;
 import at.fhv.itm14.fhvgis.domain.Geofence;
 import at.fhv.itm14.fhvgis.domain.Log;
 import at.fhv.itm14.fhvgis.domain.POI;
+import at.fhv.itm14.fhvgis.domain.POIType;
 import at.fhv.itm14.fhvgis.domain.Track;
 import at.fhv.itm14.fhvgis.domain.Transportation;
 import at.fhv.itm14.fhvgis.domain.TransportationRoute;
@@ -266,6 +267,33 @@ public class DatabaseController implements IDatabaseController{
 	@Override
 	public Geofence findGeofence(UUID id) {
 		return _databaseFacade.getDatabaseDaoFacade().getGeofenceDaoInstance().find(id);
+	}
+
+	@Override
+	public void persistPOIType(POIType poitype) {
+		_databaseFacade.getDatabaseDaoFacade().getPoiTypeDaoInstance().persist(poitype);
+	}
+
+	@Override
+	public void updatePOIType(POIType poitype) {
+		_databaseFacade.getDatabaseDaoFacade().getPoiTypeDaoInstance().update(poitype);	
+	}
+
+	@Override
+	public void deletePOIType(POIType poitype) {
+		_databaseFacade.getDatabaseDaoFacade().getPoiTypeDaoInstance().delete(poitype);
+	}
+
+	@Override
+	public List<POIType> findAllPOITypes() {
+		return  _databaseFacade.getDatabaseDaoFacade().getPoiTypeDaoInstance().findAll();
+
+	}
+
+	@Override
+	public POIType findPOIType(UUID id) {
+		return 	_databaseFacade.getDatabaseDaoFacade().getPoiTypeDaoInstance().find(id);
+
 	}
 
 
