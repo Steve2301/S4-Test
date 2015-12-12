@@ -12,6 +12,7 @@ public class TransportationDao extends GenericDao<Transportation> implements ITr
 		if (_instance == null) {
 			_instance = new TransportationDao();
 		}
+		_instance.setClazz(Transportation.class);
 		return _instance;
 	}
 

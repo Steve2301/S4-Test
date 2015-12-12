@@ -12,6 +12,7 @@ public class TrackDao extends GenericDao<Track> implements ITrackDao{
 		if (_instance == null) {
 			_instance = new TrackDao();
 		}
+		_instance.setClazz(Track.class);
 		return _instance;
 	}
 

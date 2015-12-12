@@ -42,8 +42,8 @@ public class Testclass {
 		
 		_test = new Testclass();
 		 _test.TestDatabaseDeleteAll();
-		 _test.TestDatabaseInsertAll();
-		 _test.TestDatabaseFindUserAndDevice();
+		// _test.TestDatabaseInsertAll();
+		 //_test.TestDatabaseFindUserAndDevice();
 		System.out.println("Success");
 
 	}
@@ -64,6 +64,7 @@ public class Testclass {
 	
 		Transportation trans1 = new Transportation("Bus", 100, Color.YELLOW);
 		Transportation trans2 = new Transportation("Car", 260, Color.BLUE);
+		
 		
 		_dbController.persistTransportation(trans1);
 		_dbController.persistTransportation(trans2);
@@ -89,11 +90,17 @@ public class Testclass {
 
 	private void TestDatabaseDeleteAll() {
 		List<User> users = _test._dbController.findAllUsers();
+		List<Transportation> transportations = _test._dbController.findAllTransportations();
 		
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		try {
 			Transaction t = session.beginTransaction();
-			session.delete(users.get(0));
+			for(User u : users){
+				session.delete(u);
+			}
+			for(Transportation trans : transportations){
+				session.delete(trans);
+			}
 			t.commit();
 		} catch (Exception e) {
 			e.printStackTrace();

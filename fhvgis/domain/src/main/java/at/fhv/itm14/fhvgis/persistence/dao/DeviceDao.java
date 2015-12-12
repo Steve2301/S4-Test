@@ -15,6 +15,7 @@ public class DeviceDao extends GenericDao<Device> implements IDeviceDao{
 		if (_instance == null) {
 			_instance = new DeviceDao();
 		}
+		_instance.setClazz(Device.class);
 		return _instance;
 	}	
 

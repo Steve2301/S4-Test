@@ -15,6 +15,7 @@ public class TransportationRouteDao extends GenericDao<TransportationRoute> impl
 		if (_instance == null) {
 			_instance = new TransportationRouteDao();
 		}
+		_instance.setClazz(TransportationRoute.class);
 		return _instance;
 	}
 

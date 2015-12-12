@@ -11,6 +11,7 @@ public class WaypointDao extends GenericDao<Waypoint> implements IWaypointDao{
 		if (_instance == null) {
 			_instance = new WaypointDao();
 		}
+		_instance.setClazz(Waypoint.class);
 		return _instance;
 	}
 
