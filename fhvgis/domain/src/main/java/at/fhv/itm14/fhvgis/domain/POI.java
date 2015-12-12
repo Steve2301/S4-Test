@@ -67,7 +67,8 @@ public class POI extends DomainEntity implements Serializable {
 	public String getName() {
 		return name;
 	}
-
+	
+	@ManyToOne()
 	public POIType getPoiType() {
 		return poiType;
 	}
