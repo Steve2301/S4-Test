@@ -1,6 +1,5 @@
 package at.fhv.itm14.fhvgis.persistence.dao;
 
-import org.hibernate.Hibernate;
 import org.hibernate.Query;
 import org.hibernate.Session;
 
@@ -28,7 +27,7 @@ public class UserDao extends GenericDao<User> implements IUserDao{
 			session.beginTransaction();
 			Query query = session.createQuery(sql).setParameter("name", name);
 			user = findOne(query);
-			Hibernate.initialize(user.getDevices().size());
+			HibernateUtil.initializeAndUnproxy(user);
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {

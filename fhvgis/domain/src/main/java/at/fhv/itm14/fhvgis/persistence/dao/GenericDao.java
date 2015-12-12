@@ -19,7 +19,7 @@ public abstract class GenericDao<T> implements IGenericDao<T> {
 
 	@Override
 	public void delete(T obj) {
-		Session session = getCurrentSession();
+		Session session = HibernateUtil.getSessionFactory().openSession();
 		try {
 			session.beginTransaction();
 			session.delete(obj);
@@ -33,7 +33,7 @@ public abstract class GenericDao<T> implements IGenericDao<T> {
 
 	@Override
 	public void persist(T obj) {
-		Session session = getCurrentSession();
+		Session session = HibernateUtil.getSessionFactory().openSession();
 		try {
 			session.beginTransaction();
 			session.persist(obj);
@@ -48,7 +48,7 @@ public abstract class GenericDao<T> implements IGenericDao<T> {
 
 	@Override
 	public void update(T obj) {
-		Session session = getCurrentSession();
+		Session session = HibernateUtil.getSessionFactory().openSession();
 		try {
 			session.beginTransaction();
 			session.update(obj);
@@ -64,7 +64,7 @@ public abstract class GenericDao<T> implements IGenericDao<T> {
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<T> findAll() {
-		Session session = getCurrentSession();
+		Session session = HibernateUtil.getSessionFactory().openSession();
 		List<T> rs = null;
 		try {
 			session.beginTransaction();

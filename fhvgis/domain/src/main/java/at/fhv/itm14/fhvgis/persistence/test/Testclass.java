@@ -11,6 +11,9 @@ import org.hibernate.Transaction;
 import at.fhv.itm14.fhvgis.domain.Device;
 import at.fhv.itm14.fhvgis.domain.Track;
 import at.fhv.itm14.fhvgis.domain.User;
+import at.fhv.itm14.fhvgis.persistence.DatabaseFacade;
+import at.fhv.itm14.fhvgis.persistence.IDatabaseController;
+import at.fhv.itm14.fhvgis.persistence.IDatabaseFacade;
 import at.fhv.itm14.fhvgis.persistence.dao.interfaces.HibernateUtil;
 
 
@@ -18,17 +21,22 @@ import at.fhv.itm14.fhvgis.persistence.dao.interfaces.HibernateUtil;
 public class Testclass {
 
 	private static Testclass _test;
+	private IDatabaseFacade _dbFacade;
+	public IDatabaseController _dbController;
+	
+	public Testclass(){
+		_dbFacade = DatabaseFacade.getInstance();
+		_dbController = _dbFacade.getDatabaseController();
+	}
 
 	public static void main(String[] args) {
 		
 		_test = new Testclass();
 		 _test.TestDatabaseDeleteAll();
 		 _test.TestDatabaseInsertAll();
-		// _test.LoadCompleteUser("Test");
 		System.out.println("Success");
 
 	}
-
 
 	private void TestDatabaseDeleteAll() {
 		List<User> users = _test.findAllUsers();
@@ -36,7 +44,6 @@ public class Testclass {
 		try {
 			Transaction t = session.beginTransaction();
 			session.delete(users.get(0));
-			session.delete(users.get(1));
 			t.commit();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -81,25 +88,11 @@ public class Testclass {
 
 
 	private void TestDatabaseInsertAll() {
-		User u = new User("Teffgfst", "tfffest");
-		Device d = new Device("token", "kakakaka");
+		User u = new User("Lucas", "luketheduke");
+		Device d = new Device("lucasdev", "kaka");
 		u.addDevice(d);
-		List<User> rv = new LinkedList<User>();
-		Session session = HibernateUtil.getSessionFactory().openSession();
-		try {
-			Transaction t = session.beginTransaction();
-			session.persist(u);
-			session.persist(u.getDevices().get(0));
-			t.commit();
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			if (session.isOpen())
-				session.close();
-		}
-		System.out.println(rv.size() + " " + rv.get(0).getDevices().size());
+		_dbController.persistUser(u);
 		
-
 	}
 
 

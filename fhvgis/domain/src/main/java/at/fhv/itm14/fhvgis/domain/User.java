@@ -45,6 +45,7 @@ public class User extends DomainEntity implements Serializable {
 	}
 
 	public void addDevice(Device device) {
+		device.setUser(this);
 		this.devices.add(device);
 	}
 	
