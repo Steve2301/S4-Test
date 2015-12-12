@@ -1,5 +1,8 @@
 package at.fhv.itm14.fhvgis.persistence.dao;
 
+import java.util.List;
+
+import at.fhv.itm14.fhvgis.domain.Device;
 import at.fhv.itm14.fhvgis.domain.Waypoint;
 import at.fhv.itm14.fhvgis.persistence.dao.interfaces.IWaypointDao;
 

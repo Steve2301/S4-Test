@@ -2,7 +2,9 @@ package at.fhv.itm14.fhvgis.persistence.dao;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.UUID;
 
+import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
 
@@ -58,7 +60,22 @@ public abstract class GenericDao<T> implements IGenericDao<T> {
 		} finally {
 			session.close();
 		}
-		
+	}
+	
+	@Override
+	public T find(UUID id) {
+		T entity = null;
+		Session session = HibernateUtil.getSessionFactory().openSession();
+		try{
+			session.beginTransaction();
+			entity = session.load(clazz, id);
+			session.getTransaction().commit();
+		}catch(HibernateException e){
+			e.printStackTrace();
+		}finally{
+			session.close();
+		}
+		return entity;
 	}
 
 	@SuppressWarnings("unchecked")

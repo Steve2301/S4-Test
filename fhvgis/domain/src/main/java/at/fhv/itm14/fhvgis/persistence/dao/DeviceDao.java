@@ -1,6 +1,5 @@
 package at.fhv.itm14.fhvgis.persistence.dao;
 
-import org.hibernate.Hibernate;
 import org.hibernate.Query;
 import org.hibernate.Session;
 
@@ -28,8 +27,6 @@ public class DeviceDao extends GenericDao<Device> implements IDeviceDao{
 			session.beginTransaction();
 			Query query = session.createQuery(sql).setParameter("deviceId", deviceId);
 			device = findOne(query);
-			Hibernate.initialize(device.getLogs().size());
-			Hibernate.initialize(device.getTracks().size());
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {

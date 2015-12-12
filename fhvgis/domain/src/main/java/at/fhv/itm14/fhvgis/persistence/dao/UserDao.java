@@ -32,11 +32,11 @@ public class UserDao extends GenericDao<User> implements IUserDao{
 			session.beginTransaction();
 			Query query = session.createQuery(sql).setParameter("name", name);
 			user = findOne(query);
-			Hibernate.initialize(user.getDevices().size());
-			for(Device d : user.getDevices()){
-				Hibernate.initialize(d.getLogs().size());
-				Hibernate.initialize(d.getTracks().size());
-			}
+//			Hibernate.initialize(user.getDevices().size());
+//			for(Device d : user.getDevices()){
+//				Hibernate.initialize(d.getLogs().size());
+//				Hibernate.initialize(d.getTracks().size());
+//			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {

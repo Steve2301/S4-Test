@@ -48,7 +48,9 @@ public class Testclass {
 	private void TestDatabaseFindUserAndDevice() {
 		User u = _dbController.findUserByUsername("Lucas");
 		Device d = _dbController.findDeviceByDeviceId("kaka");
+		
 		Track t = new Track(d, Instant.now(), Instant.now().plusSeconds(80000));
+		
 		
 		GeometryFactory factory = new GeometryFactory();
 		Point point1 = factory.createPoint(new Coordinate(10, 50));
@@ -63,7 +65,9 @@ public class Testclass {
 
 		_dbController.updateDevice(d);
 		
+		_dbController.deleteDevice(d);
 		
+		//_dbController.findWaypointsOfTrack("kaka");
 		
 	}
 
@@ -74,7 +78,6 @@ public class Testclass {
 		try {
 			Transaction t = session.beginTransaction();
 			session.delete(users.get(0));
-			session.delete(users.get(1)); 
 			t.commit();
 		} catch (Exception e) {
 			e.printStackTrace();

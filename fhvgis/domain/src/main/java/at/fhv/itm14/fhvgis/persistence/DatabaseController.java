@@ -1,6 +1,7 @@
 package at.fhv.itm14.fhvgis.persistence;
 
 import java.util.List;
+import java.util.UUID;
 
 import at.fhv.itm14.fhvgis.domain.Device;
 import at.fhv.itm14.fhvgis.domain.Log;
@@ -134,6 +135,31 @@ public class DatabaseController implements IDatabaseController{
 	@Override
 	public List<Log> findAllLogs() {
 		return _databaseFacade.getDatabaseDaoFacade().getLogDaoInstance().findAll();
+	}
+
+	@Override
+	public User findUser(UUID id) {
+		return _databaseFacade.getDatabaseDaoFacade().getUserDaoInstance().find(id);
+	}
+
+	@Override
+	public Track findTrack(UUID id) {
+		return _databaseFacade.getDatabaseDaoFacade().getTrackDaoInstance().find(id);
+	}
+
+	@Override
+	public Device findDevice(UUID id) {
+		return _databaseFacade.getDatabaseDaoFacade().getDeviceDaoInstance().find(id);
+	}
+
+	@Override
+	public Waypoint findWaypoint(UUID id) {
+		return _databaseFacade.getDatabaseDaoFacade().getWaypointDaoInstance().find(id);
+	}
+
+	@Override
+	public Log findLog(UUID id) {
+		return _databaseFacade.getDatabaseDaoFacade().getLogDaoInstance().find(id);
 	}
 
 
